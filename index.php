@@ -254,7 +254,7 @@
 					</div>
 					<div>
 						<p>C++</p>
-						<progress id="b" value="10" max="100"></progress><span><?php echo o7; ?></span>
+						<progress id="b" value="40" max="100"></progress><span><?php echo o7; ?></span>
 					</div>
 					<div>
 						<p>SQL</p>
@@ -263,19 +263,27 @@
 					<p><?php echo g2; ?></p>
 					<div>
 						<p>HTML</p>
-						<progress id="d" value="90" max="100"></progress><span><?php echo o7; ?></span>
+						<progress id="d" value="95" max="100"></progress><span><?php echo o7; ?></span>
 					</div>
 					<div>
 						<p>CSS</p>
-						<progress id="e" value="80" max="100"></progress><span><?php echo o7; ?></span>
+						<progress id="e" value="85" max="100"></progress><span><?php echo o7; ?></span>
 					</div>
 					<div>
 						<p>JS</p>
-						<progress id="f" value="20" max="100"></progress><span><?php echo o7; ?></span>
+						<progress id="f" value="25" max="100"></progress><span><?php echo o7; ?></span>
 					</div>
 					<div>
-						<p>SQL</p>
-						<progress id="g" value="70" max="100"></progress><span><?php echo o7; ?></span>
+						<p>Git</p>
+						<progress id="h" value="70" max="100"></progress><span><?php echo o7; ?></span>
+					</div>
+					<div>
+						<p>AngularJS</p>
+						<progress id="i" value="10" max="100"></progress><span><?php echo o7; ?></span>
+					</div>
+					<div>
+						<p>Dart</p>
+						<progress id="j" value="15" max="100"></progress><span><?php echo o7; ?></span>
 					</div>
 				</div>
 					<h2>un rémi c'est quoi? un rémi c'est ca !</h2>

@@ -1,0 +1,14 @@
+p{
+	color: #f57a04;
+	font-size: 5em;
+
+}
+body{
+
+background: -webkit-radial-gradient(#f57a04, #000000);
+background: -moz-radial-gradient(#f57a04, #000000);
+background: -o-radial-gradient(#f57a04, #000000); 
+background: -ms-radial-gradient(#f57a04, #000000); 
+background: radial-gradient(#f57a04, #000000);
+
+}

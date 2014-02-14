@@ -1,0 +1,31 @@
+<?php
+	define('t1','Home');
+	define('t2','Presentation');
+	define('t3','projects');
+	define('t4','Formation');
+	define('t5','Follow me');
+	define('t6','My abilities');
+	define('lang','langues/en.png');
+	define('p1','Hello, my name is Rémi Collignon and you are on my portfolio, you will find a summary of my cursus together as well as the various projects in which I took part.');
+	define('p2','This is my C.V. you can see it online.');
+	define('p3','actualy i\'m in Engineer\'s training, I am looking for an work experience of 7 weeks in June, 2013 as well as  a sandwich training for the year 2013 2014');
+	define('o1','Project gaming server of minecraft');
+	define('p4','from conception to maintains en incluing the management of the players i\'ve launched for a moment a server of game (Minecraft).');
+	define('o2','web project about l\'Olivier restaurant');
+	define('p5','First project quasi-professional the objective was to make the Web site of the restaurant, this site integer a page administered since the administrator interface.');
+	define('o3','Short film for the human and social training');
+	define('p61','Actually in training in\'');
+	define('p62',' of Brest in cycle IT and networks.');
+	define('p7','Advance of training:');
+	define('p71','training: ');
+	define('l1','Holder of a TUB option life science spéciality Physics-Chemistry.');
+	define('p8','created by Rémi Collignon, © remi.rcdinfo.fr 2013 All rights reserved.');
+	define('o4','');
+	define('o5','');
+	define('o6','');
+	define('p9','');
+	define('p10','');
+	define('p11','');
+	define('o7','');
+	define('p12','');
+?>

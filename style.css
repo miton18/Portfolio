@@ -1,0 +1,584 @@
+body {
+
+	margin: 0;
+	padding: 0;
+		background: -webkit-radial-gradient(#cbcefb, #000000);
+		background: -moz-radial-gradient(#cbcefb, #000000);
+		background: -o-radial-gradient(#cbcefb, #000000); 
+		background: -ms-radial-gradient(#cbcefb, #000000); 
+	background: radial-gradient(#cbcefb, #000000); 
+}
+#container {
+
+	width: 960px;
+	margin: 0 auto;
+	padding-top: 100px;
+}
+#header {
+
+	display: inline;
+	background: #ffffff repeat;
+	width: 100%;
+	height: 8%;
+	position: fixed;
+	z-index: 1000;
+	top: 0px;
+	left: 0px;
+	box-shadow: 0px 5px 20px 10px #ffffff;
+		-moz-box-shadow: 0px 5px 20px 10px #ffffff;
+		-webkit-box-shadow: 0px 5px 20px 10px #ffffff;
+		-o-box-shadow: 0px 5px 20px 10px #ffffff;
+	visibility: hidden; /*changer par le chargement de page*/
+}
+a{
+
+	color: #f57a06;
+}
+
+/*--------------------------------------  menu -----------------------------------------------------------*/
+
+#menu {
+
+	margin: 0 auto;
+	margin-left: 15%;
+}
+#menu ul {
+
+	padding: 0;
+	list-style: none;
+	margin: 24px 0 0 0;
+	font-size: 15px;
+}
+#menu ul a{
+
+	text-decoration: none;
+	margin-right: 3%;
+	padding: 12px;
+	border-radius: 10px;
+	text-shadow: 0px 0px 5px #ff993b;
+	transition-duration: 0.4s;
+}
+#menu ul a:hover{
+
+	background-color: #5d5d5d;
+	text-shadow: none;
+}
+#menu ul a li{
+
+	display: inline;
+	color: #ff993b;
+	font-family: 'Telex', sans-serif;
+}
+#menu img{
+
+	top:7%;
+	left:130px;
+	position: absolute;
+	height: 20px; width: 20px;
+	border-radius: 100%;
+	box-shadow: inset 0px 0px 50px 0px #000000,	0px 0px 5px 0px #000000;
+}
+#lang select {
+
+	background: transparent;
+	width: 120px;
+	padding: 5px;
+	font-size: 15px;
+	border: 0;
+	border-radius: 0;
+	height: 30px;
+}
+#lang{
+
+	left:0;	top: 0;
+	position: absolute;
+	width: 120px;
+	height: 30px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	border-radius: 0 0 10px 0;
+}
+
+/*---------------------------------------  ombre image -----------------------------------------------*/
+
+.image-ombre {
+
+	height: auto;
+	border: 5px solid #f57a06;
+	background-color: #323131 ;
+	border-radius: 20px;
+	padding: 3%;
+	padding-top: 1.5%;
+	width: 960px;
+	box-shadow: inset 0px 0px 20px 2px rgba(10, 10, 10, 0.8);
+		-webkit-box-shadow:inset 0px 0px 20px 2px rgba(10, 10, 10, 0.8);
+		-moz-box-shadow:inset 0px 0px 20px 2px rgba(10, 10, 10, 0.8);
+}
+
+/*---------------------------------------  espace entre chaque pages  -------------------------*/
+
+#img1, #img2, #img3, #img4, #img5, #img6 {
+
+	height: 100px;
+}
+#espace-bas {
+
+	height: 240px;
+}
+#espace-bas p{
+
+	color: black;
+}
+
+/*----------------------------------------  style general  ----------------------------------------------*/
+
+h1{
+
+	color: white;
+	font-family: Raleway;
+	font-size: 1em;
+	text-decoration: none;
+}
+h2{
+
+	font-family: 'Istok Web', sans-serif;
+	color: white;
+	text-decoration: underline;
+}
+h3{
+
+	font-family: 'Istok Web', sans-serif;
+}
+p, li{
+
+	font-family: Raleway;
+	color:white;
+}
+#photo_profil{
+
+	height: 400px;
+	float: left;
+}
+#dl_zone {
+
+	display: inline-block;
+	padding: 6px;
+	width: 300px;
+	border: 2px dashed #f57a06;
+	margin-left: 20%;
+}
+#dl_zone a{
+
+	float: left;
+	margin-right: 3%;
+}
+#dl_zone p{
+
+	margin-top: 10%;
+}
+#parag1{
+
+	margin-left:40%;
+	margin-right: 5%;
+}
+#premierepage{
+
+	min-height: 550px;
+}
+
+/*----------------------------------------  page projets  --------------------------------------------- */
+
+/*.projets{
+
+	list-style-type:none;
+	background-color: white;
+	padding: 6px;
+	border-radius: 10px;
+	margin: 0%;
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+.projets li{
+
+	display: inline-block;
+	margin-left: 4%;
+	margin-right: 3%;
+}
+.projets li img{
+
+	margin: 0;
+}
+.projets li img:hover, .ficher:hover {
+
+	opacity: 0.5;
+		-webkit-filter: opacity(0.5);
+		-moz-opacity : 0.5;
+}
+.tabContent{
+
+	margin-left: 2%;
+	margin-right: 2%;
+	background-color: white;
+	border-radius: 0 0 10px 10px;
+	margin-top: 0;
+	padding: 3%;
+	box-shadow: inset 0px 10px 30px 0px #000000;
+		-webkit-box-shadow:inset 0px 10px 30px 0px #000000;
+		-moz-box-shadow:inset 0px 10px 30px 0px #000000;
+}
+.tabContent p{
+
+	color: black;
+}*/
+#progress{
+
+	width: 600px;
+	margin: auto;
+	margin-left:0;
+}
+progress{
+
+	display: inline-block;
+	box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	width: 140%;
+	height: 20px;
+	padding: 3px 3px 2px 3px;
+	border: 1px solid rgba(0,0,0,.5);
+	border-radius: 15px;
+	box-shadow: 0 1px 0 rgba(255,255,255,.2);   
+}
+progress::-webkit-progress-bar{
+
+	background: transparent;
+}
+progress::-webkit-progress-value{ /* etat general progress bar de chrome */
+
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#aa::-moz-progress-bar {
+
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+	background:-moz-gradient(linear,0 100%,100% 0,from(transparent),
+		color-stop(transparent,0.33),color-stop(rgba(0, 0, 0, 0.1),0.33),
+		color-stop(rgba(0, 0, 0, 0.1),0.66),color-stop(transparent,0.66)),
+		-moz-gradient(linear,left top,left bottom,from(rgba(255, 255, 255, 0.25)),to(rgba(0, 0, 0, 0.2))),
+		-moz-gradient(linear,left top,right top,from(#f57a06),to(#f57a06));
+	background:-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #f57a06, #f57a06);	
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+		-moz-animation: 2s linear infinite move;
+}
+#aa::-webkit-progress-value {
+
+	background:-webkit-gradient(linear,0 100%,100% 0,from(transparent),
+		color-stop(transparent,0.33),color-stop(rgba(0, 0, 0, 0.1),0.33),
+		color-stop(rgba(0, 0, 0, 0.1),0.66),color-stop(transparent,0.66)),
+		-webkit-gradient(linear,left top,left bottom,from(rgba(255, 255, 255, 0.25)),to(rgba(0, 0, 0, 0.2))),
+		-webkit-gradient(linear,left top,right top,from(#f57a06),to(#f57a06));
+	background:-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #f57a06, #f57a06);	
+			background-size: 25px 14px, 100% 100%, 100% 100%;
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	animation:move 4s linear 0 infinite;
+		-webkit-animation: move 4s linear 0 infinite;
+}
+
+/*----------------------------------------  page Suivi  -------------------------------------------------------*/
+
+#suivi{
+
+	min-height: 910px;
+}
+#suivi-s{
+
+	width: 45%;
+	float:left;
+	overflow: hidden;
+}
+#form{ 
+
+	width: 50%;
+	display: inline-block;
+	padding:2.5%;
+	/*background-image: url('img/form.jpg');*/
+	box-shadow: inset 0px 0px 7px 0px #000000;
+	border-radius: 0 15px 15px 15px;
+	height: 750px;
+}
+fieldset{
+
+	border: none;
+}
+#form fieldset p, #qa{
+
+	border: 2px solid black;
+	background-color: #131212;
+	margin: 1%;
+	padding: 1%;
+}
+label, legend{
+
+	display:block;
+	margin:2%;
+	text-align:center;
+	color: white;
+	background-color: #f57a05;
+}
+input, textarea{
+
+	left:0;
+	display:block;
+	margin: auto;
+	margin-bottom: 2%;
+	background-color: black;
+	color:white;
+	border: 1px solid #f57a05;
+}
+input:hover, textarea:hover{
+
+	border: 1px solid #f57a05;
+}
+input[type='submit']{
+
+	color:#f57a04;
+	-moz-box-shadow: 0px 0px 10px #343434;
+	-webkit-box-shadow: 0px 0px 10px #343434;
+	-o-box-shadow: 0px 0px 10px #343434;
+	box-shadow: 0px 0px 10px #343434;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 2px solid #131212;
+	background:#9b9b9b;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9b9b9b", endColorstr="#131212"); /* Pour IE seulement et mode gradient à linear */
+	background: -webkit-gradient(linear, left top, left bottom, from(#9b9b9b), to(#131212));
+	background: -webkit-linear-gradient(#9b9b9b, #131212);
+	background: -moz-linear-gradient(#9b9b9b, #131212);
+	background: -o-linear-gradient(#9b9b9b, #131212); 
+	background: -ms-linear-gradient(#9b9b9b, #131212); 
+	background: linear-gradient(#9b9b9b, #131212); 
+}
+input[type='submit']:hover{
+
+	-webkit-filter: contrast(3.1);
+	-moz-filter: contrast(3.1);
+	-o-filter: contrast(3.1);
+}
+
+/*----------------------------------------  page connaissances  -----------------------------------------*/
+
+#tagcloud{
+	margin-left: 30%;
+}
+#progress2 div progress{
+
+	background: none;
+	width: 80%;
+	margin-left: 10%;
+	border: none;
+	box-shadow: none;
+		-webkit-box-shadow:none;
+		-moz-box-shadow:none;
+}
+#progress2{
+
+	background: linear-gradient(#2d2d2d,#444);
+		background: -webkit-linear-gradient(#2d2d2d,#444);
+		background: -moz-linear-gradient(#2d2d2d,#444);
+		background: -o-linear-gradient(#2d2d2d,#444);
+	border-radius: 10px;
+	box-shadow: inset 0px 0px 30px 0px #000000;
+		-webkit-box-shadow:inset 0px 0px 30px 0px #000000;
+		-moz-box-shadow:inset 0px 0px 30px 0px #000000;
+	padding-bottom: 5%;
+	background-image: url('img/barre.png');
+}
+#progress2 p{
+
+	margin-left: 5%;
+	padding-top: 2%;
+}
+#progress2 div p{
+
+	margin-left: 10%;
+}
+div span{
+	color: white;
+}
+#a::-webkit-progress-value {
+
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #0000da, #0000da);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+	-webkit-animation: move 5s linear 0 infinite;
+}
+#a::-moz-progress-bar {
+
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #0000da, #0000da);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#b::-webkit-progress-value {
+
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #007600, #007600);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+		-webkit-animation: move 5s linear 0 infinite;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#b::-moz-progress-bar{
+
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #007600, #007600);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#c::-webkit-progress-value {
+
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #fcc307, #fcc307);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+		-webkit-animation: move 5s linear 0 infinite;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#c::-moz-progress-bar{
+
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #fcc307, #fcc307);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#d::-webkit-progress-value {
+
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #cc0000, #cc0000);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	animation: move 5s linear 0 infinite;
+		-webkit-animation: move 5s linear 0 infinite;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#d::-moz-progress-bar{
+
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #cc0000, #cc0000);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#e::-webkit-progress-value {
+
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #ad00ba, #ad00ba);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	animation: move 5s linear 0 infinite;
+		-webkit-animation: move 5s linear 0 infinite;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#e::-moz-progress-bar{
+
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #ad00ba, #ad00ba);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#f::-webkit-progress-value {
+
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #a43614, #a43614);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	animation: move 5s linear 0 infinite;
+		-webkit-animation: move 5s linear 0 infinite;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#f::-moz-progress-bar{
+
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #a43614, #a43614);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+
+#g::-webkit-progress-value {
+
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #040fdd, #faa228);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	animation: move 5s linear 0 infinite;
+		-webkit-animation: move 5s linear 0 infinite;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+#g::-moz-progress-bar{
+
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #7d7777, #7d7777);
+	background-size: 25px 14px, 100% 100%, 100% 100%;
+	border-radius: 50px;
+	box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+@keyframes move{
+
+	0% {background-position: 0px 0px, 0 0, 0 0;}
+	100% {background-position: -100px 0px, 0 0, 0 0;}
+}
+@-webkit-keyframes move{
+
+	0% {background-position: 0px 0px, 0 0, 0 0;}
+	100% {background-position: -100px 0px, 0 0, 0 0;}
+}
+@-moz-keyframes move{
+
+	0% {background-position: 0px 0px, 0 0, 0 0;}
+	100% {background-position: -100px 0px, 0 0, 0 0;}
+}
+@-o-keyframes move{
+
+	0% {background-position: 0px 0px, 0 0, 0 0;}
+	100% {background-position: -100px 0px, 0 0, 0 0;}
+}

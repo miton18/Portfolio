@@ -242,7 +242,35 @@ progress::-webkit-progress-value{ /* etat general progress bar de chrome */
 	animation:move 4s linear 0 infinite;
 		-webkit-animation: move 4s linear 0 infinite;
 }
-
+/*----------------------------------------  page Projets  -----------------------------------------------------*/
+.modal-example-content{
+	width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	background-color: #FFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 6px;
+	outline: 0 none;
+}
+.modal-example-header {
+	border-bottom: 1px solid #E5E5E5;
+	padding: 15px;
+}
+h4{
+	margin: 0;
+}
+button.close {
+	padding: 0;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	-webkit-appearance: none;
+}
+.modal-example-body {
+	padding: 20px;
+}
+.modal-example-body p{
+	color: black;
+}
 /*----------------------------------------  page Suivi  -------------------------------------------------------*/
 
 #suivi{

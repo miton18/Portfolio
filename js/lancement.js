@@ -1,5 +1,15 @@
 $(document).ready(function() {
-
+	
+				$('.Projet').on('click', function ( e ) {
+				    $.fn.custombox( this, {
+				        effect:     'slide',
+				        position:   'left, right',
+				        overlay: true,
+				        responsive: true,
+				    });
+				    e.preventDefault();
+				});
+// Qaptcha
 	$.localScroll();
 	$('.QapTcha').QapTcha({
 		disabledSubmit:true,

@@ -1,11 +1,7 @@
 <!DOCTYPE HTML>
 <?php
-	if(	isset($_GET['lang']) AND ($_GET['lang'] == 'en')){
-		include('langues/lang-en.php');
-	}
-	else{
-		include('langues/lang-fr.php');
-	}
+	if(	isset($_GET['lang']) AND ($_GET['lang'] == 'en')){	include('langues/lang-en.php');	}
+	else{	include('langues/lang-fr.php');	}
 ?>
 <html lang="fr">
 	<head>
@@ -16,7 +12,7 @@
 		<div id="header">
 			<nav id="menu">
 				<ul>
-					<a href="#" ><li><?php echo t1; ?></li></a>
+					<!--a href="#" ><li><?php echo t1; ?></li></a-->
 					<a href="#img1" ><li><?php echo t2; ?></li></a>
 					<a href="#img2" ><li><?php echo t3; ?></li></a>
 					<a href="#img3" ><li><?php echo t4; ?></li></a>
@@ -53,42 +49,9 @@
 			</div><!-- premiere page -->
 
 <!-- page PROJET -->
-
 		    <style>
-		    .modal-example-content{
-		    	width: 600px;
-			    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-				background-color: #FFF;
-				border: 1px solid rgba(0, 0, 0, 0.2);
-				border-radius: 6px;
-				outline: 0 none;
-			}
-			.modal-example-header {
-				border-bottom: 1px solid #E5E5E5;
-				padding: 15px;
-			}
-			h4{
-				margin: 0;
-			}
-			button.close {
-				padding: 0;
-				cursor: pointer;
-				background: transparent;
-				border: 0;
-				-webkit-appearance: none;
-			}
-			.modal-example-body {
-				padding: 20px;
-			}
-			.modal-example-body p{
-				color: black;
-			}
+
 		    </style>
-
-
-
-
-
 			<div id="img2"></div>
 			<div id="forma" class="image-ombre">
 				<h2><?php echo t3; ?></h2>
@@ -239,6 +202,12 @@
 						</div><br/>
 					</li>
 					<li><?php echo l1; ?></li>
+					<li>
+						<p>Je participe régulièrement à des évènements comme ceux du <a target="_TOP" href="http://gdgfinistere.org/">finist'gdg</a>, de la cantina brestoise,
+						 ou encore les formations google tels que: Dart Flight School. Mis a part ca, le Club ELEC de l'isen, dont je fais parti propose lui
+						 aussi des formations et des cours, la dernière en date, Git et bientot, big data et hadoop, comme quoi, ce n'est pas en cours qu'on apprends le plus.
+						</p>
+					</li>
 				</ul>
 			</div><!-- page Formation: image-ombre -->		
 
@@ -384,18 +353,4 @@
 	<script src="js/modernizr2.custom.js"></script>
 	<script src="js/classie.js"></script>
 	<script src="js/toucheffects.js"></script>
-			<script type="text/javascript">
-
-				$('.Projet').on('click', function ( e ) {
-				    $.fn.custombox( this, {
-				        effect:     'slide',
-				        position:   'left, right',
-				        overlay: true,
-				        responsive: true,
-				    });
-				    e.preventDefault();
-				});
-
-
-		</script>
 </html>

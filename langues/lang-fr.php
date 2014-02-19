@@ -11,7 +11,7 @@
 //presentation
 	define('text1','Bonjour, mon nom est Rémi Collignon et vous êtes sur mon portfolio, vous trouverez ici un résumé de ma formation ainsi que les différents projets auxquels j\'ai pris part.');
 	define('text2','Voici mon C.V. vous pouvez le visionner en ligne.');
-	define('text3','Actuellement étudiant en Ecole d\'ingénieur à l\'ISEN de Brest (Institut Supérieur de l\'Electronique et du Numerique), je suis à la recherche d\'un stage de 7 semaines pour la période du 1er juin au 20 juillet 2013<br/>D\'autre part mon cursus prévoit une toisième année en contrat de professionalisation pour l\'année 2013/2014, je suis donc également à la recherche d\'une alternance');
+	define('text3','Actuellement étudiant en Ecole d\'ingénieur à l\'ISEN de Brest (Institut Supérieur de l\'Electronique et du Numerique), une partie mon cursus prévoit une toisième année en contrat de professionalisation pour l\'année 2013/2014, je suis donc à la recherche d\'une alternance');
 //formation
 	define('text4','Actuellement en formation a l\'');
 	define('text41',' de Brest en CIR (cycle informatique et reseaux).');

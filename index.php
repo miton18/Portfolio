@@ -8,7 +8,7 @@
 		<?php include('inclusion/head.php'); ?>
 	</head>
 	<body>
-		<div id="chargement">Chargement...<span id="chargement-infos"></span></div> <!-- % de chargement  -->
+		<div id="chargement"><?php echo load; ?><span id="chargement-infos"></span></div> <!-- % de chargement  -->
 		<div id="header">
 			<nav id="menu">
 				<ul>
@@ -37,15 +37,15 @@
 			<div id="img1"></div>
 			<div id="premierepage" class="image-ombre" >
 				<h2><?php echo t2; ?></h2>
-				<h1><?php echo p1; ?></h1>
+				<h1><?php echo text1; ?></h1>
 				<img id="photo_profil" src="img/profil.jpg" alt="photo de l'auteur" title="photo de l'auteur" />
 				<div id="dl_zone">
-					<a target="_TOP" href="https://drive.google.com/file/d/0B0TZ5YI9m3UTMDRRZDBkd3lCVE0/edit?usp=sharing">
+					<a target="_TOP" href="https://drive.google.com/file/d/0B0TZ5YI9m3UTb241NktZMWZTSkk/edit?usp=sharing">
 						<img id="ficher" src="img/fichier.png" alt="Accès à mon C.V. téléchargeable " title="CV stocké sur google drive" /><!--
 				--></a><!--
-				--><p><?php echo p2; ?></p>
+				--><p><?php echo text2; ?></p>
 				</div>
-				<p id="parag1" ><?php echo p3; ?></p>
+				<p id="parag1" ><?php echo text3; ?></p>
 			</div><!-- premiere page -->
 
 <!-- page PROJET -->
@@ -61,7 +61,7 @@
 						<img src="img/olivier-min.jpg" alt="site web de l'oliver" title="le site web d'un restaurant">
 						<figcaption>
 							<h3><?php echo o2; ?></h3>
-							<span>Site web</span>
+							<span><?php echo site; ?></span>
 							<a href="#projet1" class="Projet" ><?php echo lien_projet; ?></a>
 							<div id="projet1" style="display: none;" class="modal-example-content">
 
@@ -71,6 +71,7 @@
 						        </div>
 						        <div class="modal-example-body">
 						            <p><?php echo p5; ?></p>
+						            <img src="img/projet/olivier.jpg" alt="site-olivier" title="site-olivier"/>
 						        </div>
 						    </div>
 						</figcaption>
@@ -81,7 +82,7 @@
 						<img src="img/minecraft-logo.jpg" alt="image minecraft" title="logo minecraft">
 						<figcaption>
 							<h3><?php echo o1; ?></h3>
-							<span>Jeu</span>
+							<span><?php echo jeu;?></span>
 							<a href="#projet2" class="Projet"><?php echo lien_projet; ?></a>
 							<div id="projet2" style="display: none;" class="modal-example-content">
 
@@ -90,6 +91,8 @@
 						            <h4><?php echo o1; ?></h4>
 						        </div>
 						        <div class="modal-example-body">
+						        <a href="http://www.mumble.com/" target="_TOP">Serveur vocal utilisé</a>
+						        <a href="https://minecraft.net/" target="_TOP">Le jeu: minecraft </a>
 						            <p><?php echo p4; ?></p>
 						        </div>
 						    </div>
@@ -101,7 +104,7 @@
 						<img src="img/film1.jpg" alt="image du film" title="photo du film">
 						<figcaption>
 							<h3><?php echo o3; ?></h3>
-							<span>Court-métrage</span>
+							<span><?php echo film; ?></span>
 							<a href="#projet3" class="Projet" ><?php echo lien_projet; ?></a>
 							<div id="projet3" style="display: none;" class="modal-example-content">
 
@@ -123,7 +126,7 @@
 						<img src="img/leap.jpg" alt="photo leapMotion" title="photo leapMotion">
 						<figcaption>
 							<h3><?php echo o4; ?></h3>
-							<span>Jeu</span>
+							<span><?php echo jeu; ?></span>
 							<a href="#projet4" class="Projet"><?php echo lien_projet; ?></a>
 							<div id="projet4" style="display: none;" class="modal-example-content">
 
@@ -143,7 +146,7 @@
 						<img src="img/ds.jpg" alt="image d archives projet annales cir" title="">
 						<figcaption>
 							<h3><?php echo o5; ?></h3>
-							<span>Site web</span>
+							<span><?php echo site; ?></span>
 							<a href="#projet5" class="Projet"><?php echo lien_projet; ?></a>
 							<div id="projet5" style="display: none;" class="modal-example-content">
 
@@ -163,7 +166,7 @@
 						<img src="img/projets.png" alt="" title="">
 						<figcaption>
 							<h3><?php echo o6; ?></h3>
-							<span>Jacob Cummings</span>
+							<span><?php echo film; ?></span>
 							<a href="#projet6" class="Projet"><?php echo lien_projet; ?></a>
 							<div id="projet6" style="display: none;" class="modal-example-content">
 
@@ -188,24 +191,22 @@
 				<h2><?php echo t4; ?></h2>
 				<ul>
 					<li>
-						<p><?php echo p61; ?><a href="http://www.isen.fr/brest.asp" target="_TOP" title="site de l'école">ISEN</a><?php echo p62; ?>		</p>
-						<p><?php echo p7; ?></p>
+						<p><?php echo text4; ?><a href="http://www.isen.fr/brest.asp" target="_TOP" title="site de l'école">ISEN</a><?php echo text41; ?>		</p>
+						<p><?php echo titre2; ?></p>
 						<div id="progress">
 							<?php
 								$now   = time();
 								$dated = strtotime('2012-09-02 10:00:00');
 								$datef = strtotime('2017-09-02 10:00:00');
 								$cent = ( ($now - $dated) / ($datef - $dated) ) * 100;
-								echo('<p>'.p71.'<strong>'.round($cent, 0).'%</strong></p>');
+								echo('<p>'.bout1.'<strong>'.round($cent, 0).'%</strong></p>');
 								echo('<progress id="aa" value="'.$cent.'" max="100">'.$cent.'</progress>');
 							?>
 						</div><br/>
 					</li>
-					<li><?php echo l1; ?></li>
+					<li><?php echo text5; ?></li>
 					<li>
-						<p>Je participe régulièrement à des évènements comme ceux du <a target="_TOP" href="http://gdgfinistere.org/">finist'gdg</a>, de la cantina brestoise,
-						 ou encore les formations google tels que: Dart Flight School. Mis a part ca, le Club ELEC de l'isen, dont je fais parti propose lui
-						 aussi des formations et des cours, la dernière en date, Git et bientot, big data et hadoop, comme quoi, ce n'est pas en cours qu'on apprends le plus.
+						<p><?php echo texte7; ?> <a target="_TOP" href="http://gdgfinistere.org/">finist'gdg</a><?php echo texte71; ?>
 						</p>
 					</li>
 				</ul>
@@ -224,6 +225,10 @@
 					<div>
 						<p>C++</p>
 						<progress id="b" value="40" max="100"></progress><span><?php echo o7; ?></span>
+					</div>
+					<div>
+						<p>java</p>
+						<progress id="k" value="25" max="100"></progress><span><?php echo o7; ?></span>
 					</div>
 					<div>
 						<p>SQL</p>
@@ -254,8 +259,25 @@
 						<p>Dart</p>
 						<progress id="j" value="15" max="100"></progress><span><?php echo o7; ?></span>
 					</div>
+					<div>
+						<p>PHP</p>
+						<progress id="l" value="20" max="100"></progress><span><?php echo o7; ?></span>
+					</div>
+					<p>OS & Resaux</p>
+					<div>
+						<p>CCNA 1 ok & CCNA 2:</p>
+						<progress id="m" value="25" max="100"></progress><span><?php echo o7; ?></span>
+					</div>
+					<div>
+						<p>Linux ( Ubuntu - Débian )</p>
+						<progress id="n" value="25" max="100"></progress><span><?php echo o7; ?></span>
+					</div>
+					<div>
+						<p>Windows ( XP - 7 - 8 - 8.1 )</p>
+						<progress id="p" value="25" max="100"></progress><span><?php echo o7; ?></span>
+					</div>
 				</div>
-					<h2>un rémi c'est quoi? un rémi c'est ca !</h2>
+					<h2>Un rémi c'est quoi? un rémi c'est ca !</h2>
 					<div id="tagcloud">
 						<ul>
 							<li><a>intelligent</a></li>
@@ -295,14 +317,14 @@
 						<a href="https://www.facebook.com/remi.collignon.d" target="_TOP" title="R&#xe9;mi Collignon"><img src="https://badge.facebook.com/badge/1579080637.2071.1533905297.png" /><!----></a>
 					<!-- Facebook Badge END--><br/>
 					<!-- gadget twitter -->
-						<a class="twitter-timeline" href="https://twitter.com/miton1810" data-widget-id="381744815064371200">Tweets de @miton1810</a>
+						<a class="twitter-timeline" href="https://twitter.com/miton1810" data-widget-id="381744815064371200">Tweets @miton1810</a>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/twetter.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 					<!-- Place this tag in your head or just before your close body tag. -->
 					<script type="text/javascript" src="https://apis.google.com/js/platform.js">
 						{lang: 'fr', parsetags: 'explicit'}
 					</script>
 					<!-- Place this tag where you want the widget to render. -->
-					<div class="g-person" data-width="300" data-href="//plus.google.com/111049829859311680128" data-theme="dark" data-rel="author"></div>
+					<div class="g-person" data-href="//plus.google.com/111049829859311680128" data-theme="dark" data-rel="author"></div>
 					<!-- Place this render call where appropriate. -->
 					<script type="text/javascript">gapi.person.go();</script>
 				</div>
@@ -324,13 +346,13 @@
 								<textarea placeholder="bonjour, ..." id="message" name="message" tabindex="4"  rows="8" required></textarea>
 							</p>
 							<div id="qa">
-							<label><?php echo f5; ?></label>
+								<label><?php echo f5; ?></label>
 							<div  class="QapTcha"></div>
 							</div>
-							<!--button type="submit" class="progress-button" data-style="rotate-side-down" data-perspective data-horizontal>Envoyer votre message</button-->
 							<input type="submit" name="envoi" value="Envoyer mon message !" />
-						</fieldset>				
-				</div>
+						</fieldset>
+					</form>				
+				</div><!-- form  -->
 			</div>
 	
 			<footer id="espace-bas">

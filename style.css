@@ -40,13 +40,13 @@ a{
 #menu {
 
 	margin: 0 auto;
-	margin-left: 15%;
+	margin-left: 29%;
 }
 #menu ul {
 
 	padding: 0;
 	list-style: none;
-	margin: 24px 0 0 0;
+	margin: 24px auto 24px auto;
 	font-size: 15px;
 }
 #menu ul a{
@@ -56,12 +56,14 @@ a{
 	padding: 12px;
 	border-radius: 10px;
 	text-shadow: 0px 0px 5px #ff993b;
+	box-shadow: 0px 0px 20px 5px #5d5d5d;
 	transition-duration: 0.4s;
 }
 #menu ul a:hover{
 
 	background-color: #5d5d5d;
 	text-shadow: none;
+	box-shadow: none;
 }
 #menu ul a li{
 
@@ -250,6 +252,7 @@ progress::-webkit-progress-value{ /* etat general progress bar de chrome */
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	border-radius: 6px;
 	outline: 0 none;
+	font-size: 1.4em;
 }
 .modal-example-header {
 	border-bottom: 1px solid #E5E5E5;
@@ -257,16 +260,25 @@ progress::-webkit-progress-value{ /* etat general progress bar de chrome */
 }
 h4{
 	margin: 0;
+	display:inline;
 }
 button.close {
 	padding: 0;
+	width: 7.5%;
+	height: 100%;
+	font-size: 1.5em;
 	cursor: pointer;
-	background: transparent;
-	border: 0;
+	background: #323131;
+	color: #f57a05;
+	border-radius: 100%;
 	-webkit-appearance: none;
 }
 .modal-example-body {
 	padding: 20px;
+	text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.68);
+}
+.modal-example-body img{
+	width: 100%;
 }
 .modal-example-body p{
 	color: black;
@@ -282,6 +294,9 @@ button.close {
 	width: 45%;
 	float:left;
 	overflow: hidden;
+}
+#suivi-s div{
+	width: 100%;
 }
 #form{ 
 
@@ -525,6 +540,66 @@ div span{
 		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
 		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
 		-moz-linear-gradient(left, #0983af, #fc3975);
+}
+#k::-webkit-progress-value {
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #338ba8, #338ba8);
+}
+#k::-moz-progress-bar{
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #338ba8, #338ba8);
+}
+#l::-webkit-progress-value {
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #a87f33, #125465);
+}
+#l::-moz-progress-bar{
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #a87f33, #125465);
+}
+#m::-webkit-progress-value {
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #db443c, #d33cdb);
+}
+#m::-moz-progress-bar{
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #db443c, #d33cdb);
+}
+#n::-webkit-progress-value {
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #b3db3c, #fc3975);
+}
+#n::-moz-progress-bar{
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #b3db3c, #fc3975);
+}
+#p::-webkit-progress-value {
+	background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-webkit-linear-gradient(left, #3ca1db, #fb1c1c);
+}
+#p::-moz-progress-bar{
+	background:
+		-moz-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+		-moz-linear-gradient(left, #3ca1db, #fb1c1c);
 }
 @keyframes move{
 

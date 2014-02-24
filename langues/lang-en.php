@@ -25,9 +25,11 @@
 	define('o1','Serveur de jeu minecraft');
 	define('o5','Annales CIR training');
 	define('o6','next project');
+	define('o8', '');
 	define('p9','the goal is to make a pong using the sign method of Leapmotion, the principle is to play using his hands similar to the vertical bars of the game I\'m with <a href="http://vincentriouallon.com/projet.php#wrap1 "title ="site Mr. Riouallon" alt =" site Mr. Riouallon "> Vincent Riouallon </a> for this project');
 	define('p10','L\'objectif est de repertorier tout les devoirs du cycle info et reseaux, pour permettre aux nouvaux arrivant de s\'entrainer.');
 	define('p11','futur projet');
+	define('p13','');
 	define('p4','de la conception au maintient en incluant la gestion des joueurs j\'ai lancé pendant un moment un serveur de jeu (Minecraft) ainsi qu\'un serveur vocal.');
 	define('o2','Site web du restaurant l\'Olivier');
 	define('p5','Premier projet quasi-professionnel l\'objectif etait de faire le site web du restaurant l\'<a href="http://olivier.rcdinfo.fr" target="_TOP">Olivier</a>, ce site intègre une page qui permet de gérer et administrer le site. il m\'a fallu environ 1 mois pour arriver a ce résultat, mais le projet est maintenu à jour quotidienement.');

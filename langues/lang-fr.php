@@ -24,10 +24,12 @@
 	define('o4','Leapmotion');
 	define('o1','Serveur de jeu minecraft');
 	define('o5','Annales CIR en cours');
-	define('o6','futur projet');
+	define('o6','A l\'aube d\'une nouvelle ère');
+	define('o8', 'Généro');
 	define('p9','l\'objectif est de faire un pong en utilisant le procédé gestuel de la Leapmotion, le principe est de pouvoir jouer en utilisant ses mains assimilés aux barres verticales du jeu. Je suis avec <a href="http://vincentriouallon.com/projet.php#wrap1" title="site de Mr. Riouallon" alt="site de Mr. Riouallon">Vincent Riouallon</a> pour ce projet');
 	define('p10','L\'objectif est de repertorier tout les devoirs du cycle info et reseaux, pour permettre aux nouvaux arrivant de s\'entrainer.');
-	define('p11','futur projet');
+	define('p11','2em court métrage de deuxième année, en résumé, le monde a subbit une attaque biochimique, 3 personnes, n\'etant pas encore inféctés, vont tenter de survivre. cela fut filmer et realiser avec: Guy-yann Morvan, Florentin Dubois, Laurent Tréguier, <a href="http://gillbiannic.fr">Gill Biannic</a>, <a href="vincentriouallon.com">Vincent Riouallon</a>');
+	define('p13', 'Un outil pour les developpeur qui n\'ont pas envie d\'aller chercher des generateurs en ligne');
 	define('p4','de la conception au maintient en incluant la gestion des joueurs j\'ai lancé pendant un moment un serveur de jeu (Minecraft) ainsi qu\'un serveur vocal.');
 	define('o2','Site web du restaurant l\'Olivier');
 	define('p5','Premier projet quasi-professionnel l\'objectif etait de faire le site web du restaurant l\'<a href="http://olivier.rcdinfo.fr" target="_TOP">Olivier</a>, ce site intègre une page qui permet de gérer et administrer le site. il m\'a fallu environ 1 mois pour arriver a ce résultat, mais le projet est maintenu à jour quotidienement.');

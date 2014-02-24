@@ -1,0 +1,55 @@
+{
+	"fr": {
+	//menu
+		"t1":"Accueil",
+		"t2":"Présentation",
+		"t3":"Projets",
+		"t4":"Formation",
+		"t5":"Suivez moi",
+		"t6":"Compétences",
+		"lang":"langues/fr.png",
+		"load":"Chargement...",
+	//presentation
+		"text1":"Bonjour, mon nom est Rémi Collignon et vous êtes sur mon portfolio, vous trouverez ici un résumé de ma formation ainsi que les différents projets auxquels j\"ai pris part.",
+		"text2":"Voici mon C.V. vous pouvez le visionner en ligne.",
+		"text3":"Actuellement étudiant en Ecole d\"ingénieur à l\"ISEN de Brest  Institut Supérieur de l\"Electronique et du Numerique , une partie mon cursus prévoit une toisième année en contrat de professionalisation pour l\"année 2013/2014, je suis donc à la recherche d\"une alternance",
+	//formation
+		"text4":"Actuellement en formation a l\"",
+		"text41":" de Brest en CIR  cycle informatique et reseaux .",
+		"titre2":"Avancée de la formation:",
+		"bout1":"formation à ",
+		"text5":"Titulaire d\"un  BAC S option SVT spécialitée Physique-Chimie.",
+		"texte7": "Je participe régulièrement à des évènements comme ceux du",
+		"texte71": ", de la cantine brestoise, ou encore les formations google tels que: Dart Flight School. Mis a part ca, le Club ELEC de l\"isen, dont je fais parti propose lui aussi des formations et des cours, la dernière en date, Git et bientot, big data et hadoop, comme quoi, ce n\"est pas en cours qu\"on apprends le plus.",
+	//projets
+		"o4":"Leapmotion",
+		"o1":"Serveur de jeu minecraft",
+		"o5":"Annales CIR en cours",
+		"o6":"futur projet",
+		"p9":"l\"objectif est de faire un pong en utilisant le procédé gestuel de la Leapmotion, le principe est de pouvoir jouer en utilisant ses mains assimilés aux barres verticales du jeu. Je suis avec <a href=\"http://vincentriouallon.com/projet.php#wrap1\" title=\"site de Mr. Riouallon\" alt=\"site de Mr. Riouallon\">Vincent Riouallon</a> pour ce projet",
+		"p10":"L\"objectif est de repertorier tout les devoirs du cycle info et reseaux, pour permettre aux nouvaux arrivant de s\"entrainer.",
+		"p11":"futur projet",
+		"p4":"de la conception au maintient en incluant la gestion des joueurs j\"ai lancé pendant un moment un serveur de jeu  Minecraft  ainsi qu\"un serveur vocal.",
+		"o2":"Site web du restaurant l\"Olivier",
+		"p5":"Premier projet quasi-professionnel l\"objectif etait de faire le site web du restaurant l\"<a href=\"http://olivier.rcdinfo.fr\" target=\"_TOP\">Olivier</a>, ce site intègre une page qui permet de gérer et administrer le site. il m\"a fallu environ 1 mois pour arriver a ce résultat, mais le projet est maintenu à jour quotidienement.",
+		"o3":"Court métrage pour le cours de formation humaine et sociale",
+		"p12":"voici le film \"Destiny\" de premiere année dont le thème etait \"la parole\", nous etions 7,<a target=\"_TOP\" href=\"http://vincentriouallon.com/projet.php#wrap2\">Vincent Riouallon</a> Francois Toquer, Erwan Joly, Bredan Seveno, Laurent Tréguier et Guillaume Scherrer.",
+		"lien_projet":"Plus d\"informations",
+	//*
+		"jeu": "Jeu",
+		"site": "Site-web",
+		"film": "Court-métrage",
+	//connaissances
+		"o7":"acquis",
+		"g1":"Programmation:",
+		"g2":"Technologie web:",
+	//formulaire
+		"f1":"Envoyez moi un message.",
+		"f2":"Nom :",
+		"f3":"Email :",
+		"f4":"Message :",
+		"f5":"anti-robot:",
+	//footer
+		"p8":"créé par Rémi Collignon, © remi.rcdinfo.fr 2013 tout droits reservés contact: <a href=\"mailto:remi.collignon@isen.fr\">remi.collignon@isen.fr</a>.",
+	}
+}

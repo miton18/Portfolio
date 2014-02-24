@@ -163,7 +163,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="img/projets.png" alt="" title="">
+						<img src="img/projet/film2.jpg" alt="" title="">
 						<figcaption>
 							<h3><?php echo o6; ?></h3>
 							<span><?php echo film; ?></span>
@@ -181,8 +181,28 @@
 						</figcaption>
 					</figure>
 				</li>
+				<li>
+					<figure>
+						<img src="img/projets.png" alt="" title="">
+						<figcaption>
+							<h3><?php echo o8; ?></h3>
+							<span><?php echo site; ?></span>
+							<a href="#projet6" class="Projet"><?php echo lien_projet; ?></a>
+							<div id="projet6" style="display: none;" class="modal-example-content">
+
+						        <div class="modal-example-header"><!-- light box -->
+						            <button type="button" class="close" onclick="$.fn.custombox('close');">&times;</button>
+						            <h4><?php echo o8; ?></h4>
+						        </div>
+						        <div class="modal-example-body">
+						            <p><?php echo p13; ?></p>
+						        </div>
+						    </div>
+						</figcaption>
+					</figure>
+				</li>
 			</ul>
-			<script src="js/toucheffects.js"></script>
+			
 			</div><!-- page projet: image-ombre -->		
 
 <!-- page 	FORMATION -->
@@ -375,4 +395,5 @@
 	<script src="js/modernizr2.custom.js"></script>
 	<script src="js/classie.js"></script>
 	<script src="js/toucheffects.js"></script>
+
 </html>

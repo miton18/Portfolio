@@ -12,8 +12,9 @@
 
 <meta charset="utf_8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Site web regroupant les competences de Rémi Collignon jeune etudiant en ecole d'ingénieur à l'ISEN de Brest"/>
-<meta name="author" content="Collignon Rémi" />
+<meta name="author" CONTENT="Auteur : Rémi collignon ;" />
 <meta name="copyright" content="© remi.rcdinfo.fr" />
 <meta name="revisit" content="1 days" />
 

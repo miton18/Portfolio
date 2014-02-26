@@ -283,6 +283,12 @@ button.close {
 .modal-example-body p{
 	color: black;
 }
+.git{
+
+}
+.git span img{
+	float: left;
+}
 /*----------------------------------------  page Suivi  -------------------------------------------------------*/
 
 #suivi{

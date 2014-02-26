@@ -7,7 +7,7 @@
 	<head>
 		<?php include('inclusion/head.php'); ?>
 	</head>
-	<body>
+	<body ng-app>
 		<div id="chargement"><?php echo load; ?><span id="chargement-infos"></span></div> <!-- % de chargement  -->
 		<div id="header">
 			<nav id="menu">
@@ -58,7 +58,7 @@
 			<ul class="grid cs-style-3">
 				<li>
 					<figure>
-						<img src="img/olivier-min.jpg" alt="site web de l'oliver" title="le site web d'un restaurant">
+						<img src="img/projet/olivier-min.jpg" alt="site web de l'oliver" title="le site web d'un restaurant">
 						<figcaption>
 							<h3><?php echo o2; ?></h3>
 							<span><?php echo site; ?></span>
@@ -79,7 +79,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="img/minecraft-logo.jpg" alt="image minecraft" title="logo minecraft">
+						<img src="img/projet/minecraft-logo.jpg" alt="image minecraft" title="logo minecraft">
 						<figcaption>
 							<h3><?php echo o1; ?></h3>
 							<span><?php echo jeu;?></span>
@@ -101,7 +101,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="img/film1.jpg" alt="image du film" title="photo du film">
+						<img src="img/projet/film1.jpg" alt="image du film" title="photo du film">
 						<figcaption>
 							<h3><?php echo o3; ?></h3>
 							<span><?php echo film; ?></span>
@@ -123,7 +123,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="img/leap.jpg" alt="photo leapMotion" title="photo leapMotion">
+						<img src="img/projet/leap.jpg" alt="photo leapMotion" title="photo leapMotion">
 						<figcaption>
 							<h3><?php echo o4; ?></h3>
 							<span><?php echo jeu; ?></span>
@@ -143,7 +143,7 @@
 				</li>
 				<li>
 					<figure>
-						<img src="img/ds.jpg" alt="image d archives projet annales cir" title="">
+						<img src="img/projet/ds.jpg" alt="image d archives projet annales cir" title="">
 						<figcaption>
 							<h3><?php echo o5; ?></h3>
 							<span><?php echo site; ?></span>
@@ -183,12 +183,12 @@
 				</li>
 				<li>
 					<figure>
-						<img src="img/projets.png" alt="" title="">
+						<img src="img/projet/genero.jpg" alt="" title="">
 						<figcaption>
 							<h3><?php echo o8; ?></h3>
 							<span><?php echo site; ?></span>
-							<a href="#projet6" class="Projet"><?php echo lien_projet; ?></a>
-							<div id="projet6" style="display: none;" class="modal-example-content">
+							<a href="#projet7" class="Projet"><?php echo lien_projet; ?></a>
+							<div id="projet7" style="display: none;" class="modal-example-content">
 
 						        <div class="modal-example-header"><!-- light box -->
 						            <button type="button" class="close" onclick="$.fn.custombox('close');">&times;</button>
@@ -202,7 +202,17 @@
 					</figure>
 				</li>
 			</ul>
-			
+			<h2><?php echo "projets Github:"; ?></h2>
+				<div ng-show="reposFound" ng-controller="affiche" >
+        			<p><strong>Repos List:</strong></p>
+        			<ul >
+            			<li clas="git" ng-repeat="repo in repos">
+            				<span><a href="{{repo.html_url}}" target="_TOP"><img src="img/github.png" /></a>{{repo.created_at}} </span>
+            				<p>{{repo.description}}</p>
+
+            			</li>
+       				</ul>
+    			</div>
 			</div><!-- page projet: image-ombre -->		
 
 <!-- page 	FORMATION -->
@@ -211,7 +221,7 @@
 				<h2><?php echo t4; ?></h2>
 				<ul>
 					<li>
-						<p><?php echo text4; ?><a href="http://www.isen.fr/brest.asp" target="_TOP" title="site de l'école">ISEN</a><?php echo text41; ?>		</p>
+						<p><?php echo text4; ?><a href="http://www.isen.fr/brest.asp" target="_TOP" title="site de l'école">ISEN</a><?php echo text41; ?></p>
 						<p><?php echo titre2; ?></p>
 						<div id="progress">
 							<?php
@@ -386,10 +396,13 @@
 	<script type="text/javascript" src="js/localscroll/jquery.scrollTo.js"></script>
 	<script type="text/javascript" src="js/lancement.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
 	<script type="text/javascript" src="js//jquery.ui.touch.js"></script>
 	<script type="text/javascript" src="js/QapTcha.jquery.min.js"></script>
 	<script type="text/javascript" src="js/tagcloud.jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.custombox.js"></script>
+	<script type="text/javascript" src="js/ang.js"></script>
+
 	
 	<script src="js/modernizr.custom.js"></script>
 	<script src="js/modernizr2.custom.js"></script>

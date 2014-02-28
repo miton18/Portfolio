@@ -271,6 +271,7 @@ button.close {
 	background: #323131;
 	color: #f57a05;
 	border-radius: 100%;
+	border-width: 0;
 	-webkit-appearance: none;
 }
 .modal-example-body {
@@ -282,12 +283,25 @@ button.close {
 }
 .modal-example-body p{
 	color: black;
+	text-shadow: none;
 }
-.git{
-
+#git{
+	list-style-type: none; 
 }
-.git span img{
-	float: left;
+#git li{
+	box-shadow: inset 3px -6px 13px 0px #000000, inset 0px 0px 30px 1px #262626;
+	padding : 2%;
+}
+#git li span img{
+	transition-duration: 1s;
+	transition-timing-function: ease-in-out;
+}
+#git li span img:hover{
+	-webkit-transform: rotate(2160deg);
+        -moz-transform: rotate(2160deg);
+         -ms-transform: rotate(2160deg);
+          -o-transform: rotate(2160deg);
+             transform: rotate(2160deg);
 }
 /*----------------------------------------  page Suivi  -------------------------------------------------------*/
 
@@ -407,9 +421,13 @@ input[type='submit']:hover{
 	margin-left: 5%;
 	padding-top: 2%;
 }
+/*-----------------------git----------------------------*/
 div span{
 	color: white;
+	display: inline-block;
 }
+
+/*------------------------------------------------------*/
 #progress2 div p{
 
 	margin-left: 10%;

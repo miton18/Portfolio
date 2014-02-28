@@ -7,7 +7,7 @@
 	<head>
 		<?php include('inclusion/head.php'); ?>
 	</head>
-	<body ng-app>
+	<body ng-app="App">
 		<div id="chargement"><?php echo load; ?><span id="chargement-infos"></span></div> <!-- % de chargement  -->
 		<div id="header">
 			<nav id="menu">
@@ -31,7 +31,7 @@
 			</nav><!-- menu -->
 		</div><!-- header -->
 
-		<div id="container" >
+		<div id="container" ng-controller="ctrl" >
 			
 <!-- page PRESENTATION -->
 			<div id="img1"></div>
@@ -205,10 +205,9 @@
 			<h2><?php echo "projets Github:"; ?></h2>
 				<div ng-show="reposFound" ng-controller="affiche" >
         			<p><strong>Repos List:</strong></p>
-        			<ul >
-            			<li clas="git" ng-repeat="repo in repos">
-            				<span><a href="{{repo.html_url}}" target="_TOP"><img src="img/github.png" /></a>{{repo.created_at}} </span>
-            				<p>{{repo.description}}</p>
+        			<ul id="git">
+            			<li ng-repeat="repo in repos ">
+            				<span><a href="{{repo.html_url}}" target="_TOP"><img src="img/github.png" /></a>{{repo.created_at | moinsZ}}   :   {{repo.description}}</span>
 
             			</li>
        				</ul>

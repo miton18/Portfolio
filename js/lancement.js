@@ -1,14 +1,15 @@
 $(document).ready(function() {
-	
-				$('.Projet').on('click', function ( e ) {
-				    $.fn.custombox( this, {
-				        effect:     'slide',
-				        position:   'left, right',
-				        overlay: true,
-				        responsive: true,
-				    });
-				    e.preventDefault();
-				});
+
+//Projets - lightbox
+	$('.Projet').on('click', function ( e ) {
+	    $.fn.custombox( this, {
+	        effect:     'slide',
+	        position:   'left, right',
+	        overlay: true,
+	        responsive: true,
+	    });
+	    e.preventDefault();
+	});
 // Qaptcha
 	$.localScroll();
 	$('.QapTcha').QapTcha({
@@ -22,23 +23,23 @@ $(document).ready(function() {
 
 //sphere
 
-		$('#tagcloud').tagoSphere({
-				height: 300,
-				width: 300,	//width of sphere container
-				radius: 100,	//radius of sphere
-				speed: 5,	//rotation speed
-				slower: 0.9,	//sphere rotations slower
-				timer: 2,	//delay between update position
-				fontMultiplier: 15,	//dependence of a font size on axis Z
-				hoverStyle: {		//tag css stylies on mouse over
-					border: 'none',
-					color: '#0b2e6f'
-				},
-				mouseOutStyle: {	//tag css stylies on mouse out
-					border: '',
-					color: 'blue'
-				}
-		});
+	$('#tagcloud').tagoSphere({
+			height: 400,
+			width: 400,	//width of sphere container
+			radius: 170,	//radius of sphere
+			speed: 5,	//rotation speed
+			slower: 0.9,	//sphere rotations slower
+			timer: 2,	//delay between update position
+			fontMultiplier: 15,	//dependence of a font size on axis Z
+			hoverStyle: {		//tag css stylies on mouse over
+				border: 'none',
+				color: '#0b2e6f'
+			},
+			mouseOutStyle: {	//tag css stylies on mouse out
+				border: 'red',
+				color: 'blue'
+			}
+	});
 
 //menu des projets
 

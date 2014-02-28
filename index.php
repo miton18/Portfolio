@@ -310,30 +310,18 @@
 					<h2>Un rémi c'est quoi? un rémi c'est ca !</h2>
 					<div id="tagcloud">
 						<ul>
-							<li><a>intelligent</a></li>
-							<li><a>inventif</a></li>
-							<li><a>minutieux</a></li>
-							<li><a>attentionné</a></li>
-							<li><a>professionnel</a></li>
-							<li><a>humain</a></li>
-							<li><a>serieux</a></li>
-							<li><a>impliqué</a></li>
-							<li><a>intelligent</a></li>
-							<li><a>inventif</a></li>
-							<li><a>minutieux</a></li>
-							<li><a>attentionné</a></li>
-							<li><a>professionnel</a></li>
-							<li><a>humain</a></li>
-							<li><a>serieux</a></li>
-							<li><a>impliqué</a></li>
-							<li><a>intelligent</a></li>
-							<li><a>inventif</a></li>
-							<li><a>minutieux</a></li>
-							<li><a>attentionné</a></li>
-							<li><a>professionnel</a></li>
-							<li><a>humain</a></li>
-							<li><a>serieux</a></li>
-							<li><a>impliqué</a></li>
+							<li><a>intelligent</a></li><li><a>inventif</a></li><li><a>minutieux</a></li>
+							<li><a>attentionné</a></li><li><a>professionnel</a></li><li><a>humain</a></li><li><a>serieux</a></li>
+							<li><a>impliqué</a></li><li><a>inovant</a></li><li><a>créatif</a></li><li><a>concentré</a></li>
+							<li><a>Ambitieux</a></li><li><a>Astucieux</a></li><li><a>Autonome</a></li><li><a>Calme</a></li>
+							<li><a>Communicatif</a></li><li><a>Coopératif</a></li><li><a>vrais</a></li><li><a>Déterminé</a></li>
+							<li><a>Digne de confiance</a></li><li><a>intelligent</a></li><li><a>inventif</a></li><li><a>minutieux</a></li>
+							<li><a>attentionné</a></li><li><a>professionnel</a></li><li><a>humain</a></li><li><a>serieux</a></li>
+							<li><a>impliqué</a></li><li><a>inovant</a></li><li><a>créatif</a></li><li><a>concentré</a></li>
+							<li><a>Ambitieux</a></li><li><a>Astucieux</a></li><li><a>Autonome</a></li><li><a>Calme</a></li>
+							<li><a>Communicatif</a></li><li><a>Coopératif</a></li><li><a>vrais</a></li><li><a>Déterminé</a></li>
+							<li><a>Dynamique</a></li><li><a>Efficace </a></li><li><a>Digne de confiance</a></li><li><a>Energique</a></li>	
+							<li><a>Franc</a></li><li><a>Honnête</a></li><li><a>Imaginatif</a></li><li><a>Ingénieux</a></li>	
 						</ul>
 					</div>
 			</div>
@@ -348,15 +336,8 @@
 					<!-- Facebook Badge END--><br/>
 					<!-- gadget twitter -->
 						<a class="twitter-timeline" href="https://twitter.com/miton1810" data-widget-id="381744815064371200">Tweets @miton1810</a>
+					<div class="g-person" data-width="433" data-href="//plus.google.com/111049829859311680128" data-theme="dark" data-showcoverphoto="false" data-rel="author"></div>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/twetter.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-					<!-- Place this tag in your head or just before your close body tag. -->
-					<script type="text/javascript" src="https://apis.google.com/js/platform.js">
-						{lang: 'fr', parsetags: 'explicit'}
-					</script>
-					<!-- Place this tag where you want the widget to render. -->
-					<div class="g-person" data-href="//plus.google.com/111049829859311680128" data-theme="dark" data-rel="author"></div>
-					<!-- Place this render call where appropriate. -->
-					<script type="text/javascript">gapi.person.go();</script>
 				</div>
 				<div id="form">
 				<?php include('inclusion/form.php'); ?>
@@ -402,6 +383,10 @@
 	<script type="text/javascript" src="js/tagcloud.jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.custombox.js"></script>
 	<script type="text/javascript" src="js/ang.js"></script>
+	<script type="text/javascript" src="https://apis.google.com/js/platform.js">
+	  {lang: 'fr', parsetags: 'explicit'}
+	</script>
+	<script type="text/javascript">gapi.person.go();</script>
 
 	
 	<script src="js/modernizr.custom.js"></script>

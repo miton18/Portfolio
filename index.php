@@ -207,7 +207,7 @@
         			<p><strong>Repos List:</strong></p>
         			<ul id="git">
             			<li ng-repeat="repo in repos ">
-            				<span><a href="{{repo.html_url}}" target="_TOP"><img src="img/github.png" /></a>{{repo.created_at | moinsZ}}   :   {{repo.description}}</span>
+            				<span><a href="{{repo.html_url}}" target="_TOP"><img src="img/github.png" /></a>{{repo.created_at | moinsZ}}   :   {{repo.name}}   :   {{repo.description}}</span>
 
             			</li>
        				</ul>
@@ -340,7 +340,7 @@
 				</div>
 				<div id="form">
 				<?php include('inclusion/form.php'); ?>
-					<form id="contact" method="post" action="" >
+					<form id="contact" method="post" action="index.php" >
 						<fieldset>
 							<p><label><?php echo f1; ?></label></p>
 							<p>

@@ -16,10 +16,10 @@ $(document).ready(function() {
 		disabledSubmit:true,
 		autoRevert:true,
 		autoSubmit:false,
-		PHPfile : 'QapTcha.jquery.php',
-		txtLock:'Bloqué: déplacez vers la droite ',
-		txtUnlock: 'Merci: vous pouvez envoyer votre message',
-		});
+		PHPfile : 'Qaptcha.jquery.php',
+		txtLock: 'deverrouillez en glissant a droite',
+		txtUnlock: 'c\'est bon'
+	});
 
 //sphere
 

@@ -204,10 +204,10 @@
 			</ul>
 			<h2><?php echo "projets Github:"; ?></h2>
 				<div ng-show="reposFound" ng-controller="affiche" >
-        			<p><strong>Repos List:</strong></p>
+        			<p><strong>Liste des dépots:</strong></p>
         			<ul id="git">
             			<li ng-repeat="repo in repos ">
-            				<span><a href="{{repo.html_url}}" target="_TOP"><img src="img/github.png" /></a>{{repo.created_at | moinsZ}}   :   {{repo.name}}   :   {{repo.description}}</span>
+            				<span><a href="{{repo.html_url}}" target="_TOP"><img src="img/github.png" target="_TOP" /></a>{{repo.created_at | moinsZ}}   :   <span class="important" >{{repo.name}}</span>   :   <span class="important-2" >{{repo.description}}</span></span>
 
             			</li>
        				</ul>
@@ -222,15 +222,17 @@
 					<li>
 						<p><?php echo text4; ?><a href="http://www.isen.fr/brest.asp" target="_TOP" title="site de l'école">ISEN</a><?php echo text41; ?></p>
 						<p><?php echo titre2; ?></p>
-						<div id="progress">
-							<?php
-								$now   = time();
-								$dated = strtotime('2012-09-02 10:00:00');
-								$datef = strtotime('2017-09-02 10:00:00');
-								$cent = ( ($now - $dated) / ($datef - $dated) ) * 100;
-								echo('<p>'.bout1.'<strong>'.round($cent, 0).'%</strong></p>');
-								echo('<progress id="aa" value="'.$cent.'" max="100">'.$cent.'</progress>');
-							?>
+						<div id="progress2">
+							<div>
+								<?php
+									$now   = time();
+									$dated = strtotime('2012-09-02 9:00:00');
+									$datef = strtotime('2017-09-02 10:00:00');
+									$cent = ( ($now - $dated) / ($datef - $dated) ) * 100;
+									echo('<p>'.bout1.'<strong>'.round($cent, 0).'%</strong></p>');
+									echo('<progress id="a" value="'.$cent.'" max="100">'.$cent.'</progress>');
+								?>
+							</div>
 						</div><br/>
 					</li>
 					<li><?php echo text5; ?></li>

@@ -1,8 +1,8 @@
-@media only all and (max-width: 800px) {
+@media (max-width: 875px)  {
 
-	body, #container, html{
-	width: 99.99%;
-	font-size: 0.9em;
+	html, body, #container{
+		width: 100%;
+		overflow-x: hidden;
 	}
 	nav, #suivi-s{
 	
@@ -36,7 +36,7 @@
 		height:3% ;
 	}
 	#photo_profil{
-		width: 100%;
+		width: 80%;
 		height: 5%;
 	}
 	#dl_zone, #parag1, #tagcloud{
@@ -59,4 +59,22 @@
 		margin: 0;
 		padding: 0;
 	}
+	.grid li{
+		margin:0 !important;
+		height: 300px !important;
+	}
+	.cs-style-3 figcaption a{
+		left: 20px !important;
+	}
+	.Slider{
+		margin-left: -70px;
+
+	}
+	#git{
+		padding:0;
+	}
+}
+@media handleld{
+
+
 }

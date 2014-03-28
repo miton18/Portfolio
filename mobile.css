@@ -4,7 +4,7 @@
 		width: 100%;
 		overflow-x: hidden;
 	}
-	nav, #suivi-s{
+	nav{
 	
 		display: none;
 	}
@@ -58,6 +58,15 @@
 		width: 90%;
 		margin: 0;
 		padding: 0;
+	}
+	.socP{
+		display: block;
+	}
+	.socG{
+		display: none;
+	}
+	#___person_0{
+		display: none !important;
 	}
 	.grid li{
 		margin:0 !important;

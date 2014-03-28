@@ -278,6 +278,9 @@ button.close {
 #suivi-s div{
 	width: 100%;
 }
+.socP{
+	display:none;
+}
 #form{ 
 
 	width: 50%;

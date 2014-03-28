@@ -333,12 +333,21 @@
 				<h2><?php echo t5; ?></h2>
 				<div id="suivi-s">
 					<!-- Facebook Badge START -->
-						<a href="https://www.facebook.com/remi.collignon.d" target="_TOP" title="R&#xe9;mi Collignon"><img src="https://badge.facebook.com/badge/1579080637.2071.1533905297.png" /><!----></a>
-					<!-- Facebook Badge END--><br/>
+						<a class="socG" href="https://www.facebook.com/remi.collignon.d" target="_TOP" title="R&#xe9;mi Collignon">
+							<img src="https://badge.facebook.com/badge/1579080637.2071.1533905297.png" /><!----></a>
+							<a class="socP" href="https://www.facebook.com/remi.collignon.d" target="_TOP" title="R&#xe9;mi Collignon">
+							<img src="https://badge.facebook.com/badge/1579080637.3513.180668740.png" style="border: 0px;" />
+						</a><!--
+						-->
+					<br/>
 					<!-- gadget twitter -->
 						<a class="twitter-timeline" href="https://twitter.com/miton1810" data-widget-id="381744815064371200">Tweets @miton1810</a>
-					<div class="g-person" data-width="433" data-href="//plus.google.com/111049829859311680128" data-theme="dark" data-showcoverphoto="false" data-rel="author"></div>
+					<div class="g-person socG" data-width="433" data-href="//plus.google.com/111049829859311680128" data-theme="dark" data-showcoverphoto="false" data-rel="author"></div>
 					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/twetter.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					<a class="socP" href="//plus.google.com/u/0/111049829859311680128?prsrc=3"
+						   rel="publisher" target="_top" style="text-decoration:none;">
+							<img src="//ssl.gstatic.com/images/icons/gplus-64.png" alt="Google+" style="border:0;width:64px;height:64px;"/>
+					</a>
 				</div>
 				<div id="form">
 				<?php include('inclusion/form.php'); ?>

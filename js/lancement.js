@@ -1,9 +1,9 @@
 $(document).ready(function() {
-
+	$.localScroll();
 //Projets - lightbox
 	$('.Projet').on('click', function ( e ) {
 	    $.fn.custombox( this, {
-	        effect:     'slide',
+	        effect:     'newspaper',
 	        position:   'left, right',
 	        overlay: true,
 	        responsive: true,
@@ -11,7 +11,6 @@ $(document).ready(function() {
 	    e.preventDefault();
 	});
 // Qaptcha
-	$.localScroll();
 	$('.QapTcha').QapTcha({
 		disabledSubmit:true,
 		autoRevert:true,
@@ -20,10 +19,8 @@ $(document).ready(function() {
 		txtLock: 'deverrouillez en glissant a droite',
 		txtUnlock: 'c\'est bon'
 	});
-
 //sphere
-
-	$('#tagcloud').tagoSphere({
+	/*$('#tagcloud').tagoSphere({
 			height: 400,
 			width: 400,	//width of sphere container
 			radius: 170,	//radius of sphere
@@ -39,10 +36,8 @@ $(document).ready(function() {
 				border: 'red',
 				color: 'blue'
 			}
-	});
-
-//menu des projets
-
+	});*/
+/*menu des projets
 	$(".tabContent").each(function(i){
 		this.id = "#" + this.id;
 	});
@@ -53,76 +48,8 @@ $(document).ready(function() {
 		$(".tabContent").hide(1800);
 		$("div[id='" + idTab + "']").slideToggle(1800);
 		return false;
-	});
-
-// projets
-	$('#lprojet1').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-	$('#example8').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-	$('#example8').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-	$('#example8').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-	$('#example8').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-	$('#example8').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-	$('#example8').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-	$('#example8').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-	$('#example8').on('click', function ( e ) {
-    	$.fn.custombox( this, {
-        effect:     'slide',
-        position:   'left, right'
-    });
-    e.preventDefault();
-	});
-
+	});*/
 });
-
-
 //google-analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -130,7 +57,6 @@ $(document).ready(function() {
 			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 			  ga('create', 'UA-40351381-2', 'rcdinfo.fr');
 			  ga('send', 'pageview');
-
 //barre-progression temps école
 /* function modifValues(){
 	var D1 = new Date(2013,09,02).getTime();
@@ -146,7 +72,6 @@ $(document).ready(function() {
 setInterval(function(){
 	modifValues();
 },90); */
-
 // gestion langues
 function charge(chx){
 	var parametre = gup("lang");

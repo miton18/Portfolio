@@ -2,6 +2,7 @@
 <?php
 	if(	isset($_GET['lang']) AND ($_GET['lang'] == 'en')){	include('langues/lang-en.php');	}
 	else{	include('langues/lang-fr.php');	}
+	header('Content-type: text/html; charset=utf-8');
 ?>
 <html lang="fr">
 	<head>
@@ -49,9 +50,6 @@
 			</div><!-- premiere page -->
 
 <!-- page PROJET -->
-		    <style>
-
-		    </style>
 			<div id="img2"></div>
 			<div id="forma" class="image-ombre">
 				<h2><?php echo t3; ?></h2>
@@ -308,7 +306,7 @@
 						<progress id="p" value="25" max="100"></progress><span><?php echo o7; ?></span>
 					</div>
 				</div>
-					<h2>Un rémi c'est quoi? un rémi c'est ca !</h2>
+					<!--h2>Un rémi c'est quoi? un rémi c'est ca !</h2>
 					<div id="tagcloud">
 						<ul>
 							<li><a>intelligent</a></li><li><a>inventif</a></li><li><a>minutieux</a></li>
@@ -324,7 +322,7 @@
 							<li><a>Dynamique</a></li><li><a>Efficace </a></li><li><a>Digne de confiance</a></li><li><a>Energique</a></li>	
 							<li><a>Franc</a></li><li><a>Honnête</a></li><li><a>Imaginatif</a></li><li><a>Ingénieux</a></li>	
 						</ul>
-					</div>
+					</div-->
 			</div>
 
 <!-- page SUIVI -->
@@ -390,7 +388,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
 	<script type="text/javascript" src="js//jquery.ui.touch.js"></script>
 	<script type="text/javascript" src="js/QapTcha.jquery.min.js"></script>
-	<script type="text/javascript" src="js/tagcloud.jquery.min.js"></script>
+	<!--script type="text/javascript" src="js/tagcloud.jquery.min.js"></script-->
 	<script type="text/javascript" src="js/jquery.custombox.js"></script>
 	<script type="text/javascript" src="js/ang.js"></script>
 	<script type="text/javascript" src="https://apis.google.com/js/platform.js">

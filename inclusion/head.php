@@ -31,6 +31,7 @@
 <meta name="revisit" content="1 days" />
 
 <meta name="google-site-verification" content="Tqf6Zwnaep3CjcgYW_u2ODazfqOn5rQjugBUtFFxiPo" />
+<meta property="fb:admins" content="1579080637" />
 <title>Rémi Collignon -- Portfolio</title>
 
 <link rel="icon" type="image/png" href="img/fav.jpg" />

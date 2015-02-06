@@ -11,7 +11,7 @@
 	$commands = array(
 		'echo $PWD',
 		'whoami',
-		'git pull',
+		'git pull origin master',
 		'git status',
 		'git submodule sync',
 		'git submodule update',
@@ -47,4 +47,8 @@
 <?php echo $output; ?>
 </pre>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> b98bb26b24f5428c49dc9ac94f36993fc12cee88

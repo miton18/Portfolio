@@ -1,0 +1,34 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Rémi collignon's portfolio",
+  "main": "build/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/miton/Portfolio.git"
+  },
+  "author": "rémi C.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miton/Portfolio/issues"
+  },
+  "homepage": "https://github.com/miton/Portfolio#readme",
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-less": "^3.0.3",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-webserver": "^0.9.1",
+    "gutil": "^1.6.4"
+  }
+}

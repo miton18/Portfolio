@@ -11,21 +11,22 @@ gulp.task 'default', [ 'watch' ]
 
 gulp.task 'html', ->
 
-    gulp.src( 'src/**.jade' )
+    gulp.src 'src/index.jade' 
+    .pipe P.plumber()
     .pipe P.jade
         debug: false
+    #.pipe P.inject( gulp.src(['build/**.css', 'build/**.js']) )
     .pipe gulp.dest 'build/'
 
 gulp.task 'css', ->
 
     gulp.src [
         'src/css/**/**.css'
-        'src/css/main.less'
+        'src/css/**.sass'
     ]
     .pipe P.plumber()
-    .pipe P.less {}
-    .on   'error', (err) ->
-        gutil.log "[Less ERROR] #{err}"
+    .pipe P.sass()
+    .on('error', gutil.log) #sass.logError
     .pipe P.autoprefixer
         browsers: [ 'last 2 version' ]
         remove: true
@@ -79,21 +80,16 @@ gulp.task 'watch', [
     'webserver'
     'js'
     'js-vendor'
-    'html'
     'css'
+    'html'
 ], ->
     server = P.livereload.listen
         start: true
 
-    gulp.watch 'src/**/**.jade'
+    gulp.watch 'src/**/**.jade', ['html']
     .on 'change', (e) ->
 
         gutil.log "[JADE #{e.type}]: #{e.path}"
-        gulp.src e.path
-        .pipe P.plumber()
-        .pipe P.jade
-            debug: false
-        .pipe gulp.dest('build/')
         return
 
     gulp.watch 'src/js/**/**.coffee', [ 'js' ]
@@ -107,7 +103,7 @@ gulp.task 'watch', [
         gutil.log "[JS-vendor #{event.type}]: #{event.path}"
         return
 
-    gulp.watch [ 'style_dev/**.less', 'style_dev/*.css'], [ 'css' ]
+    gulp.watch [ 'src/css/**.less', 'src/css/**.css', 'src/css/**.sass'], [ 'css' ]
     .on 'change', (e)->
         gutil.log "[LESS #{e.type}]: #{e.path}"
     return

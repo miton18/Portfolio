@@ -16,4 +16,5 @@ scrollTo = (el)->
     $ 'body'
     .animate
         scrollTop: el.offset().top
-    , 500
+    , 700
+    , 'easeOutBack' # http://easings.net/fr

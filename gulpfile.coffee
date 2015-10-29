@@ -21,8 +21,8 @@ gulp.task 'html', ->
 gulp.task 'css', ->
 
     gulp.src [
-        'src/css/**/**.css'
-        'src/css/**.sass'
+        'src/css/*.css'
+        'src/css/*.sass'
     ]
     .pipe P.plumber()
     .pipe P.sass()
@@ -34,8 +34,22 @@ gulp.task 'css', ->
     .on 'error', (e) ->
         gutil.log "[minifyCss ERROR] #{e}"
     .pipe P.concat( 'all.css' )
-    .pipe gulp.dest( 'build/' )
+    .pipe gulp.dest( 'build/css/' )
     .pipe P.livereload()
+
+gulp.task 'css-vendor', ->
+
+    gulp.src 'src/css/vendor/**.css'
+    .pipe P.autoprefixer
+        browsers: [ 'last 2 version' ]
+        remove: true
+    .pipe P.minifyCss()
+    .on 'error', (e) ->
+        gutil.log "[minifyCss ERROR] #{e}"
+    .pipe P.concat( 'vendor.css' )
+    .pipe gulp.dest( 'build/css/' )
+    .pipe P.livereload()
+
 
 gulp.task 'js-vendor', ->
 
@@ -66,6 +80,11 @@ gulp.task 'js', ->
     .pipe gulp.dest('build/')
     .pipe P.livereload()
 
+gulp.task 'img', ->
+
+    gulp.src 'src/img/**/**'
+    .pipe gulp.dest('build/img')
+
 gulp.task 'webserver', ->
 
     gulp.src 'build'
@@ -81,7 +100,9 @@ gulp.task 'watch', [
     'js'
     'js-vendor'
     'css'
+    'css-vendor'
     'html'
+    'img'
 ], ->
     server = P.livereload.listen
         start: true
@@ -103,7 +124,17 @@ gulp.task 'watch', [
         gutil.log "[JS-vendor #{event.type}]: #{event.path}"
         return
 
-    gulp.watch [ 'src/css/**.less', 'src/css/**.css', 'src/css/**.sass'], [ 'css' ]
+    gulp.watch [ 'src/css/*.css', 'src/css/*.sass'], [ 'css' ]
     .on 'change', (e)->
+        gutil.log "[SASS #{e.type}]: #{e.path}"
+
+    gulp.watch 'src/css/vendor/**.css', [ 'css-vendor' ]
+    .on 'change', (e)->
+        gutil.log "[CSS #{e.type}]: #{e.path}"
+
+    gulp.watch 'src/img/**/**'
+    .on 'change', (e)->
+        gulp.src e.path
+        .pipe gulp.dest('build/img')
         gutil.log "[LESS #{e.type}]: #{e.path}"
     return

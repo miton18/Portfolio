@@ -11,4 +11,4 @@ COPY . /src
 RUN cd /src; npm install --production
 
 EXPOSE  80
-CMD ["node", "/src/server.js"]
+ENTRYPOINT ["node", "/src/server.js"]

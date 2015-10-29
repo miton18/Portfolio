@@ -25,19 +25,21 @@ $ document
     # GO TO NEXT SLIDE BUTTON
     $ '.next'
     .click ->
-
         nextSlide = $(this).parent('article').next()
         scrollTo nextSlide
 
+    $ '#demiSlide'
+    .height HEIGHT
 
-    scrollTo = (el)->
 
-        $ 'body'
-        .animate
-            scrollTop: el.offset().top
-        , 700
-        , 'easeOutBack' # http://easings.net/fr
-    
+scrollTo = (el)->
+
+    $ 'body'
+    .animate
+        scrollTop: el.offset().top
+    , 700
+    , 'easeOutBack' # http://easings.net/fr
+
 cadre = ->
 
     # TAILLE DES SLIDES

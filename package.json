@@ -58,5 +58,8 @@
     "run-sequence": "^1.1.4",
     "semantic-ui": "^2.1.4",
     "yamljs": "^0.2.4"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
   }
 }

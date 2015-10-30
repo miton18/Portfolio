@@ -1,5 +1,12 @@
 HEIGHT = 0
 
+cadre = ->
+
+    # TAILLE DES SLIDES
+    $ 'article'
+    .height $( window ).height()
+    HEIGHT = $( window ).height()
+
 $ window
 .resize ->
     cadre()
@@ -39,10 +46,3 @@ scrollTo = (el)->
         scrollTop: el.offset().top
     , 700
     , 'easeOutBack' # http://easings.net/fr
-
-cadre = ->
-
-    # TAILLE DES SLIDES
-    $ 'article'
-    .height $( window ).height()
-    HEIGHT = $( window ).height()

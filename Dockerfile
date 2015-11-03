@@ -1,19 +1,7 @@
-#FROM    centos:centos6
-
-# Enable EPEL for Node.js
-#RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-# Install Node.js and npm
-#RUN     yum install -y npm
-
-# Bundle app source
-#COPY . /src
-# Install app dependencies
-#RUN cd /src; npm install --production
-
-#EXPOSE  80
-#ENTRYPOINT ["node", "/src/server.js"]
-
 FROM node:onbuild
 
 # Expose the ports that your app uses. For example:
 EXPOSE 80
+
+#sudo docker build -t node-test .
+#sudo docker run -p 8084:80 -it node-test

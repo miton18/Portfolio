@@ -1,33 +1,49 @@
 @import "font/font-awesome-4.4.0/scss/font-awesome.scss"
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,300,700,900);
+
 // Copy font files into fonts in build
 
 $orange: #d04800
+$noir  : #212121
 
 *, *::before, *::after
     box-sizing: border-box
+    font-family: 'Roboto', sans-serif
 
 article
     height: 6000px //Gerer en js
     position: relative
-
+/* #################################### SLIDES ####################################*/
     &#un
-        background-color: black
+        background-color: $noir
 
         p
             color: white
+            font-size: 2em;
+        img
+            box-shadow: 0 0 20px 9px black
+
     &#deux
         background-color: red
-
+/* #################################### GLOBAL ####################################*/
     h1
         color: $orange
+        font-family: 'Roboto', sans-serif
 
-    i.next
-        color: rgba(131, 131, 131, 0.5)
-        position: absolute
-        right: 20px
-        bottom: 20px
+    a
+        //color: $orange + 200
+        //border-radius: 5px
+        //background-color: $noir + 100
+    i.fa
+        &::before
+            font-family: 'FontAwesome'
+        &.next
+            color: rgba(131, 131, 131, 0.5)
+            position: absolute
+            right: 20px
+            bottom: 20px
 
-.svg-loader
+.loader
     background-color: #141414
     position:   fixed
     width:      100%
@@ -39,6 +55,9 @@ article
         color: $orange
     i
         color: $orange
+
+        &::before
+            font-family: 'FontAwesome'
 .reverse
     animation-direction: reverse
 

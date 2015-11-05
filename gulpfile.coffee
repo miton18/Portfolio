@@ -93,7 +93,7 @@ gulp.task 'webserver', ->
         directoryListing: false
         open: true
         host: '127.0.0.1'
-        port: 80
+        port: 8080
 
 gulp.task 'watch', [
     'webserver'

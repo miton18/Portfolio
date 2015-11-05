@@ -13,7 +13,7 @@ $ window
 
 $ window
 .load ->
-    $ '.svg-loader'
+    $ '.loader'
     .slideUp 'slow'
 
 $ document

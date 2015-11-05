@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use( '/', express.static(__dirname + '/build'));
 
-app.get('/update', function(req, res) {
+app.post('/update', function(req, res) {
 
     rep = req.body;
 

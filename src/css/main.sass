@@ -1,68 +1,126 @@
 @import "font/font-awesome-4.4.0/scss/font-awesome.scss"
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,300,700,900);
+@import "font/roboto.css"
 
 // Copy font files into fonts in build
 
 $orange: #d04800
 $noir  : #212121
+$mobile-width: 500px
+$tablet-width: 1000px
+
+$mobile: "max-width : 320px"
+
+@mixin phone
+  @media (max-width: #{$mobile-width})
+    @content
+
+@mixin tablet
+  @media (max-width: #{$tablet-width})
+    @content
+
+@-webkit-keyframes pulse
+    from
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0.58)
+    99%
+        text-shadow: 0 0 50px rgba(255, 255, 255, 0.58)
+    to
+        text-shadow: 0 0 0 rgba(255, 255, 255, 0.58)
+
 
 *, *::before, *::after
     box-sizing: border-box
     font-family: 'Roboto', sans-serif
 
-article
-    height: 6000px //Gerer en js
-    position: relative
-/*#################################### SLIDES #################################### */
-    &#un
-        background-color: $noir
+body
+    article
+        height: 6000px //Gerer en js
+        position: relative
 
-        p
-            color: white
-            font-size: 2em;
-        img
-            box-shadow: 0 0 20px 9px black
+        // ###########################################      Slides
 
-    &#deux
-        background-color: red
-/* #################################### GLOBAL #################################### */
-    h1
-        color: $orange
-        font-family: 'Roboto', sans-serif
+        &#un
+            background-color: $noir
 
-    a
-        //color: $orange + 200
-        //border-radius: 5px
-        //background-color: $noir + 100
-    i.fa
-        &::before
-            font-family: 'FontAwesome'
-        &.next
-            color: rgba(131, 131, 131, 0.5)
-            position: absolute
-            right: 20px
-            bottom: 20px
+            .grid
+                margin: auto
+                height: 100%
 
-.loader
-    background-color: #141414
-    position:   fixed
-    width:      100%
-    height:     100%
-    z-index:    9999
-    margin:     0 !important
+                .column
+                        text-align: center
 
-    h2
-        color: $orange
-    i
-        color: $orange
 
-        &::before
-            font-family: 'FontAwesome'
-.reverse
-    animation-direction: reverse
+            #content
+                @include phone
 
-.nopadding
-    padding: 0 !important
+                p
+                    color: white
+                    font-size: 2em;
 
-.nomargin
-    margin:  0 !important
+                    @include phone
+                        font-size: 1.5em
+            img
+                box-shadow: 0 0 20px 9px black
+
+                @include tablet
+                    width: 20%
+                @include phone
+                    border-radius: 1500px
+                    width: 50%
+                    text-align: center
+
+        &#deux
+            background-color: red
+
+        // ###########################################      Global
+
+        h1
+            color: $orange
+            font-family: 'Roboto', sans-serif
+
+        a
+            color: $orange
+            border-radius: 5px
+            background-color: $noir - 10
+            transition: all 0.5s
+
+            &:hover
+                color: $noir - 10
+                background-color: $orange
+
+        i.fa
+            &::before
+                font-family: 'FontAwesome'
+
+            animation-name: pulse
+            animation-duration: 1s
+            animation-iteration-count: infinite
+            animation-timing-function: ease-out
+            &.next
+                color: rgba(131, 131, 131, 0.5)
+                position: absolute
+                right: 20px
+                bottom: 20px
+
+    .load
+        background-color: #141414
+        position:   fixed
+        width:      100%
+        height:     100%
+        z-index:    9999
+        margin:     0 !important
+
+        h2
+            color: $orange
+        i
+            color: $orange
+
+            &::before
+                font-family: 'FontAwesome'
+    .reverse
+        animation-direction: reverse
+
+    .nopadding
+        padding: 0 !important
+
+    .nomargin
+        margin: 0 !important

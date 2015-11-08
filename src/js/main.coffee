@@ -13,8 +13,9 @@ $ window
 
 $ window
 .load ->
-    $ '.loader'
+    $ '.load'
     .slideUp 'slow'
+
 
 $ document
 .ready ->
@@ -35,8 +36,8 @@ $ document
         nextSlide = $(this).parent('article').next()
         scrollTo nextSlide
 
-    $ '#demiSlide'
-    .height HEIGHT
+    #$ '#demiSlide'
+    #.height HEIGHT
 
 
 scrollTo = (el)->

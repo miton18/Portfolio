@@ -40,6 +40,7 @@ gulp.task 'css', ->
 gulp.task 'css-vendor', ->
 
     gulp.src 'src/css/vendor/**.css'
+    .pipe P.plumber()
     .pipe P.autoprefixer
         browsers: [ 'last 2 version' ]
         remove: true
@@ -58,6 +59,7 @@ gulp.task 'js-vendor', ->
         'src/js/vendor/jquery.js'
         'src/js/vendor/**.js'
     ]
+    .pipe P.plumber()
     .pipe P.concat('vendor.js')
     .pipe P.jsmin()
     .pipe gulp.dest('build/')
@@ -124,7 +126,7 @@ gulp.task 'watch', [
         gutil.log "[JS-vendor #{event.type}]: #{event.path}"
         return
 
-    gulp.watch [ 'src/css/*.css', 'src/css/*.sass'], [ 'css' ]
+    gulp.watch [ 'src/css/**.css', 'src/css/**.sass'], [ 'css' ]
     .on 'change', (e)->
         gutil.log "[SASS #{e.type}]: #{e.path}"
 

@@ -13,9 +13,9 @@ html
 
 
     body
-        .loader( class="ui three column centered grid")
+        .load( class="ui three column centered grid")
             .row
-                div(class="ui" style="margin:auto")
+                div( style="margin:auto")
 
                     i( class="fa fa-cog fa-spin fa-5x")
                     i( class="fa fa-cog fa-spin fa-2x reverse")
@@ -23,18 +23,19 @@ html
 
 
         article#un
-            div( class="ui two column grid nomargin middle aligned stackable" )
-                div( class="column nopadding" )
-                    img( src="img/remi.jpg" alt="Photo de rémi" id="demiSlide")
-                div( class="column" )
+            div( class="ui two column doubling grid middle aligned" )
+                div( class="wide column" )
+                    img( src="img/moi_carre.png" alt="Photo de rémi" id="demiSlide")
+
+                div( class="column" id="content")
                     h1 Qui suis-je?
                     p "Etudiant de 4
-                        sup ème
-                        | année en école d'ingénieur à &nbsp;
-                        a( src="http://isen.fr" ) l'ISEN de Brest &nbsp;
-                        | je me passionne pour l'informatique dans son ensemble mes compétences vont du
-                        | du developpement de site web à la conception de cartes éléctroniques en passant par la conception de resaux.
-                        | De nature très curieuse, relever des défis et apprendre de nouvelles technologies"
+                        sup ème &nbsp;
+                        | année à l'&nbsp;
+                        a( href="http://isen.fr" target="_BLANK") ISEN de Brest
+                        | &nbsp; je me passionne pour l'informatique dans son ensemble mes compétences vont du
+                        | developpement de site web à la conception de cartes éléctroniques en passant par la mise en place de resaux.
+                        | De nature très curieuse, j'aime relever des défis et apprendre de nouvelles technologies"
 
             i( class="fa fa-map-signs fa-5x next")
 

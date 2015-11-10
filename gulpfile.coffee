@@ -9,7 +9,7 @@ P                   = gulpLoadPlugins()
 
 gulp.task 'default', [ 'watch' ]
 
-gulp.task 'html', ->
+gulp.task 'HTML:JADE', ->
 
     gulp.src 'src/index.jade' 
     .pipe P.plumber()
@@ -18,11 +18,10 @@ gulp.task 'html', ->
     #.pipe P.inject( gulp.src(['build/**.css', 'build/**.js']) )
     .pipe gulp.dest 'build/'
 
-gulp.task 'css', ->
+gulp.task 'CSS:SASS', ->
 
     gulp.src [
-        'src/css/*.css'
-        'src/css/*.sass'
+        'src/css/main.sass'
     ]
     .pipe P.plumber()
     .pipe P.sass()
@@ -37,7 +36,7 @@ gulp.task 'css', ->
     .pipe gulp.dest( 'build/css/' )
     .pipe P.livereload()
 
-gulp.task 'css-vendor', ->
+gulp.task 'CSS:VENDOR', ->
 
     gulp.src 'src/css/vendor/**.css'
     .pipe P.plumber()
@@ -52,7 +51,7 @@ gulp.task 'css-vendor', ->
     .pipe P.livereload()
 
 
-gulp.task 'js-vendor', ->
+gulp.task 'JS:VENDOR', ->
 
     gulp.src [
         'src/js/vendor/angular.min.js'
@@ -65,7 +64,7 @@ gulp.task 'js-vendor', ->
     .pipe gulp.dest('build/')
     .pipe P.livereload()
 
-gulp.task 'js', ->
+gulp.task 'JS:COFFEE', ->
 
     gulp.src [
         'src/js/main.coffee'
@@ -99,38 +98,38 @@ gulp.task 'webserver', ->
 
 gulp.task 'watch', [
     'webserver'
-    'js'
-    'js-vendor'
-    'css'
-    'css-vendor'
-    'html'
+    'JS:COFFEE'
+    'JS:VENDOR'
+    'CSS:SASS'
+    'CSS:VENDOR'
+    'HTML:JADE'
     'img'
 ], ->
     server = P.livereload.listen
         start: true
 
-    gulp.watch 'src/**/**.jade', ['html']
+    gulp.watch 'src/**/**.jade', ['HTML:JADE']
     .on 'change', (e) ->
 
         gutil.log "[JADE #{e.type}]: #{e.path}"
         return
 
-    gulp.watch 'src/js/**/**.coffee', [ 'js' ]
+    gulp.watch 'src/js/**/**.coffee', [ 'JS:COFFEE' ]
     .on 'change', (e) ->
         gutil.log "[JS #{e.type}]: #{e.path}"
         return
 
 
-    gulp.watch 'src/js/vendor/**.js', [ 'js-vendor' ]
+    gulp.watch 'src/js/vendor/**.js', [ 'JS:VENDOR' ]
     .on 'change', (event) ->
         gutil.log "[JS-vendor #{event.type}]: #{event.path}"
         return
 
-    gulp.watch [ 'src/css/**.css', 'src/css/**.sass'], [ 'css' ]
+    gulp.watch [ 'src/css/**.css', 'src/css/**.sass'], [ 'CSS:SASS' ]
     .on 'change', (e)->
         gutil.log "[SASS #{e.type}]: #{e.path}"
 
-    gulp.watch 'src/css/vendor/**.css', [ 'css-vendor' ]
+    gulp.watch 'src/css/vendor/**.css', [ 'CSS:VENDOR' ]
     .on 'change', (e)->
         gutil.log "[CSS #{e.type}]: #{e.path}"
 

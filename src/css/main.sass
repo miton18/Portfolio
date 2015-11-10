@@ -1,30 +1,19 @@
 @import "font/font-awesome-4.4.0/scss/font-awesome.scss"
 @import "font/roboto.css"
+@import "mixins.sass"
+@import "variables.sass"
+@import "timeline.sass"
 
 // Copy font files into fonts in build
 
-$orange: #d04800
-$noir  : #212121
-$mobile-width: 500px
-$tablet-width: 1000px
-
-$mobile: "max-width : 320px"
-
-@mixin phone
-  @media (max-width: #{$mobile-width})
-    @content
-
-@mixin tablet
-  @media (max-width: #{$tablet-width})
-    @content
 
 @-webkit-keyframes pulse
     from
-        text-shadow: 0 0 0 rgba(255, 255, 255, 0.58)
+        text-shadow: 0 0 0 rgba(0, 0, 0, 0.58)
     99%
-        text-shadow: 0 0 50px rgba(255, 255, 255, 0.58)
+        text-shadow: 0 0 50px rgba(0, 0, 0, 0.58)
     to
-        text-shadow: 0 0 0 rgba(255, 255, 255, 0.58)
+        text-shadow: 0 0 0 rgba(0, 0, 0, 0.58)
 
 
 *, *::before, *::after
@@ -35,61 +24,77 @@ body
     article
         height: 6000px //Gerer en js
         position: relative
+        margin-bottom: 20px
 
         // ###########################################      Slides
 
         &#un
-            background-color: $noir
-
-            .grid
-                margin: auto
-                height: 100%
-
-                .column
-                        text-align: center
+            position: relative
+            background-color: $main
 
 
-            #content
-                @include phone
-
-                p
-                    color: white
-                    font-size: 2em;
-
-                    @include phone
-                        font-size: 1.5em
             img
+                position: absolute
                 box-shadow: 0 0 20px 9px black
+                width: 80%
+                left: 10%
 
-                @include tablet
+                //@include tablet
                     width: 20%
                 @include phone
                     border-radius: 1500px
                     width: 50%
                     text-align: center
+            div
+                position: absolute
+                width: 50%
+                left: 25%
+                bottom: 20%
+                background-color: $noir
+                border-radius: 10px
+                padding: 20px
 
         &#deux
-            background-color: red
+            background-color: $third
+
+            @include phone
+
+                .cbp_tmlabel
+                    width: 100%
+                    margin: 30px 0
+
+                .cbp_tmicon
+                    display: none
+
+                .cbp_tmtime
+                    z-index: 999
+                    width: 100%
+                    padding-right: 15px
+
+                    span
+                        color: $noir
 
         // ###########################################      Global
 
         h1
-            color: $orange
+            color: $main
             font-family: 'Roboto', sans-serif
+            text-shadow: 0 0 3px $noir
 
         a
-            color: $orange
+            color: $main
             border-radius: 5px
             background-color: $noir - 10
             transition: all 0.5s
 
             &:hover
                 color: $noir - 10
-                background-color: $orange
+                background-color: $main
 
         i.fa
             &::before
                 font-family: 'FontAwesome'
+                color: $main - 100
 
             animation-name: pulse
             animation-duration: 1s
@@ -102,20 +107,48 @@ body
                 bottom: 20px
 
     .load
-        background-color: #141414
         position:   fixed
         width:      100%
         height:     100%
         z-index:    9999
         margin:     0 !important
+        //background-color: #141414
+        background-color: $second
 
         h2
-            color: $orange
+            color: $main
+            text-shadow: 1px 1px 3px $noir
         i
-            color: $orange
+            color: $main
+            text-shadow: 1px 1px 3px $noir
 
             &::before
                 font-family: 'FontAwesome'
+    .nav
+        position: fixed
+        z-index:    99
+        top:        0
+        left:       0
+
+        &::before
+            content: ''
+            position: absolute
+            height: 0
+            width:  0
+            left: 0
+
+            border:
+                style: solid
+                width: 100px 100px 0 0
+                color: $second transparent transparent transparent
+        button.ui
+            z-index: 999
+            position: absolute
+            top: 8px
+            left: 6px
+
+            @include icon
+
     .reverse
         animation-direction: reverse
 

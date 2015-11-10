@@ -1,0 +1,12 @@
+@mixin phone
+  @media (max-width: #{$mobile-width})
+    @content
+
+@mixin tablet
+  @media (max-width: #{$tablet-width})
+    @content
+
+@mixin icon
+    i
+        &::before
+            font-family: 'FontAwesome'

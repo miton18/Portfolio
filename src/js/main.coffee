@@ -1,7 +1,6 @@
 HEIGHT = 0
 
 cadre = ->
-
     # TAILLE DES SLIDES
     $ 'article'
     .height $( window ).height()
@@ -36,8 +35,15 @@ $ document
         nextSlide = $(this).parent('article').next()
         scrollTo nextSlide
 
-    #$ '#demiSlide'
-    #.height HEIGHT
+    # PARALLAX
+    # https://github.com/cameronmcefee/plax
+    $ '.plax-head-img'
+    .plaxify
+        "xRange":50
+        "yRange":0
+        "invert":true
+    $.plax.enable()
+
 
 
 scrollTo = (el)->

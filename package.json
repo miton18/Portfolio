@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "Rémi collignon's portfolio",
-  "main": "supervisor --watch build/ server.js",
+  "main": "supervisor --watch ./ server.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/miton/Portfolio.git"

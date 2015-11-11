@@ -7,24 +7,17 @@
 // Copy font files into fonts in build
 
 
-@-webkit-keyframes pulse
-    from
-        text-shadow: 0 0 0 rgba(0, 0, 0, 0.58)
-    99%
-        text-shadow: 0 0 50px rgba(0, 0, 0, 0.58)
-    to
-        text-shadow: 0 0 0 rgba(0, 0, 0, 0.58)
-
-
 *, *::before, *::after
     box-sizing: border-box
     font-family: 'Roboto', sans-serif
 
 body
+    background-color: $main
+
     article
         height: 6000px //Gerer en js
         position: relative
-        margin-bottom: 20px
+        top: 20px
 
         // ###########################################      Slides
 
@@ -35,9 +28,10 @@ body
 
             img
                 position: absolute
-                box-shadow: 0 0 20px 9px black
+                box-shadow: 0px -15px 20px 9px black
                 width: 80%
                 left: 10%
+                bottom: 0
 
                 //@include tablet
                     width: 20%
@@ -51,11 +45,13 @@ body
                 left: 25%
                 bottom: 20%
                 background-color: $noir
+                color: $third
                 border-radius: 10px
                 padding: 20px
 
         &#deux
             background-color: $third
+            //height: auto !important
 
             @include phone
 

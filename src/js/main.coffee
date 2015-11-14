@@ -39,9 +39,9 @@ $ document
     # https://github.com/cameronmcefee/plax
     $ '.plax-head-img'
     .plaxify
-        "xRange":50
-        "yRange":0
-        "invert":true
+        "xRange":   15
+        "yRange":   15
+        "invert":   true
     $.plax.enable()
 
 

@@ -21,70 +21,107 @@ html
                     i( class="fa fa-cog fa-spin fa-2x reverse")
                     h2 Nous procédons au chargement de votre ingénieur
         .nav
-            button.ui.inverted.red.button
-                i.fa.fa-at
+            button.ui.red.inverted.button
+                i.fa.fa-envelope-o
 
-        article#un
-            img.plax-head-img( src="img/moi_carre.png" alt="Photo de rémi" id="demiSlide")
-            div
-                h1 Qui suis-je?
-                p “Etudiant de 4
-                    sup ème &nbsp;
-                    | année à l'&nbsp;
-                    a( href="http://isen.fr" target="_BLANK") ISEN de Brest
-                    | &nbsp; je me passionne pour l'informatique dans son ensemble. Mes compétences vont du
-                    | développement de site web à la conception de cartes éléctroniques en passant par la mise en place de résaux.
-                    | De nature très curieuse, j'aime relever des défis et apprendre de nouvelles technologies.”
-
-            i( class="fa fa-map-signs fa-5x next")
+        views = ["intro", "Dos", "Tres", "Cuatro", "Cinco", "Seis"]
+        each view in views
+            include "./view/" + view + ".jade"
 
 
         article#deux
             //div( class="zoo" av-animation="slideInRight" style="background-color: yellow")
                 p coucou
-            .ui.grid.middle.aligned.zoo(av-animation="slideInRight")
+            .ui.grid.middle.aligned.container.zoo(av-animation="slideInRight")
                 ul.timeline.five.column.wide
                     li
                         time.cbp_tmtime(datetime='2017-10-1')
                             span 2017
                         .cbp_tmicon
-                        .cbp_tmlabel
+                        .cbp_tmlabel.zoo(av-animation="bounceInUp")
+
                             h2 [à venir] Formation d'ingénieur
-                            p Obtention du diplome délivré par l'ISEN de Brest (cycle informatique et reseaux)
+                            p Obtention du diplome d'ingénieur délivré par l'ISEN de Brest (cycle informatique et reseaux).
                     li
                         time.cbp_tmtime(datetime='2015-01-1')
                             span 2015
                         .cbp_tmicon
-                        .cbp_tmlabel
+                        .cbp_tmlabel.zoo(av-animation="bounceInUp")
+
                             h2 Concour Cozy Cloud
                             p.
-                                Concour remporter grace à l'amélioration de l'application Photo
-                                de la plateforme Cozy (ajout de la localisation de photos des utilisateurs sur une carte)
+                                Concour remporté grâce à l'amélioration de l'application "Photo"
+                                de la plateforme Cozy (ajout de la localisation de photos des utilisateurs sur une carte).
                     li
                         //time.cbp_tmtime(datetime='2013-04-11T12:04')
                             span 2014
                         .cbp_tmicon
-                        .cbp_tmlabel
+                        .cbp_tmlabel.zoo(av-animation="bounceInUp")
+
                             h2 Startup Weekend
-                            p.
-                                http://www.septjoursabrest.fr/2015/02/04/startup-weekend-petites-boites-grandes-idees/
+                            p Developpeur dans l'équipe Smartkit, le coup de coeur du jury&nbsp;
+                                a.high( href="http://www.septjoursabrest.fr/2015/02/04/startup-weekend-petites-boites-grandes-idees/") Lien de l'évenement.
+
                     li
-                        time.cbp_tmtime(datetime='2013-04-13 05:36')
-                            span 2013
+                        time.cbp_tmtime(datetime='2014-06-1')
+                            span 2014
                         .cbp_tmicon
-                        .cbp_tmlabel
-                            h2 Sprout garlic kohlrabi
-                            p Parsnip lotus root...
+                        .cbp_tmlabel.zoo(av-animation="bounceInUp")
+
+                            h2 Stage technique chez Vignal Systems
+                            .ui.two.column.grid.internally.celled.stackable.centered
+                                .twelve.wide.column
+                                    p Développement sur ERP SilverCS 10 à Vignal Systems (Vénissieux)
+                                        br
+                                        | Génération d’états / upgrade d’applications (Microsoft Access vers ERP)
+                                        br
+                                        ul
+                                            li Conception de la base de données
+                                            li Développement de l'application sur l’Intranet
+                                            li Mise en production / adaptation aux rapports de bugs
+                                            li Recoder une application d’Access 2003 sous SivlerCS10
+                                .four.wide.column
+                                    a( href="img/ressources/stage-cir2.pdf" download )
+                                        i.fa.fa-5x.fa-file-pdf-o
+                                    div
+                                        small Evaluation de stage
+                    li
+                        time.cbp_tmtime(datetime='2014-06-1')
+                        .cbp_tmicon
+                        .cbp_tmlabel.zoo(av-animation="bounceInUp")
+
+                            h2 Certification CISCO
+                            .ui.two.column.grid.internally.celled.stackable.centered
+                                .twelve.wide.column
+                                    p.
+                                        Formation aux certifications CISCO CCNA 1-2-3-4
+                                        sur la droite, les certifications et la
+                                .four.wide.column(style="display:inline-block")
+                                    div
+                                        a( href="img/ressources/CCNA1.jpg" target="_BLANK")
+                                            i.fa.fa-3x.fa-file-pdf-o.red
+                                        div
+                                            small CCNA1
+                                    div
+                                        a( href="img/ressources/CCNA2.jpg" target="_BLANK")
+                                            i.fa.fa-3x.fa-file-pdf-o.red
+                                        div
+                                            small CCNA2
+                                    div
+                                        a( href="img/ressources/ciscoL.jpg" target="_BLANK")
+                                            i.fa.fa-3x.fa-file-pdf-o.red
+                                        div
+                                            small Lettre de recommandation
 
 
-            i( class="fa fa-arrow-circle-down fa-5x next")
 
-        article( style="background-color: #190c8b;")    
-            div( class="ui top attached tabular menu")
-                div( class="active item") Tab
-                    div( class="ui bottom attached active tab segment")
-                        p test
-            i( class="fa fa-arrow-circle-down fa-5x next")
+            i.fa.fa-5x.fa-angle-double-down.next
+
+        article#trois
+            .zoo(av-animation="bounceInUp")
+                h2 test
+
+            i.fa.fa-5x.fa-angle-double-down.next
 
         article( style="background-color: #8b380c;")
             p test

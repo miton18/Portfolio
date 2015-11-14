@@ -1,33 +1,83 @@
-var express     = require('express');
-var app         = express();
-var bodyParser  = require("body-parser");
+(function() {
+  var app, bodyParser, db, exec, express, messages, port, tingodb;
 
-var exec        = require('child_process').exec;
+  express = require('express');
 
+  bodyParser = require('body-parser');
 
+  tingodb = require('tingodb')().Db;
 
-app.use(bodyParser.urlencoded({ extended: false }));
+  exec = require('child_process').exec;
 
-app.use( '/', express.static(__dirname + '/build'));
+  port = process.env.npm_package_config_port | 80;
 
-app.post('/update', function(req, res) {
+  app = express();
 
-    rep = req.body;
+  app.listen(port);
 
-    exec( 'git pull origin V3' , function (error, stdout, stderr) {
-        if (error) {
+  db = new tingodb('./data', {
+    nativeObjectID: true
+  });
+
+  messages = db.collection("messages");
+
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+
+  app.use(bodyParser.json());
+
+  app.use('/', express["static"](__dirname + "/build"));
+
+  app.post('/update', function(req, res) {
+    var e, error1, rep, tag;
+    if (req.body.ref) {
+      tag = req.body.ref;
+      rep = '';
+      try {
+        exec('git pull origin V3', function(error, stdout, stderr) {
+          if (error) {
             rep += error;
-        }
-        if (stdout) {
+          }
+          if (stdout) {
             rep += stdout;
-        }
-        if (stderr) {
+          }
+          if (stderr) {
             rep += stderr;
-        }
-    });
-    res.send( rep );
-});
+          }
+        });
+      } catch (error1) {
+        e = error1;
+        rep += e;
+      }
+      res.send("Update to: " + tag + " " + rep);
+    }
+  });
 
-app.listen( 80 );
+  app.get('/messages', function(req, res) {});
 
-console.log('starting');
+  messages.insert([
+    {
+      mail: 'world_safe1',
+      hello: 'world_safe2',
+      time: Date.now()
+    }
+  ], function(err, result) {
+    if (err != null) {
+      return console.log(err);
+    }
+  });
+
+  messages.find({}).toArray(function(err, items) {
+    if (err != null) {
+      return console.log(err);
+    }
+  });
+
+  console.log("starting on " + port);
+
+  process.on('uncaughtException', function(err) {
+    console.log('Caught exception: ' + err);
+  });
+
+}).call(this);

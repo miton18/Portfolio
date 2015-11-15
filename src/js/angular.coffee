@@ -145,7 +145,7 @@ app.controller 'lang', ($scope)->
             name: 'VHDL'
             cat:  'lang'
         ,
-            logo: 'windows'
+            logo: 'windows.png'
             name: 'Windows'
             cat:  'os'
     ]

@@ -1,5 +1,7 @@
 FROM node:onbuild
 
+RUN npm install -g supervisor
+
 # Expose the ports that your app uses. For example:
 EXPOSE 80
 

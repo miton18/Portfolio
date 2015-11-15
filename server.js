@@ -54,25 +54,29 @@
     }
   });
 
-  app.get('/messages', function(req, res) {});
 
-  messages.insert([
-    {
-      mail: 'world_safe1',
-      hello: 'world_safe2',
-      time: Date.now()
-    }
-  ], function(err, result) {
-    if (err != null) {
-      return console.log(err);
-    }
-  });
+  /*app.get '/messages', (req, res)->
 
-  messages.find({}).toArray(function(err, items) {
-    if (err != null) {
-      return console.log(err);
-    }
-  });
+      return
+
+
+  messages.insert [{mail:'world_safe1', hello:'world_safe2', time: Date.now()}]
+      ,
+          (err, result)->
+              console.log err if err?
+              #console.log result
+
+
+  messages.find({}).toArray ( err, items )=>
+      console.log err if err?
+      console.log items
+   */
+
+
+  /*messages.remove {}, (err, result)-> # remove all
+      console.log err if err?
+      console.log result if result?
+   */
 
   console.log("starting on " + port);
 

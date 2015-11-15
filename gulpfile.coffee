@@ -14,9 +14,6 @@ gulp.task 'default', [ 'watch' ]
 
 gulp.task 'HTML:JADE', ->
 
-    views = gulp.src "src/view/.jade"
-    console.log views
-
     gulp.src 'src/index.jade' 
         .pipe P.plumber()
         .pipe P.jade

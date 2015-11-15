@@ -9,7 +9,7 @@ app.listen port
 
 db          = new tingodb './data',
                 nativeObjectID: true
-messages    = db.collection("messages");
+messages    = db.collection "messages"
 
 #---------------------------------------------------------------
 #               middlewares
@@ -50,10 +50,9 @@ app.post '/update', (req, res) ->
       rep += e
     res.send "Update to: #{tag} #{rep}"
   return
-app.get '/messages', (req, res)->
+###app.get '/messages', (req, res)->
 
     return
-
 
 
 messages.insert [{mail:'world_safe1', hello:'world_safe2', time: Date.now()}]
@@ -63,11 +62,15 @@ messages.insert [{mail:'world_safe1', hello:'world_safe2', time: Date.now()}]
             #console.log result
 
 
-messages.find({}).toArray ( err, items )->
+messages.find({}).toArray ( err, items )=>
     console.log err if err?
-    #console.log items
+    console.log items
+###
 
-
+###messages.remove {}, (err, result)-> # remove all
+    console.log err if err?
+    console.log result if result?
+###
 console.log "starting on #{ port }"
 process.on 'uncaughtException', (err) ->
 

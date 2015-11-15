@@ -3,7 +3,7 @@ HEIGHT = 0
 cadre = ->
     # TAILLE DES SLIDES
     $ 'article'
-    .height $( window ).height()
+    #.height $( window ).height()
     HEIGHT = $( window ).height()
 
 $ window

@@ -1,0 +1,10 @@
+article#trois( data-ng-controller="lang")
+    .ui.container
+        .ui.six.column.grid.stackable
+            .row
+                .two.column( data-ng-repeat="competence in competences | orderBy: ['cat', 'name']")
+                    .ui.segment( class="center aligned")
+                        div( class="ui bottom attached label") {{competence.name}}
+                        img( data-ng-src="img/lang/{{competence.logo}}" style="width: 100%")
+
+    i.fa.fa-5x.fa-angle-double-down.next

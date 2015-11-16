@@ -13,7 +13,6 @@
     "url": "https://github.com/miton/Portfolio/issues"
   },
   "scripts": {
-    "preinstall": "npm install -g supervisor",
     "start": "supervisor --watch server.js server.js"
   },
   "config": {

@@ -1,11 +1,13 @@
 (function() {
-  var app, auth, authCheck, bodyParser, db, exec, express, messages, port, tingodb;
+  var app, auth, authCheck, bodyParser, compression, db, exec, express, messages, port, tingodb;
 
   express = require('express');
 
   bodyParser = require('body-parser');
 
   auth = require('basic-auth');
+
+  compression = require('compression');
 
   tingodb = require('tingodb')().Db;
 
@@ -47,6 +49,8 @@
   }));
 
   app.use(bodyParser.json());
+
+  app.use(compression());
 
   app.use('/', express["static"](__dirname + "/build"));
 

@@ -25,7 +25,7 @@ $ document
     # http://jjcosgrove.github.io/jquery-aniview/
     $ '.zoo'
     .AniView
-        animateThreshold:   HEIGHT / 2
+        animateThreshold:   HEIGHT / 5
         scrollPollInterval: 10
     
 

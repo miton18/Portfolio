@@ -1,6 +1,7 @@
 express     = require 'express'
 bodyParser  = require 'body-parser'
 auth        = require 'basic-auth'
+compression = require 'compression'
 tingodb     = require('tingodb')().Db
 exec        = require('child_process').exec
 
@@ -42,6 +43,8 @@ app.use bodyParser.urlencoded
     extended: true
 
 app.use bodyParser.json()
+
+app.use compression()
 
 #---------------------------------------------------------------
 #               static troutes

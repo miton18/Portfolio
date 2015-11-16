@@ -5,10 +5,13 @@ $bleuM:    #6cbfee
 $gris:     #bdd0db
 
 .timeline
-  margin: 30px 0 10% 0
+  margin: 0
   padding: 0
   list-style: none
   position: relative
+
+  a.high
+    color: white
   &:before
     content: ''
     position: absolute
@@ -59,7 +62,7 @@ $gris:     #bdd0db
         width: 0
         position: absolute
         pointer-events: none
-        border-right-color: $second
+        border-right-color: $main
         border-width: 10px
         top: 10px
     &:nth-child(odd) .cbp_tmlabel:after

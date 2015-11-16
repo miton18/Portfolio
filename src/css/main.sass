@@ -15,7 +15,7 @@ body
     background-color: $third
 
     article
-        height: 100% //Gerer en js
+        //height: 100% //Gerer en js
         position: relative
         top: 20px
 
@@ -39,26 +39,32 @@ body
             div
                 position: absolute
                 padding: 20px
-                width: 50%
-                left: 25%
+                width: 70%
+                left: 15%
                 bottom: 20%
                 font-size: 1.5em
-                background-color: $noir
                 color: $third
                 border-radius: 10px
                 text-align: center
-                box-shadow: 0 0 4px 1px black inset
 
                 @include tablet
+                    position: relative
                     width: 100%
                     left: 0
-
+                p
+                    text-shadow: 0 0 1px $noir
         &#deux
             background-color: $second
             height: auto !important
 
-            i::before
+            h2 i
+                vertical-align: middle
+                padding-right: 10px
+
+
+            a i::before
                 color: $noir
+
 
             @include phone
 
@@ -79,19 +85,23 @@ body
         &#trois
             background-color: $third
             height: auto !important
+            margin: 10% auto
+
+        &#quatre
+            background-color: $second
+
 
         // ###########################################      Global
 
         h1
             color: $main
-            font-family: 'Roboto', sans-serif
-            text-shadow: 0 0 3px $noir
+            text-shadow: 0 0 1px $noir
 
         a.high
                 padding: 1px 10px
                 color: $main
                 border-radius: 5px
-                background-color: $noir - 10
+                background-color: transparentize($noir, 0.5)
                 transition: all 0.5s
 
                 &:hover
@@ -105,10 +115,11 @@ body
                 font-family: 'FontAwesome'
 
             &.next
-                color: rgba(131, 131, 131, 0.5)
                 position: absolute
                 left: calc( 50% - 0.5em )
                 bottom: 8%
+                color: rgba(131, 131, 131, 0.5)
+                border-radius: 100%
 
     .load
         position:   fixed

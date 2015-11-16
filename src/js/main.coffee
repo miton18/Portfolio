@@ -3,7 +3,7 @@ HEIGHT = 0
 cadre = ->
     # TAILLE DES SLIDES
     $ 'article'
-    #.height $( window ).height()
+    .height $( window ).height()
     HEIGHT = $( window ).height()
 
 $ window
@@ -40,10 +40,16 @@ $ document
     $ '.plax-head-img'
     .plaxify
         "xRange":   15
-        "yRange":   15
+        "yRange":   0
         "invert":   true
     $.plax.enable()
 
+    $('#progression').progress
+        percent: etude()
+        text:
+            active:  'Formation à {percent}%'
+            success: 'Formation achevée'
+            ratio:  '{percent}%'
 
 
 scrollTo = (el)->
@@ -53,3 +59,10 @@ scrollTo = (el)->
         scrollTop: el.offset().top
     , 700
     , 'easeOutBack' # http://easings.net/fr
+
+etude = ->
+    now     = Date.now()
+    depart  = (new Date "02/10/2012").getTime()
+    fin     = (new Date "02/10/2017").getTime()
+    date = ((now - depart) / ( fin - depart )) *100
+    return date

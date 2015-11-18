@@ -51,6 +51,15 @@ $ document
             success: 'Formation achevée'
             ratio:  '{percent}%'
 
+    $('form div input, form div textarea').focusout ->
+
+        that = $(this)
+        if that.val() != ""
+            that.addClass 'notEmpty'
+        else
+            that.removeClass 'notEmpty'
+
+
 
 scrollTo = (el)->
 

@@ -1,10 +1,45 @@
 article#quatre
     .ui.container
-        .ui.two.column.grid
-            .column
-                .row
-                    h3 FB
-                .row
-                    h3 twitter
-                .row
-                    h3 linked in
+        .ui.equal.width.relaxed.stackable.grid.verticaly.divided.inverted
+
+            .column.middle.aligned
+                .ui.vertical.menu.inverted
+
+                    a.item( href="https://www.facebook.com/remi.collignon.d" target="_BLANK")
+                        button.ui.circular.facebook.icon.button
+                            i.fa.fa-facebook.fa-2x.icon
+                        h4.ui.header.inverted Rémi Collignon
+
+                    a.item( href="https://twitter.com/miton1810" target="_BLANK")
+                        button.ui.circular.twitter.icon.button
+                            i.fa.fa-twitter.fa-2x.icon
+                        h4.ui.header.inverted miton1810
+
+                    a.item( href="https://fr.linkedin.com/in/rémi-collignon-96459387" target="_BLANK" )
+                        button.ui.circular.linkedin.icon.button
+                            i.fa.fa-linkedin.fa-2x.icon
+                        h4.ui.header.inverted Rémi Collignon
+
+                    a.item( href="https://plus.google.com/+RémiColl/" target="_BLANK" )
+                        button.ui.circular.google.plus.icon.button
+                            i.fa.fa-google-plus.fa-2x.icon
+                        h4.ui.header.inverted Rémi Coll
+
+
+            .column.middle.aligned
+                h3.ui.header.inverted.center
+                    i.fa.fa-envelope.huge.icon
+                    .content Laissez moi un message
+                form
+                    div
+                        input( type="text" name="name")
+                        label Nom
+                    div
+                        input( type="email" name="email")
+                        label E-mail
+                    div
+                        textarea( type="text" name="content" )
+                        label Message
+                    div
+                        input.ui.inverted.blue.button( type="submit" value="Envoyer")
+    i.fa.fa-5x.fa-angle-double-down.next

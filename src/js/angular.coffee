@@ -1,7 +1,7 @@
 app = angular.module('app', [])
 
 
-app.controller 'lang', ($scope)->
+app.controller 'lang', ['$scope', ($scope)->
     $scope.competences = [
 
             logo: 'sql.png'
@@ -149,3 +149,4 @@ app.controller 'lang', ($scope)->
             name: 'Windows'
             cat:  'os'
     ]
+]

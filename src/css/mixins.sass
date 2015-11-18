@@ -11,8 +11,15 @@
         &::before
             font-family: 'FontAwesome'
 
+@mixin bottom-border($color)
 
-@-webkit-keyframes pulse
+    border: none
+    border-bottom-color: $color
+    border-bottom-style: solid
+    border-bottom-width: thin
+    transition-duration: 0.5s
+
+@keyframes pulse
     from
         text-shadow: 0 0 0 rgba(0, 0, 0, 0.58)
     99%

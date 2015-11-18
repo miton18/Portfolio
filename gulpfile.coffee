@@ -12,6 +12,8 @@ server = P.livereload.listen
 
 gulp.task 'default', [ 'watch' ]
 
+
+#------------------------------------------------------------
 gulp.task 'HTML:JADE', ->
 
     gulp.src 'src/index.jade' 
@@ -20,14 +22,14 @@ gulp.task 'HTML:JADE', ->
             debug: false
         .pipe gulp.dest 'build/'
 
+#------------------------------------------------------------
 gulp.task 'CSS:SASS', ->
 
     gulp.src [
         'src/css/main.sass'
     ]
         .pipe P.plumber()
-        .pipe P.sass()
-        .on('error', gutil.log) #sass.logError
+        .pipe P.sass().on('error', gutil.log) #P.sass.logError
         .pipe P.autoprefixer
             browsers: [ 'last 2 version' ]
             remove: true
@@ -38,6 +40,7 @@ gulp.task 'CSS:SASS', ->
         .pipe gulp.dest( 'build/css/' )
         .pipe P.livereload()
 
+#------------------------------------------------------------
 gulp.task 'CSS:VENDOR', ->
 
     gulp.src 'src/css/vendor/*.css'
@@ -52,7 +55,7 @@ gulp.task 'CSS:VENDOR', ->
         .pipe gulp.dest( 'build/css/' )
         .pipe P.livereload()
 
-
+#------------------------------------------------------------
 gulp.task 'JS:VENDOR', ->
 
     gulp.src [
@@ -63,9 +66,11 @@ gulp.task 'JS:VENDOR', ->
         .pipe P.plumber()
         .pipe P.concat('vendor.js')
         .pipe P.jsmin()
+        .pipe P.uglify()
         .pipe gulp.dest('build/')
         .pipe P.livereload()
 
+#------------------------------------------------------------
 gulp.task 'JS:COFFEE', ->
 
     gulp.src [
@@ -78,11 +83,11 @@ gulp.task 'JS:COFFEE', ->
         .on 'error', gutil.log
         .pipe P.jsmin()
         .pipe P.concat( 'all.js' )
-        .on 'error', (err) ->
-            gutil.log "[JSVendor ERROR] #{err}"
+        .pipe P.uglify()
         .pipe gulp.dest('build/')
         .pipe P.livereload()
 
+#------------------------------------------------------------
 gulp.task 'img', ->
 
     gulp.src [
@@ -96,8 +101,10 @@ gulp.task 'JS:SERVER', ->
     gulp.src 'src/server.coffee'
         .pipe P.plumber()
         .pipe P.coffee()
+        .pipe P.uglify()
         .pipe gulp.dest( './' )
 
+#------------------------------------------------------------
 gulp.task 'webserver', ->
 
     gulp.src 'build'
@@ -108,6 +115,7 @@ gulp.task 'webserver', ->
             host: '127.0.0.1'
             port: 8080
 
+#------------------------------------------------------------
 gulp.task 'watch', [
     'webserver'
     'JS:COFFEE'

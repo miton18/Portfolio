@@ -1,5 +1,7 @@
 FROM node:onbuild
 
+ENV NODE_ENV production
+
 RUN npm install -g supervisor
 
 # Expose the ports that your app uses. For example:

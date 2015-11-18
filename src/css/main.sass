@@ -6,20 +6,20 @@
 
 // Copy font files into fonts in build
 
-
 *, *::before, *::after
+
     box-sizing: border-box
     font-family: 'Roboto', sans-serif
 
 body
+
     background-color: $third
 
     article
-        //height: 100% //Gerer en js
         position: relative
         top: 20px
 
-        // ###########################################      Slides
+        // ########################################### Slides */
 
         &#un
             position: relative
@@ -87,11 +87,91 @@ body
             height: auto !important
             margin: 10% auto
 
+            .ui.segment
+
+                filter: grayscale(0.8)
+
+                transition: all 0.2s ease
+
+                &:hover
+                    filter: grayscale(0)
+
         &#quatre
             background-color: $second
 
+            h4
+                display: inline-flex
 
-        // ###########################################      Global
+            div.ui
+                height: 100%
+
+                form
+                    margin: auto 0
+
+                    div
+                        position: relative
+                        width: 100%
+                        margin-top: 10%
+                        margin-bottom: 10%
+
+                        input:not([type="submit"])
+                            width: 100%
+                            font-size: 1.5em
+                            background-color: transparent
+                            @include bottom-border($noir)
+                            outline: none
+                            color: $third
+
+                            &:focus, &.notEmpty
+
+                                @include bottom-border($main)
+
+                                & + label
+
+                                    color:  $main
+                                    bottom: 2rem
+                                    transition-duration: 0.5s
+
+                            & ~ label /*lavel de l'input correspondant*/
+
+                                position:   absolute
+                                bottom:     0.5rem
+                                left:       0.2rem
+                                color:      white
+                                transition-duration: 0.5s
+
+                        textarea
+
+                            width: 100%
+                            min-height: 12rem
+                            resize: none
+                            background-color: $second
+                            color: $third
+                            font-size: 1.3em
+                            outline: none
+                            @include bottom-border($noir)
+
+                            &:focus, &.notEmpty
+
+                                @include bottom-border($main)
+
+                                & + label
+
+                                    color: $main
+                                    top: -1.5rem
+                                    transition-duration: 0.5s
+
+                            & ~ label /*label du textarea*/
+                                position: absolute
+                                left: 0.2rem
+                                top: 5rem
+                                margin: auto
+                                color: white
+                                transition-duration: 0.5s
+
+
+
+                            //########################################### Global
 
         h1
             color: $main
@@ -147,8 +227,6 @@ body
         &::before
             content: ''
             position: absolute
-            //height:
-            //  width:  0
             left: 0
             background-color: $main
 

@@ -2,6 +2,9 @@ article#trois( data-ng-controller="lang")
     .ui.container
         .ui.six.column.grid.stackable
             .row
+                h1 Compétences
+                hr
+            .row
                 .two.column( data-ng-repeat="competence in competences | orderBy: ['cat', 'name']")
                     .ui.segment( class="center aligned")
                         div( class="ui bottom attached label") {{competence.name}}

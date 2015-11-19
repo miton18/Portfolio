@@ -27,19 +27,32 @@ article#quatre
 
 
             .column.middle.aligned
+
                 h3.ui.header.inverted.center
                     i.fa.fa-envelope.huge.icon
                     .content Laissez moi un message
-                form
+
+                form( data-ng-controller="formCtrl" data-ng-submit="send()")
                     div
-                        input( type="text" name="name")
+                        input( type="text" data-ng-model="name" ng-disabled="wait")
                         label Nom
                     div
-                        input( type="email" name="email")
+                        input( type="email" data-ng-model="mail" ng-disabled="wait")
                         label E-mail
                     div
-                        textarea( type="text" name="content" )
+                        textarea( type="text" data-ng-model="content" data-ng-disabled="wait")
                         label Message
+                    div#antir
+                        label Je suis un robot:
+                            i.fa.fa-2x( data-ng-class="isRobot ? 'fa-thumbs-o-down' : 'fa-thumbs-o-up'")
+                        .ui.buttons
+                            button.ui.positive.button( type="button" data-ng-click="robot(false)") Non
+                            .or(data-text="ou")
+                            button.ui.button( type="button" data-ng-click="robot(true)") Oui
                     div
-                        input.ui.inverted.blue.button( type="submit" value="Envoyer")
-    i.fa.fa-5x.fa-angle-double-down.next
+                        input.ui.inverted.blue.button( type="submit" value="Envoyer" ng-disabled="wait")
+                    div
+                        .ui.message.error( data-ng-repeat="info in infos" data-ng-class="info.type")
+                            .header Aie...
+                            p {{info.txt}}
+

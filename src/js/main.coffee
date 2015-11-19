@@ -54,10 +54,9 @@ $ document
     $('form div input, form div textarea').focusout ->
 
         that = $(this)
-        if that.val() != ""
-            that.addClass 'notEmpty'
-        else
-            that.removeClass 'notEmpty'
+        that.removeClass 'notEmpty'
+        that.addClass     'notEmpty' if that.val() != ""
+
 
 
 

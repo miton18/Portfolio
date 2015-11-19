@@ -70,6 +70,7 @@
     "body-parser": "^1.14.1",
     "compression": "^1.6.0",
     "express": "^4.13.3",
-    "tingodb": "^0.4.2"
+    "tingodb": "^0.4.2",
+    "visualcaptcha": "^0.1.1"
   }
 }

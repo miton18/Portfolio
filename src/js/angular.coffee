@@ -1,7 +1,50 @@
 app = angular.module('app', [])
 
 
-app.controller 'lang', ['$scope', ($scope)->
+app.controller 'formCtrl', ['$scope', '$http', ($scope, $http)->
+
+    $scope.isRobot  = true
+    $scope.wait     = false
+    $scope.infos     = []
+    emailReg = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+
+    $scope.robot = (state)->
+        $scope.isRobot = state
+
+    $scope.send = ->
+
+        $scope.wait = true
+        $scope.infos = []
+
+        unless emailReg.test($scope.mail)
+            $scope.infos.push {
+                type: 'error'
+                txt:  'Vérifiez votre E-mail'
+            }
+            $scope.wait = false
+            return
+        if $scope.isRobot
+            $scope.infos.push {
+                type: 'error'
+                txt:  'Cliquez sur "Non", pour vérifier que vous n\etes pas un robot'
+            }
+            $scope.wait = false
+            return
+        # on est bon en envoi
+
+        ###$http
+            method: 'POST'
+            #url:    'http://remi.rcdinfo.fr/messages'
+            url:    'http://127.0.0.1/messages'
+            data:
+                email:      $scope.email
+                content:    $scope.content
+                name:       $scope.name
+        ###
+
+]
+
+app.controller 'langCtrl', ['$scope', ($scope)->
     $scope.competences = [
 
             logo: 'sql.png'

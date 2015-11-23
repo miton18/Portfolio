@@ -10,7 +10,20 @@ P                   = gulpLoadPlugins()
 server = P.livereload.listen
     start:  true
 
-gulp.task 'default', [ 'watch' ]
+gulp.task 'default', [
+    'webserver'
+    'watch'
+]
+
+gulp.task 'build', [
+    'JS:COFFEE'
+    'JS:VENDOR'
+    'JS:SERVER'
+    'CSS:SASS'
+    'CSS:VENDOR'
+    'HTML:JADE'
+    'img'
+]
 
 
 #------------------------------------------------------------
@@ -59,14 +72,15 @@ gulp.task 'CSS:VENDOR', ->
 gulp.task 'JS:VENDOR', ->
 
     gulp.src [
-        'src/js/vendor/angular.min.js'
+        'src/js/vendor/angular.js'
+        'src/js/vendor/angular-animate.js'
         'src/js/vendor/jquery.js'
         'src/js/vendor/*.js'
     ]
         .pipe P.plumber()
         .pipe P.concat('vendor.js')
-        .pipe P.jsmin()
-        .pipe P.uglify()
+        #.pipe P.jsmin()
+        #.pipe P.uglify()
         .pipe gulp.dest('build/')
         .pipe P.livereload()
 
@@ -116,16 +130,7 @@ gulp.task 'webserver', ->
             port: 8080
 
 #------------------------------------------------------------
-gulp.task 'watch', [
-    'webserver'
-    'JS:COFFEE'
-    'JS:VENDOR'
-    'JS:SERVER'
-    'CSS:SASS'
-    'CSS:VENDOR'
-    'HTML:JADE'
-    'img'
-], ->
+gulp.task 'watch', ->
 
     gulp.watch 'src/**/*.jade', ['HTML:JADE']
         .on 'change', (e) ->

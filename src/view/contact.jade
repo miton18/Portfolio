@@ -33,16 +33,19 @@ article#quatre
                     .content Laissez moi un message
 
                 form( data-ng-controller="formCtrl" data-ng-submit="send()")
+
                     div
                         input( type="text" data-ng-model="name" ng-disabled="wait")
                         label Nom
+
                     div
-                        input( type="email" data-ng-model="mail" ng-disabled="wait")
+                        input( type="email" data-ng-model="email" ng-disabled="wait")
                         label E-mail
 
                     div
                         textarea( type="text" data-ng-model="content" data-ng-disabled="wait")
                         label Message
+
                     div#antir
                         label Je suis un robot:
                             i.fa.fa-2x( data-ng-class="isRobot ? 'fa-thumbs-o-down' : 'fa-thumbs-o-up'")
@@ -50,10 +53,12 @@ article#quatre
                             button.ui.positive.button( type="button" data-ng-click="robot(false)") Non
                             .or(data-text="ou")
                             button.ui.button( type="button" data-ng-click="robot(true)") Oui
+
                     div
                         input.ui.inverted.blue.button( type="submit" value="Envoyer" ng-disabled="wait")
+
                     div
-                        .ui.message.error( data-ng-repeat="info in infos" data-ng-class="info.type")
-                            .header Aie...
+                        .ui.message( data-ng-repeat="info in infos" data-ng-class="info.type")
+                            .header {{(info.type == 'success')? 'Tout est bon' : 'Il y a une erreur'}}
                             p {{info.txt}}
 

@@ -1,4 +1,4 @@
-app = angular.module('app', [])
+app = angular.module 'app', ['ngAnimate']
 
 
 app.controller 'formCtrl', ['$scope', '$http', ($scope, $http)->
@@ -16,7 +16,7 @@ app.controller 'formCtrl', ['$scope', '$http', ($scope, $http)->
         $scope.wait = true
         $scope.infos = []
 
-        unless emailReg.test($scope.mail)
+        unless emailReg.test($scope.email)
             $scope.infos.push {
                 type: 'error'
                 txt:  'Vérifiez votre E-mail'
@@ -32,7 +32,7 @@ app.controller 'formCtrl', ['$scope', '$http', ($scope, $http)->
             return
         # on est bon en envoi
 
-        ###$http
+        $http
             method: 'POST'
             #url:    'http://remi.rcdinfo.fr/messages'
             url:    'http://127.0.0.1/messages'
@@ -40,156 +40,190 @@ app.controller 'formCtrl', ['$scope', '$http', ($scope, $http)->
                 email:      $scope.email
                 content:    $scope.content
                 name:       $scope.name
-        ###
+
+        .then (rep)->
+            if rep.data.error?
+                $scope.infos.push
+                    type: 'error'
+                    txt:  "Votre message n'a pas été accepté: #{rep.data.error}"
+            else
+                $scope.infos.push
+                    type: 'success'
+                    txt:  'Votre message a bien été transmit.'
+            $scope.wait = false
+
+        , (rep)->
+            $scope.infos.push
+                type: 'error'
+                txt:  'Impossible de déposer le message sur le serveur.... Vous pouvez utiliser contact@rcoll.fr'
+            $scope.wait = false
+
 
 ]
 
+
+app.filter 'unique', ->
+    return (collection, keyname)->
+        output  = []
+        keys    = []
+
+        angular.forEach collection, (item)->
+            key = item[keyname]
+            if keys.indexOf(key) == -1
+                keys.push key
+                output.push item
+        return output
+
 app.controller 'langCtrl', ['$scope', ($scope)->
+
+    $scope.switchFilter = (cat)->
+        $scope.catFilter = cat
+
     $scope.competences = [
 
             logo: 'sql.png'
             name: 'SQL'
-            cat:  'lang'
+            cat:  'Langage'
          ,
 
             logo: 'angularjs.png'
             name: 'AngularJs'
-            cat:  'fram'
+            cat:  'Framework'
          ,
             logo: 'mysql.png'
             name: 'MySQL'
-            cat:  'logi'
+            cat:  'Logiciel'
          ,
             logo: 'apache.png'
             name: 'Apache'
-            cat:  'logi'
+            cat:  'Logiciel'
          ,
             logo: 'arch.png'
             name: 'ArchLinux'
-            cat:  'os'
+            cat:  'OS'
          ,
-            logo: 'backbonejs.jpeg'
+            logo: 'backbonejs.png'
             name: 'BackboneJs'
-            cat:  'fram'
+            cat:  'Framework'
          ,
             logo: 'bootstrap.png'
             name: 'Bootstrap'
-            cat:  'fram'
+            cat:  'Framework'
          ,
             logo: 'c.png'
             name: 'C'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'cisco.png'
             name: 'Cisco'
-            cat:  'logi'
+            cat:  'Logiciel'
          ,
             logo: 'coffeescript.png'
             name: 'Coffee Script'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'couchdb.png'
             name: 'CouchDB'
-            cat:  'logi'
+            cat:  'Logiciel'
          ,
             logo: 'cplusplus.png'
             name: 'C++'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'css.png'
             name: 'CSS'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'dart.png'
             name: 'Dart'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'debian.png'
             name: 'Débian'
-            cat:  'os'
+            cat:  'OS'
          ,
             logo: 'gulp.png'
             name: 'Gulp'
-            cat:  'fram'
+            cat:  'Framework'
          ,
             logo: 'html.png'
             name: 'HTML'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'ionic.png'
             name: 'Ionic'
-            cat:  'fram'
+            cat:  'Framework'
          ,
             logo: 'jade.svg'
             name: 'Jade'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'java.png'
             name: 'Java'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'jquery.png'
             name: 'Jquery'
-            cat:  'fram'
+            cat:  'Framework'
          ,
             logo: 'js.png'
             name: 'Javascript'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'less.png'
             name: 'Less'
-            cat:  'lang'
+            cat:  'Langage'
          ,
             logo: 'limonade.png'
             name: 'Limonade'
-            cat:  'fram'
+            cat:  'Framework'
          ,
             logo: 'linux.png'
             name: 'Linux'
-            cat:  'os'
+            cat:  'OS'
          ,
             logo: 'mongodb.png'
             name: 'MongoDB'
-            cat:  'logi'
+            cat:  'Logiciel'
         ,
             logo: 'node.png'
             name: 'Node'
-            cat:  'logi'
+            cat:  'Logiciel'
         ,
             logo: 'office.png'
             name: 'Office'
-            cat:  'logi'
+            cat:  'Logiciel'
         ,
             logo: 'PHP.png'
             name: 'PHP'
-            cat:  'lang'
+            cat:  'Langage'
         ,
             logo: 'python.png'
             name: 'Python'
-            cat:  'lang'
+            cat:  'Langage'
         ,
             logo: 'qt.png'
             name: 'QT'
-            cat:  'fram'
+            cat:  'Framework'
         ,
             logo: 'sass.png'
             name: 'SASS'
-            cat:  'lang'
+            cat:  'Langage'
         ,
             logo: 'SDL.png'
             name: 'SDL'
-            cat:  'fram'
+            cat:  'Framework'
         ,
             logo: 'ubuntu.png'
             name: 'Ubuntu'
-            cat:  'os'
+            cat:  'OS'
         ,
             logo: 'vhdl.png'
             name: 'VHDL'
-            cat:  'lang'
+            cat:  'Langage'
         ,
             logo: 'windows.png'
             name: 'Windows'
-            cat:  'os'
+            cat:  'OS'
     ]
 ]

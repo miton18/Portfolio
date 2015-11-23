@@ -27,7 +27,7 @@ authCheck = (req, res, next)->
 
     user = auth req
 
-    unless user and user.name and user.pass
+    unless user? and user.name? and user.pass?
         unauthorized res
 
     if user.name == 'miton' && user.pass == 'notim'
@@ -90,6 +90,7 @@ app.post '/messages', (req, res)->
     email   = req.body.email    if req.body.email?
     content = req.body.content  if req.body.content?
     name    = req.body.name     if req.body.name?
+    ip      = req.headers["X-Forwarded-For"] || req.headers["x-forwarded-for"] || req.client.remoteAddress
 
     unless email? and content? and name?
         res.json error: 'bad request'
@@ -101,25 +102,26 @@ app.post '/messages', (req, res)->
         res.json error: 'bad email'
         return
 
-    messages.insert
-        email:      email
-        content:    content
-        time:       Date.now()
-    ,
-        (err, result)->
-            if err?
-                res.json error: err
-            else
-                res.json id: (result[0])._id
-
-app.delete '/messages', (req, res)->
+    messages.find
+        messages.insert
+            email:      email
+            content:    content
+            time:       Date.now()
+            ip:         ip
+        ,
+            (err, result)->
+                if err?
+                    res.json error: err
+                else
+                    res.json id: (result[0])._id
+###app.delete '/messages', (req, res)->
 
     messages.remove {}, (err, result)-> # remove all
         if err?
             res.json error: err
         else
             res.json result
-
+###
 process.on 'uncaughtException', (err) ->
 
   console.log 'Caught exception: ' + err

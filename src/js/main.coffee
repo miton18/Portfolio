@@ -1,3 +1,5 @@
+app = angular.module 'app', ['ngAnimate']
+
 HEIGHT = 0
 
 cadre = ->

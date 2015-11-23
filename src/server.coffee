@@ -79,11 +79,12 @@ app.post '/update', (req, res) ->
 
 app.get '/messages', authCheck, (req, res)->
 
-    messages.find({}).toArray (err, items)->
+    messages.find({}).toArray (err, messages)->
 
-        unless err
-            res.json items
-        res.json err
+        if err?
+            res.json err
+        else
+            res.json messages
 
 app.post '/messages', (req, res)->
 

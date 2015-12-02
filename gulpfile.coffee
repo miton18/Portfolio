@@ -72,6 +72,7 @@ gulp.task 'CSS:VENDOR', ->
 gulp.task 'JS:VENDOR', ->
 
     gulp.src [
+        'src/js/vendor/TweenLite.min.js'
         'src/js/vendor/angular.js'
         'src/js/vendor/angular-animate.js'
         'src/js/vendor/jquery.js'

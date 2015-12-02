@@ -66,7 +66,7 @@ app.controller 'langCtrl', ['$scope', ($scope)->
             name: 'Débian'
             cat:  'OS'
          ,
-            logo: 'gulp.png'
+            logo: 'gulp.jpg '
             name: 'Gulp'
             cat:  'Framework'
          ,

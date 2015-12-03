@@ -7,7 +7,17 @@ article#trois( data-ng-controller="langCtrl")
                 .ui.form
                     .inline.fields
                         label( for="catc") Catégories:
+                        .field
+
+
+
+                            .ui.radio.checkbox
+                                input( name="catc" type="radio" ng-click="switchFilter()")
+                                label Tout
+
                         .field( ng-repeat="competence in competences | unique:'cat'" )
+
+
                             .ui.radio.checkbox
                                 input( name="catc" type="radio" ng-click="switchFilter(competence.cat)")
                                 label {{competence.cat}}

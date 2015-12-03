@@ -144,7 +144,7 @@ app.controller('langCtrl', [
         name: 'AngularJs',
         cat: 'Framework'
       }, {
-        logo: 'mysql.png',
+        logo: 'mysql.jpg',
         name: 'MySQL',
         cat: 'Logiciel'
       }, {
@@ -152,7 +152,7 @@ app.controller('langCtrl', [
         name: 'Apache',
         cat: 'Logiciel'
       }, {
-        logo: 'arch.png',
+        logo: 'arch.jpg',
         name: 'ArchLinux',
         cat: 'OS'
       }, {
@@ -164,19 +164,19 @@ app.controller('langCtrl', [
         name: 'Bootstrap',
         cat: 'Framework'
       }, {
-        logo: 'c.png',
+        logo: 'c.jpg',
         name: 'C',
         cat: 'Langage'
       }, {
-        logo: 'cisco.png',
+        logo: 'cisco.jpg',
         name: 'Cisco',
         cat: 'Logiciel'
       }, {
-        logo: 'coffeescript.png',
+        logo: 'coffeescript.jpg',
         name: 'Coffee Script',
         cat: 'Langage'
       }, {
-        logo: 'couchdb.png',
+        logo: 'couchdb.jpg',
         name: 'CouchDB',
         cat: 'Logiciel'
       }, {
@@ -184,7 +184,7 @@ app.controller('langCtrl', [
         name: 'C++',
         cat: 'Langage'
       }, {
-        logo: 'css.png',
+        logo: 'css.jpg',
         name: 'CSS',
         cat: 'Langage'
       }, {
@@ -192,7 +192,7 @@ app.controller('langCtrl', [
         name: 'Dart',
         cat: 'Langage'
       }, {
-        logo: 'debian.png',
+        logo: 'debian.jpg',
         name: 'Débian',
         cat: 'OS'
       }, {
@@ -204,11 +204,11 @@ app.controller('langCtrl', [
         name: 'HTML',
         cat: 'Langage'
       }, {
-        logo: 'ionic.png',
+        logo: 'ionic.jpg',
         name: 'Ionic',
         cat: 'Framework'
       }, {
-        logo: 'jade.svg',
+        logo: 'jade.jpg',
         name: 'Jade',
         cat: 'Langage'
       }, {
@@ -216,7 +216,7 @@ app.controller('langCtrl', [
         name: 'Java',
         cat: 'Langage'
       }, {
-        logo: 'jquery.png',
+        logo: 'jquery.jpg',
         name: 'Jquery',
         cat: 'Framework'
       }, {
@@ -224,7 +224,7 @@ app.controller('langCtrl', [
         name: 'Javascript',
         cat: 'Langage'
       }, {
-        logo: 'less.png',
+        logo: 'less.jpg',
         name: 'Less',
         cat: 'Langage'
       }, {
@@ -236,19 +236,19 @@ app.controller('langCtrl', [
         name: 'Linux',
         cat: 'OS'
       }, {
-        logo: 'mongodb.png',
+        logo: 'mongodb.jpg',
         name: 'MongoDB',
         cat: 'Logiciel'
       }, {
-        logo: 'node.png',
+        logo: 'node.jpg',
         name: 'Node',
         cat: 'Logiciel'
       }, {
-        logo: 'office.png',
+        logo: 'office.jpg',
         name: 'Office',
         cat: 'Logiciel'
       }, {
-        logo: 'PHP.png',
+        logo: 'PHP.jpg',
         name: 'PHP',
         cat: 'Langage'
       }, {
@@ -260,15 +260,15 @@ app.controller('langCtrl', [
         name: 'QT',
         cat: 'Framework'
       }, {
-        logo: 'sass.png',
+        logo: 'sass.jpg',
         name: 'SASS',
         cat: 'Langage'
       }, {
-        logo: 'SDL.png',
+        logo: 'SDL.jpg',
         name: 'SDL',
         cat: 'Framework'
       }, {
-        logo: 'ubuntu.png',
+        logo: 'ubuntu.jpg',
         name: 'Ubuntu',
         cat: 'OS'
       }, {
@@ -279,6 +279,10 @@ app.controller('langCtrl', [
         logo: 'windows.png',
         name: 'Windows',
         cat: 'OS'
+      }, {
+        logo: 'docker.jpg',
+        name: 'Docker',
+        cat: 'Framework'
       }
     ];
   }

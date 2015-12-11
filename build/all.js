@@ -28,8 +28,8 @@ $(document).ready(function() {
     nextSlide = $(this).parent('article').next();
     return scrollTo(nextSlide);
   });
-  $('.plax-head-img').plaxify({
-    "xRange": 15,
+  $('.plax-img').plaxify({
+    "xRange": 25,
     "yRange": 0,
     "invert": true
   });

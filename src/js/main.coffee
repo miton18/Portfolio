@@ -39,9 +39,9 @@ $ document
 
     # PARALLAX
     # https://github.com/cameronmcefee/plax
-    $ '.plax-head-img'
+    $ '.plax-img'
     .plaxify
-        "xRange":   15
+        "xRange":   25
         "yRange":   0
         "invert":   true
     $.plax.enable()

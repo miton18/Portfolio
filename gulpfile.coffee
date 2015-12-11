@@ -42,6 +42,7 @@ gulp.task 'CSS:SASS', ->
         'src/css/main.sass'
     ]
         .pipe P.plumber()
+        .pipe P.plumberNotifier()
         .pipe P.sass().on('error', gutil.log) #P.sass.logError
         .pipe P.autoprefixer
             browsers: [ 'last 2 version' ]
@@ -58,6 +59,7 @@ gulp.task 'CSS:VENDOR', ->
 
     gulp.src 'src/css/vendor/*.css'
         .pipe P.plumber()
+        .pipe P.plumberNotifier()
         .pipe P.autoprefixer
             browsers: [ 'last 2 version' ]
             remove: true
@@ -79,6 +81,7 @@ gulp.task 'JS:VENDOR', ->
         'src/js/vendor/*.js'
     ]
         .pipe P.plumber()
+        .pipe P.plumberNotifier()
         .pipe P.concat('vendor.js')
         #.pipe P.jsmin()
         #.pipe P.uglify()
@@ -93,6 +96,7 @@ gulp.task 'JS:COFFEE', ->
         'src/js/**/*.coffee'
     ]
         .pipe P.plumber()
+        .pipe P.plumberNotifier()
         .pipe P.coffee
             bare: true
         .on 'error', gutil.log
@@ -115,6 +119,7 @@ gulp.task 'JS:SERVER', ->
 
     gulp.src 'src/server.coffee'
         .pipe P.plumber()
+        .pipe P.plumberNotifier()
         .pipe P.coffee()
         .pipe P.uglify()
         .pipe gulp.dest( './' )

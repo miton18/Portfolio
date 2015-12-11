@@ -23,9 +23,10 @@ article#trois( data-ng-controller="langCtrl")
                                 label {{competence.cat}}
 
             .row
-                .two.column.myAnimate( data-ng-repeat="competence in competences | filter: catFilter | orderBy: ['cat', 'name']")
+                .column.myAnimate( data-ng-repeat="competence in competences | filter: catFilter | orderBy: ['cat', 'name']")
                     .ui.segment( class="center aligned" )
                         div( class="ui bottom attached label") {{competence.name}}
                         img( data-ng-src="img/lang/{{competence.logo}}" style="width: 100%")
+
 
     i.fa.fa-5x.fa-angle-double-down.next

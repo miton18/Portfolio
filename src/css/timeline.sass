@@ -1,4 +1,5 @@
 @import "variables.sass"
+@import "mixins.sass"
 
 $bleuCiel: #afdcf8
 $bleuM:    #6cbfee
@@ -29,6 +30,12 @@ $gris:     #bdd0db
       padding-right: 100px
       padding-top: 10px
       position: absolute
+
+      @include phone
+        position: relative
+        span
+            color: $main !important
+
       span
         display: block
         text-align: center
@@ -94,6 +101,7 @@ $gris:     #bdd0db
   .cbp_tmtimeline > li .cbp_tmtime span:last-child
     font-size: 1.5em
 
+
 @media screen and (max-width: 47.2em)
   .cbp_tmtimeline
     &:before
@@ -102,9 +110,9 @@ $gris:     #bdd0db
       .cbp_tmtime
         width: 100%
         position: relative
-        padding: 0 0 20px 0
+        padding: 20px 0 20px 0
         span
-          text-align: left
+          text-align: right
       .cbp_tmlabel
         margin: 0 0 30px 0
         padding: 1em

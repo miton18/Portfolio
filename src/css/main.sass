@@ -61,9 +61,11 @@ body
                 p
                     color: $grey
                     //text-shadow: 0 0 1px $noir
-                pointbackground
-                    @include tablet
-                        display: none
+            pointbackground
+                @include tablet
+                    display: none
+                @include phone
+                    display: none
 
         &#deux
             background-color: $second
@@ -128,10 +130,15 @@ body
 
             h4
                 display: inline-flex
+
             div.ui
                 height: 100%
 
-                //.column.middle.aligned
+                .vertical.menu.inverted
+                    @include tablet
+                        width: 100%
+                        text-align: center
+
                 .grid.verticaly.divided.inverted
                     margin-bottom: 0 !important
                 form
@@ -147,7 +154,6 @@ body
                         margin-bottom: 10%
 
                         input:not([type="submit"])
-
                             width: 100%
                             font-size: 1.5em
                             background-color: transparent
@@ -193,7 +199,6 @@ body
                                 color: white
                                 transition-duration: 0.5s
                     #antir
-
                         margin-bottom: 6rem
 
                         label
@@ -209,7 +214,6 @@ body
                             margin: auto
                             float: right
 
-                            .ui.button
                     .ui.blue
                         top: 3rem
                         width: 100%

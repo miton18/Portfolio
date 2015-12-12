@@ -28,12 +28,14 @@ $(document).ready(function() {
     nextSlide = $(this).parent('article').next();
     return scrollTo(nextSlide);
   });
-  $('.plax-img').plaxify({
-    "xRange": 25,
-    "yRange": 0,
-    "invert": true
-  });
-  $.plax.enable();
+  if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    $('.plax-img').plaxify({
+      "xRange": 25,
+      "yRange": 0,
+      "invert": true
+    });
+    $.plax.enable();
+  }
   $('#progression').progress({
     percent: etude(),
     text: {

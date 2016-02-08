@@ -20,8 +20,11 @@ body
         
         .next
             position: absolute
-            display: flex
+            display: block   
+            color: white
             bottom: 0
+            h3
+                position: relative
 
         &#un
             position:           relative
@@ -36,7 +39,7 @@ body
                 text-align: center
                 
                 img 
-                    width:          80%
+                    width:          75%
                     border:         10px solid $bleu
                     border-radius:  100%
                 
@@ -77,8 +80,12 @@ body
             background-color:   $bleu
             height:             auto !important
             margin:             auto
-            
             margin-bottom: 3rem
+            
+            .column.myAnimate
+                padding: 0
+                margin: 0.5rem
+                
 
         &#quatre
 
@@ -175,6 +182,10 @@ body
                     .ui.blue
                         top: 3rem
                         width: 100%
+
+                a.item
+                    i.blue:before
+                        color: $bleu
 
 i
     &.fa

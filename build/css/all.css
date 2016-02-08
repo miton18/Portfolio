@@ -32,6 +32,12 @@
 .nomargin {
   margin: 0 !important; }
 
+.centered {
+  text-align: center; }
+
+.block {
+  display: block !important; }
+
 .myAnimate.ng-leave {
   -webkit-animation: fadeOutUp 0.5s 1s;
           animation: fadeOutUp 0.5s 1s; }
@@ -57,6 +63,12 @@
 
 .nomargin {
   margin: 0 !important; }
+
+.centered {
+  text-align: center; }
+
+.block {
+  display: block !important; }
 
 .timeline {
   margin: 0;
@@ -196,10 +208,11 @@ body {
     margin-bottom: 14px; }
     body article .next {
       position: absolute;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
+      display: block;
+      color: white;
       bottom: 0; }
+      body article .next h3 {
+        position: relative; }
     body article#un {
       position: relative;
       background-color: #212121; }
@@ -210,7 +223,7 @@ body {
         color: #33c4e8;
         text-align: center; }
         body article#un div img {
-          width: 80%;
+          width: 75%;
           border: 10px solid #33c4e8;
           border-radius: 100%; }
         body article#un div a {
@@ -242,6 +255,9 @@ body {
       height: auto !important;
       margin: auto;
       margin-bottom: 3rem; }
+      body article#trois .column.myAnimate {
+        padding: 0;
+        margin: 0.5rem; }
     body article#quatre {
       background-color: #212121;
       margin-bottom: 0; }
@@ -339,6 +355,8 @@ body {
           body article#quatre div.ui form .ui.blue {
             top: 3rem;
             width: 100%; }
+        body article#quatre div.ui a.item i.blue:before {
+          color: #33c4e8; }
 
 i.fa:before {
   font-family: 'fontAwesome'; }

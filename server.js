@@ -1,1 +1,142 @@
-(function(){var e,n,o,t,r,i,s,a,u,l,c;a=require("express"),t=require("body-parser"),n=require("basic-auth"),r=require("compression"),c=require("tingodb")().Db,s=require("child_process").exec,l=80|process.env.npm_package_config_port,e=a(),e.listen(l),console.log("starting on "+l),i=new c("./data",{nativeObjectID:!0}),u=i.collection("messages"),o=function(e,o,t){var r,i;return r=function(e){return e.set("WWW-Authenticate","Basic realm=Authentification requise"),e.sendStatus(401)},i=n(e),(null==i||null==i.name||null==i.pass)&&r(o),"miton"===i.name&&"notim"===i.pass?t():r(o)},e.use(t.urlencoded({extended:!0})),e.use(t.json()),e.use(r()),e.use("/",a["static"](__dirname+"/build")),e.post("/update",function(e,n){var o,t,r,i;if(e.body.ref){i=e.body.ref,r="";try{s("git pull origin V3",function(e,n,o){e&&(r+=e),n&&(r+=n),o&&(r+=o)})}catch(t){o=t,r+=o}n.send("Update to: "+i+" "+r)}}),e.get("/messages",o,function(e,n){return u.find({}).toArray(function(e,o){return e||n.json(o),n.json(e)})}),e.post("/messages",function(e,n){var o,t,r,i,s;return null!=e.body.email&&(t=e.body.email),null!=e.body.content&&(o=e.body.content),null!=e.body.name&&(i=e.body.name),r=e.headers["X-Forwarded-For"]||e.headers["x-forwarded-for"]||e.client.remoteAddress,null==t||null==o||null==i?void n.json({error:"bad request"}):(s=/^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$/i,s.test(t)?u.insert({email:t,content:o,time:Date.now(),ip:r},function(e,o){return null!=e?n.json({error:e}):n.json({id:o[0]._id})}):void n.json({error:"bad email"}))}),process.on("uncaughtException",function(e){console.log("Caught exception: "+e)})}).call(this);
+(function() {
+  var app, auth, bodyParser, compression, db, env, express, logModel, messageModel, mongoose, port;
+
+  express = require('express');
+
+  bodyParser = require('body-parser');
+
+  auth = require('basic-auth');
+
+  compression = require('compression');
+
+  mongoose = require('mongoose');
+
+  env = process.env;
+
+  port = env.npm_package_config_port | 80;
+
+  app = express();
+
+  messageModel = require('./message');
+
+  logModel = require('./log');
+
+  app.listen(port);
+
+  console.log("starting on " + port);
+
+  db = mongoose.connect('mongodb://u80kgqmkrdvdt4g:GlMiU5fqL16rJZJg4ydo@b4rrhixa0ttqdr0-mongodb.services.clever-cloud.com:27017/b4rrhixa0ttqdr0', function(err) {
+    if (err != null) {
+      return console.log(err);
+    } else {
+      return console.log('db connected');
+    }
+  });
+
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }));
+
+  app.use(bodyParser.json());
+
+  app.use(compression());
+
+  app.use('/', express["static"](__dirname + "/build"));
+
+  app.post('/update', function(req, res) {
+    var e, error1, rep, tag;
+    if (req.body.ref) {
+      tag = req.body.ref;
+      rep = '';
+      try {
+        exec('git pull origin V3', function(error, stdout, stderr) {
+          if (error) {
+            rep += error;
+          }
+          if (stdout) {
+            rep += stdout;
+          }
+          if (stderr) {
+            rep += stderr;
+          }
+        });
+      } catch (error1) {
+        e = error1;
+        rep += e;
+      }
+      res.send("Update to: " + tag + " " + rep);
+    }
+  });
+
+  app.get('/messages', function(req, res) {
+    return messageModel.find(null, function(err, messages) {
+      if (err != null) {
+        console.log(err);
+      }
+      return res.json(messages);
+    });
+  });
+
+  app.post('/messages', function(req, res) {
+    var content, email, ip, message, name, regEmail;
+    if (req.body.email != null) {
+      email = req.body.email;
+    }
+    if (req.body.content != null) {
+      content = req.body.content;
+    }
+    if (req.body.name != null) {
+      name = req.body.name;
+    }
+    ip = req.headers["X-Forwarded-For"] || req.headers["x-forwarded-for"] || req.client.remoteAddress;
+    if (!((email != null) && (content != null) && (name != null))) {
+      res.json({
+        error: 'bad form input'
+      });
+      return;
+    }
+    regEmail = /^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$/i;
+    if (!regEmail.test(email)) {
+      res.json({
+        error: 'Bad email format'
+      });
+      return;
+    }
+    if (messageModel == null) {
+      res.json({
+        error: 'Database not ready'
+      });
+      return;
+    }
+    message = new messageModel({
+      email: email,
+      content: content,
+      ip: ip,
+      date: new Date()
+    });
+    return message.save(function(err) {
+      if (err != null) {
+        return res.json({
+          error: 'Problem'
+        });
+      } else {
+        return res.json({
+          error: null
+        });
+      }
+    });
+  });
+
+
+  /*app.delete '/messages', (req, res)->
+      
+      messageModel.remove null, (err)->
+          res.json error: 'not deleted' if err?
+          res.json error: null
+   */
+
+  process.on('uncaughtException', function(err) {
+    console.log('Caught exception: ' + err);
+  });
+
+}).call(this);

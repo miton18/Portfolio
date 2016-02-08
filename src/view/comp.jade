@@ -1,4 +1,4 @@
-article#trois( data-ng-controller="langCtrl")
+article#trois( data-ng-controller="langCtrl" )
     .ui.container
         .ui.six.column.grid.stackable
             .row
@@ -6,27 +6,24 @@ article#trois( data-ng-controller="langCtrl")
                 hr
                 .ui.form
                     .inline.fields
-                        label( for="catc") Catégories:
+                        label( for="catc" ) Catégories:
                         .field
-
-
-
                             .ui.radio.checkbox
-                                input( name="catc" type="radio" ng-click="switchFilter()")
+                                input( name="catc" type="radio" ng-click="switchFilter()" )
                                 label Tout
 
                         .field( ng-repeat="competence in competences | unique:'cat'" )
 
 
                             .ui.radio.checkbox
-                                input( name="catc" type="radio" ng-click="switchFilter(competence.cat)")
+                                input( name="catc" type="radio" ng-click="switchFilter(competence.cat)" ng-checked="{{competence.cat == catFilter}}" )
                                 label {{competence.cat}}
-
             .row
                 .column.myAnimate( data-ng-repeat="competence in competences | filter: catFilter | orderBy: ['cat', 'name']")
                     .ui.segment( class="center aligned" )
                         div( class="ui bottom attached label") {{competence.name}}
-                        img( data-ng-src="img/lang/{{competence.logo}}" style="width: 100%")
+                        img( data-ng-src="img/lang/{{competence.logo}}" style="width: 100%" )
 
 
-    i.fa.fa-5x.fa-angle-double-down.next
+        .next
+            h3 Contactez moi

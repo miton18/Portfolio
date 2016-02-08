@@ -11,13 +11,6 @@ html
         // FAVICON
         link( rel="icon" type="image/icon" href="img/favicon.ico" )
 
-        script( rel="text/javascript" src="vendor.js" )
-        script( rel="text/javascript" src="all.js" )
-        // GOOGLE VERIF
-        meta( name="google-site-verification" content="Tqf6Zwnaep3CjcgYW_u2ODazfqOn5rQjugBUtFFxiPo" )
-        meta( name="google-site-verification" content="Tqf6Zwnaep3CjcgYW_u2ODazfqOn5rQjugBUtFFxiPo" )
-
-
     body( data-ng-app="app" )
         .load( class="ui three column centered grid")
             .row
@@ -26,12 +19,15 @@ html
                     i( class="fa fa-cog fa-spin fa-5x")
                     i( class="fa fa-cog fa-spin fa-2x reverse")
                     h2 Nous procédons au chargement de votre ingénieur
-        .nav
+        //.nav
             div
                 a(href="#quatre")
                     i( class="fa fa-envelope fa-3x")
         include view/intro.jade
+        include view/projets.jade
         include view/timeline.jade
         include view/comp.jade
         include view/contact.jade
+    script( rel="text/javascript" src="vendor.js" )
+    script( rel="text/javascript" src="all.js" )
 

@@ -16,8 +16,7 @@
     "start": "supervisor --watch server.js server.js"
   },
   "config": {
-    "port": "80",
-    "db-port": "81"
+    "port": "80"
   },
   "devDependencies": {
     "better-console": "^0.2.4",
@@ -34,6 +33,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.2.0",
     "gulp-copy": "0.0.2",
+    "gulp-cssnano": "^2.1.0",
     "gulp-dedupe": "0.0.2",
     "gulp-flatten": "^0.2.0",
     "gulp-header": "^1.7.1",
@@ -71,7 +71,7 @@
     "body-parser": "^1.14.1",
     "compression": "^1.6.0",
     "express": "^4.13.3",
-    "tingodb": "^0.4.2",
+    "mongoose": "^4.4.1",
     "visualcaptcha": "^0.1.1"
   }
 }

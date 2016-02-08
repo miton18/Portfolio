@@ -28,24 +28,13 @@ $ document
     $ '.zoo'
     .AniView
         animateThreshold:   HEIGHT / 5
-        scrollPollInterval: 10
-    
+        scrollPollInterval: 10 
 
     # GO TO NEXT SLIDE BUTTON
     $ '.next'
     .click ->
         nextSlide = $(this).parent('article').next()
         scrollTo nextSlide
-
-    # PARALLAX
-    # https://github.com/cameronmcefee/plax
-    unless /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-        $ '.plax-img'
-        .plaxify
-            "xRange":   25
-            "yRange":   0
-            "invert":   true
-        $.plax.enable()
 
     $('#progression').progress
         percent: etude()

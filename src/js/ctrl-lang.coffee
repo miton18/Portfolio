@@ -1,5 +1,7 @@
 app.controller 'langCtrl', ['$scope', ($scope)->
-
+    
+    $scope.catFilter = 'OS'
+    
     $scope.switchFilter = (cat)->
         $scope.catFilter = cat
 
@@ -102,10 +104,10 @@ app.controller 'langCtrl', ['$scope', ($scope)->
             name: 'Limonade'
             cat:  'Framework'
          ,
-            logo: 'linux.png'
-            name: 'Linux'
-            cat:  'OS'
-         ,
+            #logo: 'linux.png'
+            #name: 'Linux'
+            #cat:  'OS'
+         #,
             logo: 'mongodb.jpg'
             name: 'MongoDB'
             cat:  'Logiciel'

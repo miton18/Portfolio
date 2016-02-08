@@ -2,39 +2,24 @@ express     = require 'express'
 bodyParser  = require 'body-parser'
 auth        = require 'basic-auth'
 compression = require 'compression'
-tingodb     = require('tingodb')().Db
-exec        = require('child_process').exec
+mongoose    = require 'mongoose'
 
-port        = process.env.npm_package_config_port | 80
+env = process.env
+
+port        = env.npm_package_config_port | 80
 app         = express()
+
+messageModel = require './message'
+logModel     = require './log'
 
 app.listen  port
 console.log "starting on #{ port }"
 
-db          = new tingodb './data',
-                nativeObjectID: true
-messages    = db.collection "messages"
 
-#---------------------------------------------------------------
-#               Authentification function
-#---------------------------------------------------------------
-
-authCheck = (req, res, next)->
-
-    unauthorized = (res)->
-        res.set 'WWW-Authenticate', 'Basic realm=Authentification requise'
-        res.sendStatus 401
-
-    user = auth req
-
-    unless user? and user.name? and user.pass?
-        unauthorized res
-
-    if user.name == 'miton' && user.pass == 'notim'
-        next()
+db = mongoose.connect 'mongodb://u80kgqmkrdvdt4g:GlMiU5fqL16rJZJg4ydo@b4rrhixa0ttqdr0-mongodb.services.clever-cloud.com:27017/b4rrhixa0ttqdr0', (err)->
+    if err? then console.log err
     else
-        unauthorized res
-
+        console.log 'db connected'
 
 #---------------------------------------------------------------
 #               middlewares
@@ -56,10 +41,12 @@ app.use '/', express.static( "#{__dirname}/build" )
 #               dynamic routes
 #---------------------------------------------------------------
 
+#
+# Mise a jour automatique du site 
+#
 app.post '/update', (req, res) ->
 
   if req.body.ref
-
     tag = req.body.ref
     rep = ''
 
@@ -77,14 +64,11 @@ app.post '/update', (req, res) ->
     res.send "Update to: #{tag} #{rep}"
   return
 
-app.get '/messages', authCheck, (req, res)->
+app.get '/messages', (req, res)->
 
-    messages.find({}).toArray (err, messages)->
-
-        if err?
-            res.json err
-        else
-            res.json messages
+    messageModel.find null, (err, messages)->
+        console.log err if err?
+        res.json messages
 
 app.post '/messages', (req, res)->
 
@@ -94,35 +78,37 @@ app.post '/messages', (req, res)->
     ip      = req.headers["X-Forwarded-For"] || req.headers["x-forwarded-for"] || req.client.remoteAddress
 
     unless email? and content? and name?
-        res.json error: 'bad request'
+        res.json error: 'bad form input'
         return
 
     regEmail = /^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$/i
 
     unless regEmail.test( email )
-        res.json error: 'bad email'
+        res.json error: 'Bad email format'
         return
-
-    messages.find
-        messages.insert
-            email:      email
-            content:    content
-            time:       Date.now()
-            ip:         ip
-        ,
-            (err, result)->
-                if err?
-                    res.json error: err
-                else
-                    res.json id: (result[0])._id
-###app.delete '/messages', (req, res)->
-
-    messages.remove {}, (err, result)-> # remove all
+    unless messageModel?
+        res.json error: 'Database not ready'
+        return
+    
+    message = new messageModel
+        email:      email
+        content:    content
+        ip:         ip
+        date:       new Date()
+        
+    message.save (err)->
         if err?
-            res.json error: err
+            res.json error: 'Problem'
         else
-            res.json result
+            res.json error: null
+                  
+###app.delete '/messages', (req, res)->
+    
+    messageModel.remove null, (err)->
+        res.json error: 'not deleted' if err?
+        res.json error: null
 ###
+
 process.on 'uncaughtException', (err) ->
 
   console.log 'Caught exception: ' + err

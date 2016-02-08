@@ -28,14 +28,6 @@ $(document).ready(function() {
     nextSlide = $(this).parent('article').next();
     return scrollTo(nextSlide);
   });
-  if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    $('.plax-img').plaxify({
-      "xRange": 25,
-      "yRange": 0,
-      "invert": true
-    });
-    $.plax.enable();
-  }
   $('#progression').progress({
     percent: etude(),
     text: {
@@ -133,6 +125,7 @@ app.controller('formCtrl', [
 
 app.controller('langCtrl', [
   '$scope', function($scope) {
+    $scope.catFilter = 'OS';
     $scope.switchFilter = function(cat) {
       return $scope.catFilter = cat;
     };
@@ -233,10 +226,6 @@ app.controller('langCtrl', [
         logo: 'limonade.png',
         name: 'Limonade',
         cat: 'Framework'
-      }, {
-        logo: 'linux.png',
-        name: 'Linux',
-        cat: 'OS'
       }, {
         logo: 'mongodb.jpg',
         name: 'MongoDB',

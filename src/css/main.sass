@@ -1,79 +1,57 @@
-@import "font/font-awesome-4.4.0/scss/font-awesome.scss"
-@import "font/roboto.css"
 @import "mixins.sass"
 @import "variables.sass"
 @import "timeline.sass"
 
 // Copy font files into fonts in build
 
+
 *, *::before, *::after
 
     box-sizing: border-box
-    font-family: 'Roboto', sans-serif
 
 body
-
-    background-color: $third
+    background-color:   $bleu
 
     article
-        position: relative
-        //top: 20px
-        margin-bottom: 14px
-
-        // ########################################### Slides */
+        position:       relative
+        display:        flex
+        align-items:    center
+        margin-bottom:  14px
+        
+        .next
+            position: absolute
+            display: flex
+            bottom: 0
 
         &#un
-            position: relative
-            background-color: $bleu-opaque
-
-
-            img
-                position: absolute
-                bottom: 0
-                height: 75%
-                width: auto
-                z-index: 100
-
-                @include phone
-                    width: 100%
-                    text-align: center
-                    opacity: 0.9
+            position:           relative
+            background-color:   $noir
+            
+                
             div
-                position: absolute
-                padding: 20px
-                width: 50%
-                right: 0%
-                bottom: 20%
-                z-index: 100
-
-                font-size: 1.5em
-                border-radius: 10px
+                display:    inline-block
+                font-size:  1.2em
+                width:      45%
+                color:      $bleu
                 text-align: center
-
-                @include tablet
-                    //position: relative
-                    width: 100%
-                    left: 0
-
-                @include phone
-                    top: 0
-
-                p
-                    color: $grey
-                    //text-shadow: 0 0 1px $noir
-            pointbackground
-                @include tablet
-                    display: none
-                @include phone
-                    display: none
+                
+                img 
+                    width:          80%
+                    border:         10px solid $bleu
+                    border-radius:  100%
+                
+                a
+                    color:           $bleu + 10
+                    font-weight:     bold
+                    text-decoration: underline
 
         &#deux
-            background-color: $second
+            background-color: $noir
             height: auto !important
 
             h2 i
                 vertical-align: middle
-                padding-right: 10px
+                padding-right:  10px
 
             a i::before
                 color: $noir
@@ -82,51 +60,30 @@ body
             @include phone
 
                 .cbp_tmlabel
-                    width: 100%
+                    width:  100%
                     margin: 30px 0
 
                 .cbp_tmicon
                     display: none
 
                 .cbp_tmtime
-                    z-index: 999
-                    width: 100%
-                    padding-right: 15px
+                    z-index:        999
+                    width:          100%
+                    padding-right:  15px
 
                     span
                         color: $noir
         &#trois
-            background-color: $main
-            height: auto !important
-            margin: auto
-
-            @include tablet
-                padding: 0
-
-            .ui.segment
-
-                filter: grayscale(0.8)
-                margin-bottom: 30px
-                transition: all 0.2s ease
-
-                &:hover
-                    filter: grayscale(0)
-                @include tablet
-                    margin: 0
-                    padding: 0
-
-            .column
-                @include tablet
-                    width: 33% !important
-                    display: inline
-                    margin-bottom: 0
-                    padding: 0
+            background-color:   $bleu
+            height:             auto !important
+            margin:             auto
+            
+            margin-bottom: 3rem
 
         &#quatre
 
-            background-color: $second
-            margin-bottom: 0
-            height: auto !important
+            background-color:   $noir
+            margin-bottom:      0
 
             h4
                 display: inline-flex
@@ -136,7 +93,7 @@ body
 
                 .vertical.menu.inverted
                     @include tablet
-                        width: 100%
+                        width:      100%
                         text-align: center
 
                 .grid.verticaly.divided.inverted
@@ -145,31 +102,32 @@ body
                     margin: auto 0
 
                     &.ui.loading.form:before
-                        background-color: rgba(0, 0, 255, 0.24)
-                        box-shadow: 0 0 10px 20px rgba(0, 0, 255, 0.24)
+                        background-color:   rgba(0, 0, 255, 0.24)
+                        box-shadow:         0 0 10px 20px rgba(0, 0, 255, 0.24)
                     div
-                        position: relative
-                        width: 100%
-                        margin-top: 10%
-                        margin-bottom: 10%
+                        position:       relative
+                        width:          100%
+                        margin-top:     10%
+                        margin-bottom:  10%
 
                         input:not([type="submit"])
-                            width: 100%
-                            font-size: 1.5em
-                            background-color: transparent
-                            @include bottom-border($noir)
+                            display:            block
+                            width:              100%
+                            font-size:          1.5em
+                            background-color:   transparent
+                            color:              $bleu
+                            @include bottom-border(white)
                             outline: none
-                            color: $third
 
-                            &:focus, &.notEmpty
-                                @include bottom-border($main)
+                            &:focus, &.notEmpty /* input:focus */
+                                @include bottom-border($bleu)
 
                                 & + label
-                                color:  $main
-                                bottom: 2rem
+                                color:  $bleu
+                                top:    -2rem
                                 transition-duration: 0.5s
 
-                            & ~ label /*lavel de l'input correspondant*/
+                            & ~ label /*label de l'input correspondant*/
                                 position:   absolute
                                 bottom:     0.5rem
                                 left:       0.2rem
@@ -179,16 +137,16 @@ body
                             width: 100%
                             min-height: 12rem
                             resize: none
-                            background-color: $second
-                            color: $third
+                            background-color: $noir
+                            color: $bleu
                             font-size: 1.3em
                             outline: none
-                            @include bottom-border($noir)
+                            @include bottom-border(white)
 
                             &:focus, &.notEmpty
-                                @include bottom-border($main)
+                                @include bottom-border($bleu)
                                 & + label
-                                    color: $main
+                                    color: $bleu
                                     top: -1.5rem
                                     transition-duration: 0.5s
                             & ~ label /*label du textarea*/
@@ -218,81 +176,23 @@ body
                         top: 3rem
                         width: 100%
 
+i
+    &.fa
+        &:before
+            font-family: 'fontAwesome'   
 
+// Loader before show the site
+.load
+    position:   fixed
+    width:      100%
+    height:     100%
+    z-index:    9999
+    margin:     0 !important
+    background-color: $noir
 
-
-                            //########################################### Global
-
-        h1
-            color: $third
-            text-shadow: 0 0 1px $noir
-
-        a.high
-                padding: 1px 10px
-                color: $main
-                border-radius: 5px
-                background-color: transparentize($noir, 0.5)
-                transition: all 0.5s
-
-                &:hover
-                    color: $noir - 10
-                    background-color: $main
-
+    h2
+        color: $bleu
+        text-shadow: 1px 1px 3px $noir
     i
-
-        &.fa
-            &::before
-                font-family: 'FontAwesome'
-
-            &.next
-                position: absolute
-                left: calc( 50% - 0.5em )
-                bottom: 8%
-                color: rgba(131, 131, 131, 0.5)
-                border-radius: 100%
-
-    .load
-        position:   fixed
-        width:      100%
-        height:     100%
-        z-index:    9999
-        margin:     0 !important
-        //background-color: #141414
-        background-color: $second
-
-        h2
-            color: $main
-            text-shadow: 1px 1px 3px $noir
-        i
-            color: $main
-            text-shadow: 1px 1px 3px $noir
-
-    .nav
-        position: fixed
-        z-index:    99
-        bottom:     1rem
-        right:      1rem
-
-        &::before
-            content: ''
-            position: absolute
-            right: 0
-            background-color: $main
-
-        button.ui
-
-            @include icon
-            z-index: 999
-            position: absolute
-            top: 6px
-            left: 4px
-            border-radius: 100000px
-
-    .reverse
-        animation-direction: reverse
-
-    .nopadding
-        padding: 0 !important
-
-    .nomargin
-        margin: 0 !important
+        color: $bleu
+        text-shadow: 1px 1px 3px $noir

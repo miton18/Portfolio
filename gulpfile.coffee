@@ -11,6 +11,7 @@ server = P.livereload.listen
     start:  true
 
 gulp.task 'default', [
+    'build'
     'webserver'
     'watch'
 ]
@@ -47,7 +48,7 @@ gulp.task 'CSS:SASS', ->
         .pipe P.autoprefixer
             browsers: [ 'last 2 version' ]
             remove: true
-        .pipe P.minifyCss()
+        #.pipe P.minifyCss()
         .on 'error', (e) ->
             gutil.log "[minifyCss ERROR] #{e}"
         .pipe P.concat( 'all.css' )
@@ -63,7 +64,7 @@ gulp.task 'CSS:VENDOR', ->
         .pipe P.autoprefixer
             browsers: [ 'last 2 version' ]
             remove: true
-        .pipe P.minifyCss()
+        #.pipe P.cssnano()
         .on 'error', (e) ->
             gutil.log "[minifyCss ERROR] #{e}"
         .pipe P.concat( 'vendor.css' )
@@ -111,17 +112,18 @@ gulp.task 'img', ->
 
     gulp.src [
         'src/img/**/*.jpg'
-
+        'src/img/**/*.png'
+        'src/img/**/*.svg'
     ]
-        .pipe gulp.dest('build/img')
+    .pipe gulp.dest('build/img')
 
 gulp.task 'JS:SERVER', ->
 
-    gulp.src 'src/server.coffee'
+    gulp.src 'src/*.coffee'
         .pipe P.plumber()
         .pipe P.plumberNotifier()
         .pipe P.coffee()
-        .pipe P.uglify()
+        #.pipe P.uglify()
         .pipe gulp.dest( './' )
 
 #------------------------------------------------------------
@@ -139,39 +141,17 @@ gulp.task 'webserver', ->
 gulp.task 'watch', ->
 
     gulp.watch 'src/**/*.jade', ['HTML:JADE']
-        .on 'change', (e) ->
-            gutil.log "[JADE #{e.type}]: #{e.path}"
-            return
 
     gulp.watch 'src/js/**/*.coffee', [ 'JS:COFFEE' ]
-        .on 'change', (e) ->
-            gutil.log "[JS #{e.type}]: #{e.path}"
-            return
-
+        
     gulp.watch 'src/js/vendor/*.js', [ 'JS:VENDOR' ]
-        .on 'change', (event) ->
-            gutil.log "[JS-vendor #{event.type}]: #{event.path}"
-            return
-
-    gulp.watch 'src/server.coffee', [ 'JS:SERVER' ]
-        .on 'change', (event) ->
-            gutil.log "[JS-Server #{event.type}]: #{event.path}"
-            return
-
+        
+    gulp.watch 'src/*.coffee', [ 'JS:SERVER' ]
+        
     gulp.watch 'src/css/*.sass', [ 'CSS:SASS' ]
-        .on 'change', (e)->
-            gutil.log "[SASS #{e.type}]: #{e.path}"
-            return
-
+        
     gulp.watch 'src/css/vendor/*.css', [ 'CSS:VENDOR' ]
-        .on 'change', (e)->
-            gutil.log "[CSS #{e.type}]: #{e.path}"
-            return
-
-    gulp.watch 'src/img/**/**'
-        .on 'change', (e)->
-            gulp.src e.path
-            .pipe gulp.dest('build/img')
-            gutil.log "[LESS #{e.type}]: #{e.path}"
-            return
+        
+    gulp.watch 'src/img/**/**', [ 'img' ]
+        
     return

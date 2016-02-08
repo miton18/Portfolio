@@ -1,13 +1,10 @@
 @import "variables.sass"
 @import "mixins.sass"
 
-$bleuCiel: #afdcf8
-$bleuM:    #6cbfee
-$gris:     #bdd0db
-
 .timeline
   margin: 0
   padding: 0
+  padding-top: 3rem !important
   list-style: none
   position: relative
 
@@ -19,7 +16,7 @@ $gris:     #bdd0db
     top: 0
     bottom: 0
     width: 10px
-    background: $bleuCiel
+    background: $bleu
     left: 20%
     margin-left: -10px
   > li
@@ -34,19 +31,19 @@ $gris:     #bdd0db
       @include phone
         position: relative
         span
-            color: $main !important
+            color: $bleu !important
 
       span
         display: block
         text-align: center
         &:last-child
           font-size: 2.9em
-          color: $gris
+          color: $grey
     &:nth-child(odd) .cbp_tmtime span
-      color: $bleuM
+      color: $bleu
     .cbp_tmlabel
       margin: 0 0 15px 25%
-      background: $main
+      background: $bleu
       color: #fff
       padding: 2em
       font-size: 1.2em
@@ -55,7 +52,7 @@ $gris:     #bdd0db
       position: relative
       border-radius: 5px
     &:nth-child(odd) .cbp_tmlabel
-      background: $bleuM
+      background: $bleu
     .cbp_tmlabel
       h2
         margin-top: 0px
@@ -69,11 +66,11 @@ $gris:     #bdd0db
         width: 0
         position: absolute
         pointer-events: none
-        border-right-color: $main
+        border-right-color: $bleu
         border-width: 10px
         top: 10px
     &:nth-child(odd) .cbp_tmlabel:after
-      border-right-color: $bleuM
+      border-right-color: $bleu
     .cbp_tmicon
       width: 40px
       height: 40px
@@ -87,9 +84,10 @@ $gris:     #bdd0db
       -webkit-font-smoothing: antialiased
       position: absolute
       color: #fff
-      background: $second
+      background: $noir
+    
       border-radius: 50%
-      box-shadow: 0 0 0 8px $bleuCiel
+      box-shadow: 0 0 0 8px $bleu
       text-align: center
       left: 20%
       top: 0
@@ -122,11 +120,11 @@ $gris:     #bdd0db
           right: auto
           left: 20px
           border-right-color: transparent
-          border-bottom-color: $second
+          border-bottom-color: $bleu
           top: -20px
       &:nth-child(odd) .cbp_tmlabel:after
         border-right-color: transparent
-        border-bottom-color: $bleuM
+        border-bottom-color: $bleu
       .cbp_tmicon
         position: relative
         float: right

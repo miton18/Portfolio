@@ -218,18 +218,24 @@ body {
       background-color: #212121; }
       body article#un div {
         display: inline-block;
-        font-size: 1.2em;
+        font-size: 1.5em;
         width: 45%;
         color: #33c4e8;
+        text-shadow: 0 0 2px black;
         text-align: center; }
         body article#un div img {
-          width: 75%;
+          width: 80%;
           border: 10px solid #33c4e8;
-          border-radius: 100%; }
+          border-radius: 100%;
+          box-shadow: 0 0 5px 1px black; }
         body article#un div a {
           color: #3dcef2;
           font-weight: bold;
           text-decoration: underline; }
+    body article#unBis {
+      height: auto !important; }
+      body article#unBis button {
+        width: 50%; }
     body article#deux {
       background-color: #212121;
       height: auto !important; }
@@ -278,39 +284,38 @@ body {
           body article#quatre div.ui form.ui.loading.form:before {
             background-color: rgba(0, 0, 255, 0.24);
             box-shadow: 0 0 10px 20px rgba(0, 0, 255, 0.24); }
-          body article#quatre div.ui form div {
+          body article#quatre div.ui form div.form {
             position: relative;
             width: 100%;
             margin-top: 10%;
             margin-bottom: 10%; }
-            body article#quatre div.ui form div input:not([type="submit"]) {
-              display: block;
-              width: 100%;
-              font-size: 1.5em;
+            body article#quatre div.ui form div.form input:not([type="submit"]) {
               background-color: transparent;
               color: #33c4e8;
+              width: 100%;
               border: none;
               border-bottom-color: white;
               border-bottom-style: solid;
               border-bottom-width: thin;
               transition-duration: 0.5s;
               outline: none; }
-              body article#quatre div.ui form div input:not([type="submit"]):focus, body article#quatre div.ui form div input:not([type="submit"]).notEmpty {
+              body article#quatre div.ui form div.form input:not([type="submit"]):focus, body article#quatre div.ui form div.form input:not([type="submit"]).notEmpty {
                 border: none;
                 border-bottom-color: #33c4e8;
                 border-bottom-style: solid;
                 border-bottom-width: thin;
-                transition-duration: 0.5s;
-                color: #33c4e8;
-                top: -2rem;
                 transition-duration: 0.5s; }
-              body article#quatre div.ui form div input:not([type="submit"]) ~ label {
+                body article#quatre div.ui form div.form input:not([type="submit"]):focus + label, body article#quatre div.ui form div.form input:not([type="submit"]).notEmpty + label {
+                  color: #33c4e8;
+                  bottom: 2rem;
+                  transition-duration: 0.5s; }
+              body article#quatre div.ui form div.form input:not([type="submit"]) ~ label {
                 position: absolute;
                 bottom: 0.5rem;
                 left: 0.2rem;
                 color: white;
                 transition-duration: 0.5s; }
-            body article#quatre div.ui form div textarea {
+            body article#quatre div.ui form div.form textarea {
               width: 100%;
               min-height: 12rem;
               resize: none;
@@ -323,17 +328,17 @@ body {
               border-bottom-style: solid;
               border-bottom-width: thin;
               transition-duration: 0.5s; }
-              body article#quatre div.ui form div textarea:focus, body article#quatre div.ui form div textarea.notEmpty {
+              body article#quatre div.ui form div.form textarea:focus, body article#quatre div.ui form div.form textarea.notEmpty {
                 border: none;
                 border-bottom-color: #33c4e8;
                 border-bottom-style: solid;
                 border-bottom-width: thin;
                 transition-duration: 0.5s; }
-                body article#quatre div.ui form div textarea:focus + label, body article#quatre div.ui form div textarea.notEmpty + label {
+                body article#quatre div.ui form div.form textarea:focus + label, body article#quatre div.ui form div.form textarea.notEmpty + label {
                   color: #33c4e8;
                   top: -1.5rem;
                   transition-duration: 0.5s; }
-              body article#quatre div.ui form div textarea ~ label {
+              body article#quatre div.ui form div.form textarea ~ label {
                 position: absolute;
                 left: 0.2rem;
                 top: 3rem;

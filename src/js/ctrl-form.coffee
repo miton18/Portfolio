@@ -21,7 +21,7 @@ app.controller 'formCtrl', ['$scope', '$http', ($scope, $http)->
             $scope.wait = false
             return
 
-        if $scope.isRobot
+        if false #$scope.isRobot
             $scope.infos.push {
                 type: 'error'
                 txt:  'Cliquez sur "Non", pour vérifier que vous n\'etes pas un robot'
@@ -31,11 +31,15 @@ app.controller 'formCtrl', ['$scope', '$http', ($scope, $http)->
 
 
         # on est bon en envoi
-        $scope.host = if (window.location.host == "localhost") then 'localhost' else 'remi.rcdinfo.fr'
+        $scope.host = 'remi.rcdinfo.fr'
+        if document.domain == '127.0.0.1'
+            $scope.host = '127.0.0.1'
+
+
 
         $http
             method: 'POST'
-            url:    "http://#{$scope.host}/messages"
+            url:    "https://#{$scope.host}/messages"
             data:
                 email:      $scope.email
                 content:    $scope.content
@@ -58,5 +62,45 @@ app.controller 'formCtrl', ['$scope', '$http', ($scope, $http)->
                 txt:  'Impossible de déposer le message sur le serveur.... Vous pouvez utiliser contact@rcoll.fr'
             $scope.wait = false
 
+    $scope.captchaOptions =
+        imgPath: 'img/'
+        captcha:
+            numberOfImages: 5
+            autoRefresh: true
+            callbacks:
+                loading: ->
+                    console.log 'I m loading'
+                loaded: (captcha) ->
+                    console.log 'I m loaded'
+                    # Binds an element to callback on click
+                    # @param element object like document.getElementById() (has to be a single element)
+                    # @param callback function to run when the element is clicked
 
+                    _bindClick = ( element, callback )->
+                        if  element.addEventListener
+                            element.addEventListener( 'click', callback, false );
+                        else
+                            element.attachEvent( 'onclick', callback );
+
+                    # Avoid adding the hashtag to the URL when clicking/selecting visualCaptcha options
+                    anchorOptions = document.getElementById('sample-captcha').getElementsByTagName('a')
+                    anchorList = Array::slice.call(anchorOptions)
+                    # .getElementsByTagName does not return an actual array
+                    anchorList.forEach (anchorItem) ->
+                        console.log anchorItem
+                        _bindClick anchorItem, (event) ->
+                            event.preventDefault()
+                            event.stopImmediatePropagation();
+                            return
+                        return
+                    return
+        init: (captcha) ->
+            $scope.captcha = captcha
+            return
+
+    $scope.isVisualCaptchaFilled = ->
+        if  $scope.captcha.getCaptchaData().valid
+            window.alert 'visualCaptcha is filled!'
+        else
+            window.alert 'visualCaptcha is NOT filled!'
 ]

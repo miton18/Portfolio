@@ -2,9 +2,6 @@
 @import "variables.sass"
 @import "timeline.sass"
 
-// Copy font files into fonts in build
-
-
 *, *::before, *::after
 
     box-sizing: border-box
@@ -29,24 +26,30 @@ body
         &#un
             position:           relative
             background-color:   $noir
-            
                 
             div
                 display:    inline-block
-                font-size:  1.2em
+                font-size:  1.5em
                 width:      45%
                 color:      $bleu
+                text-shadow: 0 0 2px black
                 text-align: center
                 
                 img 
-                    width:          75%
+                    width:          80%
                     border:         10px solid $bleu
                     border-radius:  100%
+                    box-shadow: 0 0 5px 1px black
                 
                 a
                     color:           $bleu + 10
                     font-weight:     bold
                     text-decoration: underline
+        &#unBis
+            height: auto !important
+
+            button
+                width: 50%
 
         &#deux
             background-color: $noir
@@ -111,18 +114,16 @@ body
                     &.ui.loading.form:before
                         background-color:   rgba(0, 0, 255, 0.24)
                         box-shadow:         0 0 10px 20px rgba(0, 0, 255, 0.24)
-                    div
+                    div.form
                         position:       relative
                         width:          100%
                         margin-top:     10%
                         margin-bottom:  10%
 
                         input:not([type="submit"])
-                            display:            block
-                            width:              100%
-                            font-size:          1.5em
-                            background-color:   transparent
-                            color:              $bleu
+                            background-color: transparent
+                            color: $bleu
+                            width: 100%
                             @include bottom-border(white)
                             outline: none
 
@@ -130,9 +131,9 @@ body
                                 @include bottom-border($bleu)
 
                                 & + label
-                                color:  $bleu
-                                top:    -2rem
-                                transition-duration: 0.5s
+                                    color:  $bleu
+                                    bottom:    2rem
+                                    transition-duration: 0.5s
 
                             & ~ label /*label de l'input correspondant*/
                                 position:   absolute

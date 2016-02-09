@@ -1,12 +1,11 @@
 FROM node:onbuild
 
+MAINTAINER miton18@github.com
+
 ENV NODE_ENV production
 
 RUN npm install -g supervisor
 
-# Expose the ports that your app uses. For example:
+# Expose the ports that your app uses :
 EXPOSE 80
-
-#sudo docker build -t portfolio .
-#sudo docker run --restart=always --name=portfolio-instance -p 8082:80 -it portfolio
 

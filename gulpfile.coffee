@@ -98,9 +98,9 @@ gulp.task 'JS:COFFEE', ->
     ]
         .pipe P.plumber()
         .pipe P.plumberNotifier()
-        .pipe P.coffee
+        .pipe( P.coffee
             bare: true
-        .on 'error', gutil.log
+        ).on( 'error', gutil.log)
         #.pipe P.jsmin()
         .pipe P.concat( 'all.js' )
         #.pipe P.uglify()

@@ -67,11 +67,9 @@
     "yamljs": "^0.2.4"
   },
   "dependencies": {
-    "basic-auth": "^1.0.3",
     "body-parser": "^1.14.1",
     "compression": "^1.6.0",
-    "express": "^4.13.3",
-    "mongoose": "^4.4.1",
-    "visualcaptcha": "^0.1.1"
+    "directmail": "^0.1.8",
+    "express": "^4.13.3"
   }
 }

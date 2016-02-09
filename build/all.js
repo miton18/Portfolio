@@ -1,6 +1,6 @@
-var HEIGHT, app, cadre, etude, scrollTo;
+var HEIGHT, app, cadre, etude;
 
-app = angular.module('app', ['ngAnimate']);
+app = angular.module('app', ['ngAnimate', 'visualCaptcha']);
 
 HEIGHT = 0;
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
       ratio: '{percent}%'
     }
   });
-  return $('form div input, form div textarea').focusout(function() {
+  $('form div input, form div textarea').focusout(function() {
     var that;
     that = $(this);
     that.removeClass('notEmpty');
@@ -44,13 +44,21 @@ $(document).ready(function() {
       return that.addClass('notEmpty');
     }
   });
+  return $('.visualCaptcha-possibilities .img a').on('click', function(e) {
+    e.preventDefault();
+    return e.stopImmediatePropagation();
+  });
 });
 
-scrollTo = function(el) {
-  return $('body').animate({
-    scrollTop: el.offset().top
-  }, 700, 'easeOutBack');
-};
+
+/*scrollTo = (el)->
+
+    $ 'body'
+    .animate
+        scrollTop: el.offset().top
+    , 700
+    , 'easeOutBack' # http://easings.net/fr
+ */
 
 etude = function() {
   var date, depart, fin, now;
@@ -71,7 +79,7 @@ app.controller('formCtrl', [
     $scope.robot = function(state) {
       return $scope.isRobot = state;
     };
-    return $scope.send = function() {
+    $scope.send = function() {
       $scope.wait = true;
       $scope.infos = [];
       if (!emailReg.test($scope.email)) {
@@ -82,7 +90,7 @@ app.controller('formCtrl', [
         $scope.wait = false;
         return;
       }
-      if ($scope.isRobot) {
+      if (false) {
         $scope.infos.push({
           type: 'error',
           txt: 'Cliquez sur "Non", pour vérifier que vous n\'etes pas un robot'
@@ -90,10 +98,13 @@ app.controller('formCtrl', [
         $scope.wait = false;
         return;
       }
-      $scope.host = window.location.host === "localhost" ? 'localhost' : 'remi.rcdinfo.fr';
+      $scope.host = 'remi.rcdinfo.fr';
+      if (document.domain === '127.0.0.1') {
+        $scope.host = '127.0.0.1';
+      }
       return $http({
         method: 'POST',
-        url: "http://" + $scope.host + "/messages",
+        url: "https://" + $scope.host + "/messages",
         data: {
           email: $scope.email,
           content: $scope.content,
@@ -120,6 +131,62 @@ app.controller('formCtrl', [
         return $scope.wait = false;
       });
     };
+    $scope.captchaOptions = {
+      imgPath: 'img/',
+      captcha: {
+        numberOfImages: 5,
+        autoRefresh: true,
+        callbacks: {
+          loading: function() {
+            return console.log('I m loading');
+          },
+          loaded: function(captcha) {
+            var _bindClick, anchorList, anchorOptions;
+            console.log('I m loaded');
+            _bindClick = function(element, callback) {
+              if (element.addEventListener) {
+                return element.addEventListener('click', callback, false);
+              } else {
+                return element.attachEvent('onclick', callback);
+              }
+            };
+            anchorOptions = document.getElementById('sample-captcha').getElementsByTagName('a');
+            anchorList = Array.prototype.slice.call(anchorOptions);
+            anchorList.forEach(function(anchorItem) {
+              console.log(anchorItem);
+              _bindClick(anchorItem, function(event) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+              });
+            });
+          }
+        }
+      },
+      init: function(captcha) {
+        $scope.captcha = captcha;
+      }
+    };
+    return $scope.isVisualCaptchaFilled = function() {
+      if ($scope.captcha.getCaptchaData().valid) {
+        return window.alert('visualCaptcha is filled!');
+      } else {
+        return window.alert('visualCaptcha is NOT filled!');
+      }
+    };
+  }
+]);
+
+app.controller('gitCtrl', [
+  '$scope', '$http', function($scope, $http) {
+    return $http({
+      method: 'GET',
+      url: 'https://api.github.com/users/miton18/repos'
+    }).then(function(rep) {
+      $scope.repos = rep.data;
+      return $scope.$apply;
+    }, function(err) {
+      return console.log(err);
+    });
   }
 ]);
 

@@ -1,4 +1,4 @@
-app = angular.module 'app', ['ngAnimate']
+app = angular.module 'app', ['ngAnimate', 'visualCaptcha']
 
 HEIGHT = 0
 
@@ -49,17 +49,20 @@ $ document
         that.removeClass 'notEmpty'
         that.addClass     'notEmpty' if that.val() != ""
 
+    $('.visualCaptcha-possibilities .img a').on('click', (e)->
+        e.preventDefault()
+        e.stopImmediatePropagation()
+    )
 
 
-
-scrollTo = (el)->
+###scrollTo = (el)->
 
     $ 'body'
     .animate
         scrollTop: el.offset().top
     , 700
     , 'easeOutBack' # http://easings.net/fr
-
+###
 etude = ->
     now     = Date.now()
     depart  = (new Date "02/10/2012").getTime()

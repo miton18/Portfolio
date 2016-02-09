@@ -85801,3 +85801,1367 @@ $.fn.transition.settings = {
  * @author: Jack Doyle, jack@greensock.com
  */
 (function(t,e){"use strict";var i=t.GreenSockGlobals=t.GreenSockGlobals||t;if(!i.TweenLite){var s,n,r,a,o,l=function(t){var e,s=t.split("."),n=i;for(e=0;s.length>e;e++)n[s[e]]=n=n[s[e]]||{};return n},h=l("com.greensock"),_=1e-10,u=function(t){var e,i=[],s=t.length;for(e=0;e!==s;i.push(t[e++]));return i},f=function(){},m=function(){var t=Object.prototype.toString,e=t.call([]);return function(i){return null!=i&&(i instanceof Array||"object"==typeof i&&!!i.push&&t.call(i)===e)}}(),p={},c=function(s,n,r,a){this.sc=p[s]?p[s].sc:[],p[s]=this,this.gsClass=null,this.func=r;var o=[];this.check=function(h){for(var _,u,f,m,d=n.length,v=d;--d>-1;)(_=p[n[d]]||new c(n[d],[])).gsClass?(o[d]=_.gsClass,v--):h&&_.sc.push(this);if(0===v&&r)for(u=("com.greensock."+s).split("."),f=u.pop(),m=l(u.join("."))[f]=this.gsClass=r.apply(r,o),a&&(i[f]=m,"function"==typeof define&&define.amd?define((t.GreenSockAMDPath?t.GreenSockAMDPath+"/":"")+s.split(".").pop(),[],function(){return m}):s===e&&"undefined"!=typeof module&&module.exports&&(module.exports=m)),d=0;this.sc.length>d;d++)this.sc[d].check()},this.check(!0)},d=t._gsDefine=function(t,e,i,s){return new c(t,e,i,s)},v=h._class=function(t,e,i){return e=e||function(){},d(t,[],function(){return e},i),e};d.globals=i;var g=[0,0,1,1],T=[],y=v("easing.Ease",function(t,e,i,s){this._func=t,this._type=i||0,this._power=s||0,this._params=e?g.concat(e):g},!0),w=y.map={},P=y.register=function(t,e,i,s){for(var n,r,a,o,l=e.split(","),_=l.length,u=(i||"easeIn,easeOut,easeInOut").split(",");--_>-1;)for(r=l[_],n=s?v("easing."+r,null,!0):h.easing[r]||{},a=u.length;--a>-1;)o=u[a],w[r+"."+o]=w[o+r]=n[o]=t.getRatio?t:t[o]||new t};for(r=y.prototype,r._calcEnd=!1,r.getRatio=function(t){if(this._func)return this._params[0]=t,this._func.apply(null,this._params);var e=this._type,i=this._power,s=1===e?1-t:2===e?t:.5>t?2*t:2*(1-t);return 1===i?s*=s:2===i?s*=s*s:3===i?s*=s*s*s:4===i&&(s*=s*s*s*s),1===e?1-s:2===e?s:.5>t?s/2:1-s/2},s=["Linear","Quad","Cubic","Quart","Quint,Strong"],n=s.length;--n>-1;)r=s[n]+",Power"+n,P(new y(null,null,1,n),r,"easeOut",!0),P(new y(null,null,2,n),r,"easeIn"+(0===n?",easeNone":"")),P(new y(null,null,3,n),r,"easeInOut");w.linear=h.easing.Linear.easeIn,w.swing=h.easing.Quad.easeInOut;var b=v("events.EventDispatcher",function(t){this._listeners={},this._eventTarget=t||this});r=b.prototype,r.addEventListener=function(t,e,i,s,n){n=n||0;var r,l,h=this._listeners[t],_=0;for(null==h&&(this._listeners[t]=h=[]),l=h.length;--l>-1;)r=h[l],r.c===e&&r.s===i?h.splice(l,1):0===_&&n>r.pr&&(_=l+1);h.splice(_,0,{c:e,s:i,up:s,pr:n}),this!==a||o||a.wake()},r.removeEventListener=function(t,e){var i,s=this._listeners[t];if(s)for(i=s.length;--i>-1;)if(s[i].c===e)return s.splice(i,1),void 0},r.dispatchEvent=function(t){var e,i,s,n=this._listeners[t];if(n)for(e=n.length,i=this._eventTarget;--e>-1;)s=n[e],s.up?s.c.call(s.s||i,{type:t,target:i}):s.c.call(s.s||i)};var k=t.requestAnimationFrame,A=t.cancelAnimationFrame,S=Date.now||function(){return(new Date).getTime()},x=S();for(s=["ms","moz","webkit","o"],n=s.length;--n>-1&&!k;)k=t[s[n]+"RequestAnimationFrame"],A=t[s[n]+"CancelAnimationFrame"]||t[s[n]+"CancelRequestAnimationFrame"];v("Ticker",function(t,e){var i,s,n,r,l,h=this,u=S(),m=e!==!1&&k,p=500,c=33,d=function(t){var e,a,o=S()-x;o>p&&(u+=o-c),x+=o,h.time=(x-u)/1e3,e=h.time-l,(!i||e>0||t===!0)&&(h.frame++,l+=e+(e>=r?.004:r-e),a=!0),t!==!0&&(n=s(d)),a&&h.dispatchEvent("tick")};b.call(h),h.time=h.frame=0,h.tick=function(){d(!0)},h.lagSmoothing=function(t,e){p=t||1/_,c=Math.min(e,p,0)},h.sleep=function(){null!=n&&(m&&A?A(n):clearTimeout(n),s=f,n=null,h===a&&(o=!1))},h.wake=function(){null!==n?h.sleep():h.frame>10&&(x=S()-p+5),s=0===i?f:m&&k?k:function(t){return setTimeout(t,0|1e3*(l-h.time)+1)},h===a&&(o=!0),d(2)},h.fps=function(t){return arguments.length?(i=t,r=1/(i||60),l=this.time+r,h.wake(),void 0):i},h.useRAF=function(t){return arguments.length?(h.sleep(),m=t,h.fps(i),void 0):m},h.fps(t),setTimeout(function(){m&&(!n||5>h.frame)&&h.useRAF(!1)},1500)}),r=h.Ticker.prototype=new h.events.EventDispatcher,r.constructor=h.Ticker;var C=v("core.Animation",function(t,e){if(this.vars=e=e||{},this._duration=this._totalDuration=t||0,this._delay=Number(e.delay)||0,this._timeScale=1,this._active=e.immediateRender===!0,this.data=e.data,this._reversed=e.reversed===!0,B){o||a.wake();var i=this.vars.useFrames?q:B;i.add(this,i._time),this.vars.paused&&this.paused(!0)}});a=C.ticker=new h.Ticker,r=C.prototype,r._dirty=r._gc=r._initted=r._paused=!1,r._totalTime=r._time=0,r._rawPrevTime=-1,r._next=r._last=r._onUpdate=r._timeline=r.timeline=null,r._paused=!1;var R=function(){o&&S()-x>2e3&&a.wake(),setTimeout(R,2e3)};R(),r.play=function(t,e){return null!=t&&this.seek(t,e),this.reversed(!1).paused(!1)},r.pause=function(t,e){return null!=t&&this.seek(t,e),this.paused(!0)},r.resume=function(t,e){return null!=t&&this.seek(t,e),this.paused(!1)},r.seek=function(t,e){return this.totalTime(Number(t),e!==!1)},r.restart=function(t,e){return this.reversed(!1).paused(!1).totalTime(t?-this._delay:0,e!==!1,!0)},r.reverse=function(t,e){return null!=t&&this.seek(t||this.totalDuration(),e),this.reversed(!0).paused(!1)},r.render=function(){},r.invalidate=function(){return this},r.isActive=function(){var t,e=this._timeline,i=this._startTime;return!e||!this._gc&&!this._paused&&e.isActive()&&(t=e.rawTime())>=i&&i+this.totalDuration()/this._timeScale>t},r._enabled=function(t,e){return o||a.wake(),this._gc=!t,this._active=this.isActive(),e!==!0&&(t&&!this.timeline?this._timeline.add(this,this._startTime-this._delay):!t&&this.timeline&&this._timeline._remove(this,!0)),!1},r._kill=function(){return this._enabled(!1,!1)},r.kill=function(t,e){return this._kill(t,e),this},r._uncache=function(t){for(var e=t?this:this.timeline;e;)e._dirty=!0,e=e.timeline;return this},r._swapSelfInParams=function(t){for(var e=t.length,i=t.concat();--e>-1;)"{self}"===t[e]&&(i[e]=this);return i},r.eventCallback=function(t,e,i,s){if("on"===(t||"").substr(0,2)){var n=this.vars;if(1===arguments.length)return n[t];null==e?delete n[t]:(n[t]=e,n[t+"Params"]=m(i)&&-1!==i.join("").indexOf("{self}")?this._swapSelfInParams(i):i,n[t+"Scope"]=s),"onUpdate"===t&&(this._onUpdate=e)}return this},r.delay=function(t){return arguments.length?(this._timeline.smoothChildTiming&&this.startTime(this._startTime+t-this._delay),this._delay=t,this):this._delay},r.duration=function(t){return arguments.length?(this._duration=this._totalDuration=t,this._uncache(!0),this._timeline.smoothChildTiming&&this._time>0&&this._time<this._duration&&0!==t&&this.totalTime(this._totalTime*(t/this._duration),!0),this):(this._dirty=!1,this._duration)},r.totalDuration=function(t){return this._dirty=!1,arguments.length?this.duration(t):this._totalDuration},r.time=function(t,e){return arguments.length?(this._dirty&&this.totalDuration(),this.totalTime(t>this._duration?this._duration:t,e)):this._time},r.totalTime=function(t,e,i){if(o||a.wake(),!arguments.length)return this._totalTime;if(this._timeline){if(0>t&&!i&&(t+=this.totalDuration()),this._timeline.smoothChildTiming){this._dirty&&this.totalDuration();var s=this._totalDuration,n=this._timeline;if(t>s&&!i&&(t=s),this._startTime=(this._paused?this._pauseTime:n._time)-(this._reversed?s-t:t)/this._timeScale,n._dirty||this._uncache(!1),n._timeline)for(;n._timeline;)n._timeline._time!==(n._startTime+n._totalTime)/n._timeScale&&n.totalTime(n._totalTime,!0),n=n._timeline}this._gc&&this._enabled(!0,!1),(this._totalTime!==t||0===this._duration)&&(this.render(t,e,!1),O.length&&M())}return this},r.progress=r.totalProgress=function(t,e){return arguments.length?this.totalTime(this.duration()*t,e):this._time/this.duration()},r.startTime=function(t){return arguments.length?(t!==this._startTime&&(this._startTime=t,this.timeline&&this.timeline._sortChildren&&this.timeline.add(this,t-this._delay)),this):this._startTime},r.timeScale=function(t){if(!arguments.length)return this._timeScale;if(t=t||_,this._timeline&&this._timeline.smoothChildTiming){var e=this._pauseTime,i=e||0===e?e:this._timeline.totalTime();this._startTime=i-(i-this._startTime)*this._timeScale/t}return this._timeScale=t,this._uncache(!1)},r.reversed=function(t){return arguments.length?(t!=this._reversed&&(this._reversed=t,this.totalTime(this._timeline&&!this._timeline.smoothChildTiming?this.totalDuration()-this._totalTime:this._totalTime,!0)),this):this._reversed},r.paused=function(t){if(!arguments.length)return this._paused;if(t!=this._paused&&this._timeline){o||t||a.wake();var e=this._timeline,i=e.rawTime(),s=i-this._pauseTime;!t&&e.smoothChildTiming&&(this._startTime+=s,this._uncache(!1)),this._pauseTime=t?i:null,this._paused=t,this._active=this.isActive(),!t&&0!==s&&this._initted&&this.duration()&&this.render(e.smoothChildTiming?this._totalTime:(i-this._startTime)/this._timeScale,!0,!0)}return this._gc&&!t&&this._enabled(!0,!1),this};var D=v("core.SimpleTimeline",function(t){C.call(this,0,t),this.autoRemoveChildren=this.smoothChildTiming=!0});r=D.prototype=new C,r.constructor=D,r.kill()._gc=!1,r._first=r._last=null,r._sortChildren=!1,r.add=r.insert=function(t,e){var i,s;if(t._startTime=Number(e||0)+t._delay,t._paused&&this!==t._timeline&&(t._pauseTime=t._startTime+(this.rawTime()-t._startTime)/t._timeScale),t.timeline&&t.timeline._remove(t,!0),t.timeline=t._timeline=this,t._gc&&t._enabled(!0,!0),i=this._last,this._sortChildren)for(s=t._startTime;i&&i._startTime>s;)i=i._prev;return i?(t._next=i._next,i._next=t):(t._next=this._first,this._first=t),t._next?t._next._prev=t:this._last=t,t._prev=i,this._timeline&&this._uncache(!0),this},r._remove=function(t,e){return t.timeline===this&&(e||t._enabled(!1,!0),t._prev?t._prev._next=t._next:this._first===t&&(this._first=t._next),t._next?t._next._prev=t._prev:this._last===t&&(this._last=t._prev),t._next=t._prev=t.timeline=null,this._timeline&&this._uncache(!0)),this},r.render=function(t,e,i){var s,n=this._first;for(this._totalTime=this._time=this._rawPrevTime=t;n;)s=n._next,(n._active||t>=n._startTime&&!n._paused)&&(n._reversed?n.render((n._dirty?n.totalDuration():n._totalDuration)-(t-n._startTime)*n._timeScale,e,i):n.render((t-n._startTime)*n._timeScale,e,i)),n=s},r.rawTime=function(){return o||a.wake(),this._totalTime};var I=v("TweenLite",function(e,i,s){if(C.call(this,i,s),this.render=I.prototype.render,null==e)throw"Cannot tween a null target.";this.target=e="string"!=typeof e?e:I.selector(e)||e;var n,r,a,o=e.jquery||e.length&&e!==t&&e[0]&&(e[0]===t||e[0].nodeType&&e[0].style&&!e.nodeType),l=this.vars.overwrite;if(this._overwrite=l=null==l?Q[I.defaultOverwrite]:"number"==typeof l?l>>0:Q[l],(o||e instanceof Array||e.push&&m(e))&&"number"!=typeof e[0])for(this._targets=a=u(e),this._propLookup=[],this._siblings=[],n=0;a.length>n;n++)r=a[n],r?"string"!=typeof r?r.length&&r!==t&&r[0]&&(r[0]===t||r[0].nodeType&&r[0].style&&!r.nodeType)?(a.splice(n--,1),this._targets=a=a.concat(u(r))):(this._siblings[n]=$(r,this,!1),1===l&&this._siblings[n].length>1&&K(r,this,null,1,this._siblings[n])):(r=a[n--]=I.selector(r),"string"==typeof r&&a.splice(n+1,1)):a.splice(n--,1);else this._propLookup={},this._siblings=$(e,this,!1),1===l&&this._siblings.length>1&&K(e,this,null,1,this._siblings);(this.vars.immediateRender||0===i&&0===this._delay&&this.vars.immediateRender!==!1)&&(this._time=-_,this.render(-this._delay))},!0),E=function(e){return e.length&&e!==t&&e[0]&&(e[0]===t||e[0].nodeType&&e[0].style&&!e.nodeType)},z=function(t,e){var i,s={};for(i in t)G[i]||i in e&&"transform"!==i&&"x"!==i&&"y"!==i&&"width"!==i&&"height"!==i&&"className"!==i&&"border"!==i||!(!U[i]||U[i]&&U[i]._autoCSS)||(s[i]=t[i],delete t[i]);t.css=s};r=I.prototype=new C,r.constructor=I,r.kill()._gc=!1,r.ratio=0,r._firstPT=r._targets=r._overwrittenProps=r._startAt=null,r._notifyPluginsOfEnabled=r._lazy=!1,I.version="1.13.1",I.defaultEase=r._ease=new y(null,null,1,1),I.defaultOverwrite="auto",I.ticker=a,I.autoSleep=!0,I.lagSmoothing=function(t,e){a.lagSmoothing(t,e)},I.selector=t.$||t.jQuery||function(e){var i=t.$||t.jQuery;return i?(I.selector=i,i(e)):"undefined"==typeof document?e:document.querySelectorAll?document.querySelectorAll(e):document.getElementById("#"===e.charAt(0)?e.substr(1):e)};var O=[],L={},N=I._internals={isArray:m,isSelector:E,lazyTweens:O},U=I._plugins={},F=N.tweenLookup={},j=0,G=N.reservedProps={ease:1,delay:1,overwrite:1,onComplete:1,onCompleteParams:1,onCompleteScope:1,useFrames:1,runBackwards:1,startAt:1,onUpdate:1,onUpdateParams:1,onUpdateScope:1,onStart:1,onStartParams:1,onStartScope:1,onReverseComplete:1,onReverseCompleteParams:1,onReverseCompleteScope:1,onRepeat:1,onRepeatParams:1,onRepeatScope:1,easeParams:1,yoyo:1,immediateRender:1,repeat:1,repeatDelay:1,data:1,paused:1,reversed:1,autoCSS:1,lazy:1},Q={none:0,all:1,auto:2,concurrent:3,allOnStart:4,preexisting:5,"true":1,"false":0},q=C._rootFramesTimeline=new D,B=C._rootTimeline=new D,M=N.lazyRender=function(){var t=O.length;for(L={};--t>-1;)s=O[t],s&&s._lazy!==!1&&(s.render(s._lazy,!1,!0),s._lazy=!1);O.length=0};B._startTime=a.time,q._startTime=a.frame,B._active=q._active=!0,setTimeout(M,1),C._updateRoot=I.render=function(){var t,e,i;if(O.length&&M(),B.render((a.time-B._startTime)*B._timeScale,!1,!1),q.render((a.frame-q._startTime)*q._timeScale,!1,!1),O.length&&M(),!(a.frame%120)){for(i in F){for(e=F[i].tweens,t=e.length;--t>-1;)e[t]._gc&&e.splice(t,1);0===e.length&&delete F[i]}if(i=B._first,(!i||i._paused)&&I.autoSleep&&!q._first&&1===a._listeners.tick.length){for(;i&&i._paused;)i=i._next;i||a.sleep()}}},a.addEventListener("tick",C._updateRoot);var $=function(t,e,i){var s,n,r=t._gsTweenID;if(F[r||(t._gsTweenID=r="t"+j++)]||(F[r]={target:t,tweens:[]}),e&&(s=F[r].tweens,s[n=s.length]=e,i))for(;--n>-1;)s[n]===e&&s.splice(n,1);return F[r].tweens},K=function(t,e,i,s,n){var r,a,o,l;if(1===s||s>=4){for(l=n.length,r=0;l>r;r++)if((o=n[r])!==e)o._gc||o._enabled(!1,!1)&&(a=!0);else if(5===s)break;return a}var h,u=e._startTime+_,f=[],m=0,p=0===e._duration;for(r=n.length;--r>-1;)(o=n[r])===e||o._gc||o._paused||(o._timeline!==e._timeline?(h=h||H(e,0,p),0===H(o,h,p)&&(f[m++]=o)):u>=o._startTime&&o._startTime+o.totalDuration()/o._timeScale>u&&((p||!o._initted)&&2e-10>=u-o._startTime||(f[m++]=o)));for(r=m;--r>-1;)o=f[r],2===s&&o._kill(i,t)&&(a=!0),(2!==s||!o._firstPT&&o._initted)&&o._enabled(!1,!1)&&(a=!0);return a},H=function(t,e,i){for(var s=t._timeline,n=s._timeScale,r=t._startTime;s._timeline;){if(r+=s._startTime,n*=s._timeScale,s._paused)return-100;s=s._timeline}return r/=n,r>e?r-e:i&&r===e||!t._initted&&2*_>r-e?_:(r+=t.totalDuration()/t._timeScale/n)>e+_?0:r-e-_};r._init=function(){var t,e,i,s,n,r=this.vars,a=this._overwrittenProps,o=this._duration,l=!!r.immediateRender,h=r.ease;if(r.startAt){this._startAt&&(this._startAt.render(-1,!0),this._startAt.kill()),n={};for(s in r.startAt)n[s]=r.startAt[s];if(n.overwrite=!1,n.immediateRender=!0,n.lazy=l&&r.lazy!==!1,n.startAt=n.delay=null,this._startAt=I.to(this.target,0,n),l)if(this._time>0)this._startAt=null;else if(0!==o)return}else if(r.runBackwards&&0!==o)if(this._startAt)this._startAt.render(-1,!0),this._startAt.kill(),this._startAt=null;else{i={};for(s in r)G[s]&&"autoCSS"!==s||(i[s]=r[s]);if(i.overwrite=0,i.data="isFromStart",i.lazy=l&&r.lazy!==!1,i.immediateRender=l,this._startAt=I.to(this.target,0,i),l){if(0===this._time)return}else this._startAt._init(),this._startAt._enabled(!1)}if(this._ease=h=h?h instanceof y?h:"function"==typeof h?new y(h,r.easeParams):w[h]||I.defaultEase:I.defaultEase,r.easeParams instanceof Array&&h.config&&(this._ease=h.config.apply(h,r.easeParams)),this._easeType=this._ease._type,this._easePower=this._ease._power,this._firstPT=null,this._targets)for(t=this._targets.length;--t>-1;)this._initProps(this._targets[t],this._propLookup[t]={},this._siblings[t],a?a[t]:null)&&(e=!0);else e=this._initProps(this.target,this._propLookup,this._siblings,a);if(e&&I._onPluginEvent("_onInitAllProps",this),a&&(this._firstPT||"function"!=typeof this.target&&this._enabled(!1,!1)),r.runBackwards)for(i=this._firstPT;i;)i.s+=i.c,i.c=-i.c,i=i._next;this._onUpdate=r.onUpdate,this._initted=!0},r._initProps=function(e,i,s,n){var r,a,o,l,h,_;if(null==e)return!1;L[e._gsTweenID]&&M(),this.vars.css||e.style&&e!==t&&e.nodeType&&U.css&&this.vars.autoCSS!==!1&&z(this.vars,e);for(r in this.vars){if(_=this.vars[r],G[r])_&&(_ instanceof Array||_.push&&m(_))&&-1!==_.join("").indexOf("{self}")&&(this.vars[r]=_=this._swapSelfInParams(_,this));else if(U[r]&&(l=new U[r])._onInitTween(e,this.vars[r],this)){for(this._firstPT=h={_next:this._firstPT,t:l,p:"setRatio",s:0,c:1,f:!0,n:r,pg:!0,pr:l._priority},a=l._overwriteProps.length;--a>-1;)i[l._overwriteProps[a]]=this._firstPT;(l._priority||l._onInitAllProps)&&(o=!0),(l._onDisable||l._onEnable)&&(this._notifyPluginsOfEnabled=!0)}else this._firstPT=i[r]=h={_next:this._firstPT,t:e,p:r,f:"function"==typeof e[r],n:r,pg:!1,pr:0},h.s=h.f?e[r.indexOf("set")||"function"!=typeof e["get"+r.substr(3)]?r:"get"+r.substr(3)]():parseFloat(e[r]),h.c="string"==typeof _&&"="===_.charAt(1)?parseInt(_.charAt(0)+"1",10)*Number(_.substr(2)):Number(_)-h.s||0;h&&h._next&&(h._next._prev=h)}return n&&this._kill(n,e)?this._initProps(e,i,s,n):this._overwrite>1&&this._firstPT&&s.length>1&&K(e,this,i,this._overwrite,s)?(this._kill(i,e),this._initProps(e,i,s,n)):(this._firstPT&&(this.vars.lazy!==!1&&this._duration||this.vars.lazy&&!this._duration)&&(L[e._gsTweenID]=!0),o)},r.render=function(t,e,i){var s,n,r,a,o=this._time,l=this._duration,h=this._rawPrevTime;if(t>=l)this._totalTime=this._time=l,this.ratio=this._ease._calcEnd?this._ease.getRatio(1):1,this._reversed||(s=!0,n="onComplete"),0===l&&(this._initted||!this.vars.lazy||i)&&(this._startTime===this._timeline._duration&&(t=0),(0===t||0>h||h===_)&&h!==t&&(i=!0,h>_&&(n="onReverseComplete")),this._rawPrevTime=a=!e||t||h===t?t:_);else if(1e-7>t)this._totalTime=this._time=0,this.ratio=this._ease._calcEnd?this._ease.getRatio(0):0,(0!==o||0===l&&h>0&&h!==_)&&(n="onReverseComplete",s=this._reversed),0>t?(this._active=!1,0===l&&(this._initted||!this.vars.lazy||i)&&(h>=0&&(i=!0),this._rawPrevTime=a=!e||t||h===t?t:_)):this._initted||(i=!0);else if(this._totalTime=this._time=t,this._easeType){var u=t/l,f=this._easeType,m=this._easePower;(1===f||3===f&&u>=.5)&&(u=1-u),3===f&&(u*=2),1===m?u*=u:2===m?u*=u*u:3===m?u*=u*u*u:4===m&&(u*=u*u*u*u),this.ratio=1===f?1-u:2===f?u:.5>t/l?u/2:1-u/2}else this.ratio=this._ease.getRatio(t/l);if(this._time!==o||i){if(!this._initted){if(this._init(),!this._initted||this._gc)return;if(!i&&this._firstPT&&(this.vars.lazy!==!1&&this._duration||this.vars.lazy&&!this._duration))return this._time=this._totalTime=o,this._rawPrevTime=h,O.push(this),this._lazy=t,void 0;this._time&&!s?this.ratio=this._ease.getRatio(this._time/l):s&&this._ease._calcEnd&&(this.ratio=this._ease.getRatio(0===this._time?0:1))}for(this._lazy!==!1&&(this._lazy=!1),this._active||!this._paused&&this._time!==o&&t>=0&&(this._active=!0),0===o&&(this._startAt&&(t>=0?this._startAt.render(t,e,i):n||(n="_dummyGS")),this.vars.onStart&&(0!==this._time||0===l)&&(e||this.vars.onStart.apply(this.vars.onStartScope||this,this.vars.onStartParams||T))),r=this._firstPT;r;)r.f?r.t[r.p](r.c*this.ratio+r.s):r.t[r.p]=r.c*this.ratio+r.s,r=r._next;this._onUpdate&&(0>t&&this._startAt&&this._startTime&&this._startAt.render(t,e,i),e||(this._time!==o||s)&&this._onUpdate.apply(this.vars.onUpdateScope||this,this.vars.onUpdateParams||T)),n&&(!this._gc||i)&&(0>t&&this._startAt&&!this._onUpdate&&this._startTime&&this._startAt.render(t,e,i),s&&(this._timeline.autoRemoveChildren&&this._enabled(!1,!1),this._active=!1),!e&&this.vars[n]&&this.vars[n].apply(this.vars[n+"Scope"]||this,this.vars[n+"Params"]||T),0===l&&this._rawPrevTime===_&&a!==_&&(this._rawPrevTime=0))}},r._kill=function(t,e){if("all"===t&&(t=null),null==t&&(null==e||e===this.target))return this._lazy=!1,this._enabled(!1,!1);e="string"!=typeof e?e||this._targets||this.target:I.selector(e)||e;var i,s,n,r,a,o,l,h;if((m(e)||E(e))&&"number"!=typeof e[0])for(i=e.length;--i>-1;)this._kill(t,e[i])&&(o=!0);else{if(this._targets){for(i=this._targets.length;--i>-1;)if(e===this._targets[i]){a=this._propLookup[i]||{},this._overwrittenProps=this._overwrittenProps||[],s=this._overwrittenProps[i]=t?this._overwrittenProps[i]||{}:"all";break}}else{if(e!==this.target)return!1;a=this._propLookup,s=this._overwrittenProps=t?this._overwrittenProps||{}:"all"}if(a){l=t||a,h=t!==s&&"all"!==s&&t!==a&&("object"!=typeof t||!t._tempKill);for(n in l)(r=a[n])&&(r.pg&&r.t._kill(l)&&(o=!0),r.pg&&0!==r.t._overwriteProps.length||(r._prev?r._prev._next=r._next:r===this._firstPT&&(this._firstPT=r._next),r._next&&(r._next._prev=r._prev),r._next=r._prev=null),delete a[n]),h&&(s[n]=1);!this._firstPT&&this._initted&&this._enabled(!1,!1)}}return o},r.invalidate=function(){return this._notifyPluginsOfEnabled&&I._onPluginEvent("_onDisable",this),this._firstPT=null,this._overwrittenProps=null,this._onUpdate=null,this._startAt=null,this._initted=this._active=this._notifyPluginsOfEnabled=this._lazy=!1,this._propLookup=this._targets?{}:[],this},r._enabled=function(t,e){if(o||a.wake(),t&&this._gc){var i,s=this._targets;if(s)for(i=s.length;--i>-1;)this._siblings[i]=$(s[i],this,!0);else this._siblings=$(this.target,this,!0)}return C.prototype._enabled.call(this,t,e),this._notifyPluginsOfEnabled&&this._firstPT?I._onPluginEvent(t?"_onEnable":"_onDisable",this):!1},I.to=function(t,e,i){return new I(t,e,i)},I.from=function(t,e,i){return i.runBackwards=!0,i.immediateRender=0!=i.immediateRender,new I(t,e,i)},I.fromTo=function(t,e,i,s){return s.startAt=i,s.immediateRender=0!=s.immediateRender&&0!=i.immediateRender,new I(t,e,s)},I.delayedCall=function(t,e,i,s,n){return new I(e,0,{delay:t,onComplete:e,onCompleteParams:i,onCompleteScope:s,onReverseComplete:e,onReverseCompleteParams:i,onReverseCompleteScope:s,immediateRender:!1,useFrames:n,overwrite:0})},I.set=function(t,e){return new I(t,0,e)},I.getTweensOf=function(t,e){if(null==t)return[];t="string"!=typeof t?t:I.selector(t)||t;var i,s,n,r;if((m(t)||E(t))&&"number"!=typeof t[0]){for(i=t.length,s=[];--i>-1;)s=s.concat(I.getTweensOf(t[i],e));for(i=s.length;--i>-1;)for(r=s[i],n=i;--n>-1;)r===s[n]&&s.splice(i,1)}else for(s=$(t).concat(),i=s.length;--i>-1;)(s[i]._gc||e&&!s[i].isActive())&&s.splice(i,1);return s},I.killTweensOf=I.killDelayedCallsTo=function(t,e,i){"object"==typeof e&&(i=e,e=!1);for(var s=I.getTweensOf(t,e),n=s.length;--n>-1;)s[n]._kill(i,t)};var J=v("plugins.TweenPlugin",function(t,e){this._overwriteProps=(t||"").split(","),this._propName=this._overwriteProps[0],this._priority=e||0,this._super=J.prototype},!0);if(r=J.prototype,J.version="1.10.1",J.API=2,r._firstPT=null,r._addTween=function(t,e,i,s,n,r){var a,o;return null!=s&&(a="number"==typeof s||"="!==s.charAt(1)?Number(s)-i:parseInt(s.charAt(0)+"1",10)*Number(s.substr(2)))?(this._firstPT=o={_next:this._firstPT,t:t,p:e,s:i,c:a,f:"function"==typeof t[e],n:n||e,r:r},o._next&&(o._next._prev=o),o):void 0},r.setRatio=function(t){for(var e,i=this._firstPT,s=1e-6;i;)e=i.c*t+i.s,i.r?e=Math.round(e):s>e&&e>-s&&(e=0),i.f?i.t[i.p](e):i.t[i.p]=e,i=i._next},r._kill=function(t){var e,i=this._overwriteProps,s=this._firstPT;if(null!=t[this._propName])this._overwriteProps=[];else for(e=i.length;--e>-1;)null!=t[i[e]]&&i.splice(e,1);for(;s;)null!=t[s.n]&&(s._next&&(s._next._prev=s._prev),s._prev?(s._prev._next=s._next,s._prev=null):this._firstPT===s&&(this._firstPT=s._next)),s=s._next;return!1},r._roundProps=function(t,e){for(var i=this._firstPT;i;)(t[this._propName]||null!=i.n&&t[i.n.split(this._propName+"_").join("")])&&(i.r=e),i=i._next},I._onPluginEvent=function(t,e){var i,s,n,r,a,o=e._firstPT;if("_onInitAllProps"===t){for(;o;){for(a=o._next,s=n;s&&s.pr>o.pr;)s=s._next;(o._prev=s?s._prev:r)?o._prev._next=o:n=o,(o._next=s)?s._prev=o:r=o,o=a}o=e._firstPT=n}for(;o;)o.pg&&"function"==typeof o.t[t]&&o.t[t]()&&(i=!0),o=o._next;return i},J.activate=function(t){for(var e=t.length;--e>-1;)t[e].API===J.API&&(U[(new t[e])._propName]=t[e]);return!0},d.plugin=function(t){if(!(t&&t.propName&&t.init&&t.API))throw"illegal plugin definition.";var e,i=t.propName,s=t.priority||0,n=t.overwriteProps,r={init:"_onInitTween",set:"setRatio",kill:"_kill",round:"_roundProps",initAll:"_onInitAllProps"},a=v("plugins."+i.charAt(0).toUpperCase()+i.substr(1)+"Plugin",function(){J.call(this,i,s),this._overwriteProps=n||[]},t.global===!0),o=a.prototype=new J(i);o.constructor=a,a.API=t.API;for(e in r)"function"==typeof t[e]&&(o[r[e]]=t[e]);return a.version=t.version,J.activate([a]),a},s=t._gsQueue){for(n=0;s.length>n;n++)s[n]();for(r in p)p[r].func||t.console.log("GSAP encountered missing dependency: com.greensock."+r)}o=!1}})("undefined"!=typeof module&&module.exports&&"undefined"!=typeof global?global:this||window,"TweenLite");
+
+/*! visualCaptcha - v0.0.8 - 2016-01-23
+ * http://visualcaptcha.net
+ * Copyright (c) 2016 emotionLoop; Licensed MIT */
+
+(function( root, factory ) {
+    if ( typeof define === 'function' && define.amd ) {
+        define( [ 'angular' ], factory );
+    } else {
+        factory( root.angular );
+    }
+}( this, function( angular ) {/**
+ * @license almond 0.2.9 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/almond for details
+ */
+//Going sloppy to avoid 'use strict' string cost, but strict practices should
+//be followed.
+    /*jslint sloppy: true */
+    /*global setTimeout: false */
+
+    var requirejs, require, define;
+    (function (undef) {
+        var main, req, makeMap, handlers,
+            defined = {},
+            waiting = {},
+            config = {},
+            defining = {},
+            hasOwn = Object.prototype.hasOwnProperty,
+            aps = [].slice,
+            jsSuffixRegExp = /\.js$/;
+
+        function hasProp(obj, prop) {
+            return hasOwn.call(obj, prop);
+        }
+
+        /**
+         * Given a relative module name, like ./something, normalize it to
+         * a real name that can be mapped to a path.
+         * @param {String} name the relative name
+         * @param {String} baseName a real name that the name arg is relative
+         * to.
+         * @returns {String} normalized name
+         */
+        function normalize(name, baseName) {
+            var nameParts, nameSegment, mapValue, foundMap, lastIndex,
+                foundI, foundStarMap, starI, i, j, part,
+                baseParts = baseName && baseName.split("/"),
+                map = config.map,
+                starMap = (map && map['*']) || {};
+
+            //Adjust any relative paths.
+            if (name && name.charAt(0) === ".") {
+                //If have a base name, try to normalize against it,
+                //otherwise, assume it is a top-level require that will
+                //be relative to baseUrl in the end.
+                if (baseName) {
+                    //Convert baseName to array, and lop off the last part,
+                    //so that . matches that "directory" and not name of the baseName's
+                    //module. For instance, baseName of "one/two/three", maps to
+                    //"one/two/three.js", but we want the directory, "one/two" for
+                    //this normalization.
+                    baseParts = baseParts.slice(0, baseParts.length - 1);
+                    name = name.split('/');
+                    lastIndex = name.length - 1;
+
+                    // Node .js allowance:
+                    if (config.nodeIdCompat && jsSuffixRegExp.test(name[lastIndex])) {
+                        name[lastIndex] = name[lastIndex].replace(jsSuffixRegExp, '');
+                    }
+
+                    name = baseParts.concat(name);
+
+                    //start trimDots
+                    for (i = 0; i < name.length; i += 1) {
+                        part = name[i];
+                        if (part === ".") {
+                            name.splice(i, 1);
+                            i -= 1;
+                        } else if (part === "..") {
+                            if (i === 1 && (name[2] === '..' || name[0] === '..')) {
+                                //End of the line. Keep at least one non-dot
+                                //path segment at the front so it can be mapped
+                                //correctly to disk. Otherwise, there is likely
+                                //no path mapping for a path starting with '..'.
+                                //This can still fail, but catches the most reasonable
+                                //uses of ..
+                                break;
+                            } else if (i > 0) {
+                                name.splice(i - 1, 2);
+                                i -= 2;
+                            }
+                        }
+                    }
+                    //end trimDots
+
+                    name = name.join("/");
+                } else if (name.indexOf('./') === 0) {
+                    // No baseName, so this is ID is resolved relative
+                    // to baseUrl, pull off the leading dot.
+                    name = name.substring(2);
+                }
+            }
+
+            //Apply map config if available.
+            if ((baseParts || starMap) && map) {
+                nameParts = name.split('/');
+
+                for (i = nameParts.length; i > 0; i -= 1) {
+                    nameSegment = nameParts.slice(0, i).join("/");
+
+                    if (baseParts) {
+                        //Find the longest baseName segment match in the config.
+                        //So, do joins on the biggest to smallest lengths of baseParts.
+                        for (j = baseParts.length; j > 0; j -= 1) {
+                            mapValue = map[baseParts.slice(0, j).join('/')];
+
+                            //baseName segment has  config, find if it has one for
+                            //this name.
+                            if (mapValue) {
+                                mapValue = mapValue[nameSegment];
+                                if (mapValue) {
+                                    //Match, update name to the new value.
+                                    foundMap = mapValue;
+                                    foundI = i;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (foundMap) {
+                        break;
+                    }
+
+                    //Check for a star map match, but just hold on to it,
+                    //if there is a shorter segment match later in a matching
+                    //config, then favor over this star map.
+                    if (!foundStarMap && starMap && starMap[nameSegment]) {
+                        foundStarMap = starMap[nameSegment];
+                        starI = i;
+                    }
+                }
+
+                if (!foundMap && foundStarMap) {
+                    foundMap = foundStarMap;
+                    foundI = starI;
+                }
+
+                if (foundMap) {
+                    nameParts.splice(0, foundI, foundMap);
+                    name = nameParts.join('/');
+                }
+            }
+
+            return name;
+        }
+
+        function makeRequire(relName, forceSync) {
+            return function () {
+                //A version of a require function that passes a moduleName
+                //value for items that may need to
+                //look up paths relative to the moduleName
+                return req.apply(undef, aps.call(arguments, 0).concat([relName, forceSync]));
+            };
+        }
+
+        function makeNormalize(relName) {
+            return function (name) {
+                return normalize(name, relName);
+            };
+        }
+
+        function makeLoad(depName) {
+            return function (value) {
+                defined[depName] = value;
+            };
+        }
+
+        function callDep(name) {
+            if (hasProp(waiting, name)) {
+                var args = waiting[name];
+                delete waiting[name];
+                defining[name] = true;
+                main.apply(undef, args);
+            }
+
+            if (!hasProp(defined, name) && !hasProp(defining, name)) {
+                throw new Error('No ' + name);
+            }
+            return defined[name];
+        }
+
+        //Turns a plugin!resource to [plugin, resource]
+        //with the plugin being undefined if the name
+        //did not have a plugin prefix.
+        function splitPrefix(name) {
+            var prefix,
+                index = name ? name.indexOf('!') : -1;
+            if (index > -1) {
+                prefix = name.substring(0, index);
+                name = name.substring(index + 1, name.length);
+            }
+            return [prefix, name];
+        }
+
+        /**
+         * Makes a name map, normalizing the name, and using a plugin
+         * for normalization if necessary. Grabs a ref to plugin
+         * too, as an optimization.
+         */
+        makeMap = function (name, relName) {
+            var plugin,
+                parts = splitPrefix(name),
+                prefix = parts[0];
+
+            name = parts[1];
+
+            if (prefix) {
+                prefix = normalize(prefix, relName);
+                plugin = callDep(prefix);
+            }
+
+            //Normalize according
+            if (prefix) {
+                if (plugin && plugin.normalize) {
+                    name = plugin.normalize(name, makeNormalize(relName));
+                } else {
+                    name = normalize(name, relName);
+                }
+            } else {
+                name = normalize(name, relName);
+                parts = splitPrefix(name);
+                prefix = parts[0];
+                name = parts[1];
+                if (prefix) {
+                    plugin = callDep(prefix);
+                }
+            }
+
+            //Using ridiculous property names for space reasons
+            return {
+                f: prefix ? prefix + '!' + name : name, //fullName
+                n: name,
+                pr: prefix,
+                p: plugin
+            };
+        };
+
+        function makeConfig(name) {
+            return function () {
+                return (config && config.config && config.config[name]) || {};
+            };
+        }
+
+        handlers = {
+            require: function (name) {
+                return makeRequire(name);
+            },
+            exports: function (name) {
+                var e = defined[name];
+                if (typeof e !== 'undefined') {
+                    return e;
+                } else {
+                    return (defined[name] = {});
+                }
+            },
+            module: function (name) {
+                return {
+                    id: name,
+                    uri: '',
+                    exports: defined[name],
+                    config: makeConfig(name)
+                };
+            }
+        };
+
+        main = function (name, deps, callback, relName) {
+            var cjsModule, depName, ret, map, i,
+                args = [],
+                callbackType = typeof callback,
+                usingExports;
+
+            //Use name if no relName
+            relName = relName || name;
+
+            //Call the callback to define the module, if necessary.
+            if (callbackType === 'undefined' || callbackType === 'function') {
+                //Pull out the defined dependencies and pass the ordered
+                //values to the callback.
+                //Default to [require, exports, module] if no deps
+                deps = !deps.length && callback.length ? ['require', 'exports', 'module'] : deps;
+                for (i = 0; i < deps.length; i += 1) {
+                    map = makeMap(deps[i], relName);
+                    depName = map.f;
+
+                    //Fast path CommonJS standard dependencies.
+                    if (depName === "require") {
+                        args[i] = handlers.require(name);
+                    } else if (depName === "exports") {
+                        //CommonJS module spec 1.1
+                        args[i] = handlers.exports(name);
+                        usingExports = true;
+                    } else if (depName === "module") {
+                        //CommonJS module spec 1.1
+                        cjsModule = args[i] = handlers.module(name);
+                    } else if (hasProp(defined, depName) ||
+                        hasProp(waiting, depName) ||
+                        hasProp(defining, depName)) {
+                        args[i] = callDep(depName);
+                    } else if (map.p) {
+                        map.p.load(map.n, makeRequire(relName, true), makeLoad(depName), {});
+                        args[i] = defined[depName];
+                    } else {
+                        throw new Error(name + ' missing ' + depName);
+                    }
+                }
+
+                ret = callback ? callback.apply(defined[name], args) : undefined;
+
+                if (name) {
+                    //If setting exports via "module" is in play,
+                    //favor that over return value and exports. After that,
+                    //favor a non-undefined return value over exports use.
+                    if (cjsModule && cjsModule.exports !== undef &&
+                        cjsModule.exports !== defined[name]) {
+                        defined[name] = cjsModule.exports;
+                    } else if (ret !== undef || !usingExports) {
+                        //Use the return value from the function.
+                        defined[name] = ret;
+                    }
+                }
+            } else if (name) {
+                //May just be an object definition for the module. Only
+                //worry about defining if have a module name.
+                defined[name] = callback;
+            }
+        };
+
+        requirejs = require = req = function (deps, callback, relName, forceSync, alt) {
+            if (typeof deps === "string") {
+                if (handlers[deps]) {
+                    //callback in this case is really relName
+                    return handlers[deps](callback);
+                }
+                //Just return the module wanted. In this scenario, the
+                //deps arg is the module name, and second arg (if passed)
+                //is just the relName.
+                //Normalize module name, if it contains . or ..
+                return callDep(makeMap(deps, callback).f);
+            } else if (!deps.splice) {
+                //deps is a config object, not an array.
+                config = deps;
+                if (config.deps) {
+                    req(config.deps, config.callback);
+                }
+                if (!callback) {
+                    return;
+                }
+
+                if (callback.splice) {
+                    //callback is an array, which means it is a dependency list.
+                    //Adjust args if there are dependencies
+                    deps = callback;
+                    callback = relName;
+                    relName = null;
+                } else {
+                    deps = undef;
+                }
+            }
+
+            //Support require(['a'])
+            callback = callback || function () {};
+
+            //If relName is a function, it is an errback handler,
+            //so remove it.
+            if (typeof relName === 'function') {
+                relName = forceSync;
+                forceSync = alt;
+            }
+
+            //Simulate async callback;
+            if (forceSync) {
+                main(undef, deps, callback, relName);
+            } else {
+                //Using a non-zero value because of concern for what old browsers
+                //do, and latest browsers "upgrade" to 4 if lower value is used:
+                //http://www.whatwg.org/specs/web-apps/current-work/multipage/timers.html#dom-windowtimers-settimeout:
+                //If want a value immediately, use require('id') instead -- something
+                //that works in almond on the global level, but not guaranteed and
+                //unlikely to work in other AMD implementations.
+                setTimeout(function () {
+                    main(undef, deps, callback, relName);
+                }, 4);
+            }
+
+            return req;
+        };
+
+        /**
+         * Just drops the config on the floor, but returns req in case
+         * the config return value is used.
+         */
+        req.config = function (cfg) {
+            return req(cfg);
+        };
+
+        /**
+         * Expose module registry for debugging and tooling
+         */
+        requirejs._defined = defined;
+
+        define = function (name, deps, callback) {
+
+            //This module may not have dependencies
+            if (!deps.splice) {
+                //deps is not an array, so probably means
+                //an object literal or factory function for
+                //the value. Adjust args.
+                callback = deps;
+                deps = [];
+            }
+
+            if (!hasProp(defined, name) && !hasProp(waiting, name)) {
+                waiting[name] = [name, deps, callback];
+            }
+        };
+
+        define.amd = {
+            jQuery: true
+        };
+    }());
+
+    define("almond", function(){});
+
+    /*global define */
+
+    define( 'visualcaptcha/core',[],function() {
+        'use strict';
+
+        var _addUrlParams,
+            _refresh,
+            _startUrl,
+            _imageUrl,
+            _audioUrl,
+            _imageValue,
+            _isRetina,
+            _supportsAudio;
+
+        _addUrlParams = function( config, url, params ) {
+            params = params || [];
+
+            if ( config.namespace && config.namespace.length > 0 ) {
+                params.push( config.namespaceFieldName + '=' + config.namespace );
+            }
+
+            params.push( config.randomParam + '=' + config.randomNonce );
+
+            return url + '?' + params.join( '&' );
+        };
+
+        _refresh = function( config ) {
+            var core = this,
+                startURL;
+
+            // Set loading state
+            config.applyRandomNonce();
+            config.isLoading = true;
+
+            // URL must be loaded after nonce is applied
+            startURL = _startUrl( config );
+
+            config._loading( core );
+
+            if ( config.callbacks.loading ) {
+                config.callbacks.loading( core );
+            }
+
+            config.request( startURL, function( response ) {
+                // We need now to set the image and audio field names
+                if ( response.audioFieldName ) {
+                    config.audioFieldName = response.audioFieldName;
+                }
+
+                if ( response.imageFieldName ) {
+                    config.imageFieldName = response.imageFieldName;
+                }
+
+                // Set the correct image name
+                if ( response.imageName ) {
+                    config.imageName = response.imageName;
+                }
+
+                // Set the correct image values
+                if ( response.values ) {
+                    config.imageValues = response.values;
+                }
+
+                // Set loaded state
+                config.isLoading = false;
+                config.hasLoaded = true;
+
+                config._loaded( core );
+
+                if ( config.callbacks.loaded ) {
+                    config.callbacks.loaded( core );
+                }
+            } );
+        };
+
+        _startUrl = function( config ) {
+            var url = config.url + config.routes.start + '/' + config.numberOfImages;
+
+            return _addUrlParams( config, url );
+        };
+
+        _imageUrl = function( config, i ) {
+            var url = '',
+                params = [];
+
+            // Is the image index valid?
+            if ( i < 0 || i >= config.numberOfImages ) {
+                return url;
+            }
+
+            // If retina is required, add url param
+            if ( this.isRetina() ) {
+                params.push( 'retina=1' );
+            }
+
+            url = config.url + config.routes.image + '/' + i;
+
+            return _addUrlParams( config, url, params );
+        };
+
+        _audioUrl = function( config, ogg ) {
+            var url = config.url + config.routes.audio;
+
+            if ( ogg ) {
+                url += '/ogg';
+            }
+
+            return _addUrlParams( config, url );
+        };
+
+        _imageValue = function( config, i ) {
+            if ( i >= 0 && i < config.numberOfImages ) {
+                return config.imageValues[ i ];
+            }
+
+            return '';
+        };
+
+        //
+        // Check for device/browser capabilities
+        //
+        _isRetina = function() {
+            // Check if the device is retina-like
+            return ( window.devicePixelRatio !== undefined && window.devicePixelRatio > 1 );
+        };
+
+        // Check if the device supports the HTML5 audio element, for accessibility
+        // I'm using an IIFE just because I don't want audioElement to be in the rest of the scope
+        _supportsAudio = function() {
+            var audioElement,
+                support = false;
+
+            try {
+                audioElement = document.createElement( 'audio' );
+                if ( audioElement.canPlayType ) {
+                    support = true;
+                }
+            } catch( e ) {}
+
+            return support;
+        };
+
+        return function( config ) {
+            var core,
+                refresh,
+                isLoading,
+                hasLoaded,
+                numberOfImages,
+                imageName,
+                imageValue,
+                imageUrl,
+                audioUrl,
+                imageFieldName,
+                audioFieldName,
+                namespace,
+                namespaceFieldName;
+
+            refresh = function() {
+                return _refresh.call( this, config );
+            };
+
+            isLoading = function() {
+                return config.isLoading;
+            };
+
+            hasLoaded = function() {
+                return config.hasLoaded;
+            };
+
+            numberOfImages = function() {
+                return config.imageValues.length;
+            };
+
+            imageName = function() {
+                return config.imageName;
+            };
+
+            imageValue = function( index ) {
+                return _imageValue.call( this, config, index );
+            };
+
+            imageUrl = function( index ) {
+                return _imageUrl.call( this, config, index );
+            };
+
+            audioUrl = function( ogg ) {
+                return _audioUrl.call( this, config, ogg );
+            };
+
+            imageFieldName = function() {
+                return config.imageFieldName;
+            };
+
+            audioFieldName = function() {
+                return config.audioFieldName;
+            };
+
+            namespace = function() {
+                return config.namespace;
+            };
+
+            namespaceFieldName = function() {
+                return config.namespaceFieldName;
+            };
+
+            core = {
+                refresh: refresh,
+                isLoading: isLoading,
+                hasLoaded: hasLoaded,
+                numberOfImages: numberOfImages,
+                imageName: imageName,
+                imageValue: imageValue,
+                imageUrl: imageUrl,
+                audioUrl: audioUrl,
+                imageFieldName: imageFieldName,
+                audioFieldName: audioFieldName,
+                namespace: namespace,
+                namespaceFieldName: namespaceFieldName,
+                isRetina: _isRetina,
+                supportsAudio: _supportsAudio
+            };
+
+            // Load the data if auto refresh is enabled
+            if ( config.autoRefresh ) {
+                core.refresh();
+            }
+
+            return core;
+        };
+    } );
+    /*global define */
+
+    define( 'visualcaptcha/xhr-request',[],function() {
+        'use strict';
+
+        var XMLHttpRequest = window.XMLHttpRequest;
+
+        return function( url, callback ) {
+            var ajaxRequest = new XMLHttpRequest();
+
+            ajaxRequest.open( 'GET', url, true );
+            ajaxRequest.onreadystatechange = function() {
+                var response;
+
+                if ( ajaxRequest.readyState !== 4 || ajaxRequest.status !== 200 ) {
+                    return;
+                }
+
+                response = JSON.parse( ajaxRequest.responseText );
+                callback( response );
+            };
+
+            ajaxRequest.send();
+        };
+    } );
+    /*global define */
+
+    define('visualcaptcha/config',[ 'visualcaptcha/xhr-request' ], function( xhrRequest ) {
+        'use strict';
+
+        return function( options ) {
+            var urlArray = window.location.href.split( '/' );
+            urlArray[urlArray.length-1]='';
+
+            var config = {
+                /* REQUEST */
+                request: xhrRequest,
+                url: urlArray.join( '/' ).slice(0, -1),
+                namespace: '',
+                namespaceFieldName: 'namespace',
+                routes: {
+                    start: '/start',
+                    image: '/image',
+                    audio: '/audio'
+                },
+                isLoading: false,
+                hasLoaded: false,
+                /* STATE */
+                autoRefresh: true,
+                numberOfImages: 6,
+                randomNonce: '',
+                randomParam: 'r',
+                audioFieldName: '',
+                imageFieldName: '',
+                imageName: '',
+                imageValues: [],
+                /* CALLBACKS */
+                callbacks: {},
+                _loading: function() {},
+                _loaded: function() {}
+            };
+
+            // Update and return the random nonce
+            config.applyRandomNonce = function() {
+                return ( config.randomNonce = Math.random().toString( 36 ).substring( 2 ) );
+            };
+
+            // We don't want to extend config, just allow setting a few of its options
+            if ( options.request ) {
+                config.request = options.request;
+            }
+
+            if ( options.url ) {
+                config.url = options.url;
+            }
+
+            if ( options.namespace ) {
+                config.namespace = options.namespace;
+            }
+
+            if ( options.namespaceFieldName ) {
+                config.namespaceFieldName = options.namespaceFieldName;
+            }
+
+            if ( typeof options.autoRefresh !== 'undefined' ) {
+                config.autoRefresh = options.autoRefresh;
+            }
+
+            if ( options.numberOfImages ) {
+                config.numberOfImages = options.numberOfImages;
+            }
+
+            if ( options.routes ) {
+                if ( options.routes.start ) {
+                    config.routes.start = options.routes.start;
+                }
+
+                if ( options.routes.image ) {
+                    config.routes.image = options.routes.image;
+                }
+
+                if ( options.routes.audio ) {
+                    config.routes.audio = options.routes.audio;
+                }
+            }
+
+            if ( options.randomParam ) {
+                config.randomParam = options.randomParam;
+            }
+
+            if ( options.callbacks ) {
+                if ( options.callbacks.loading ) {
+                    config.callbacks.loading = options.callbacks.loading;
+                }
+
+                if ( options.callbacks.loaded ) {
+                    config.callbacks.loaded = options.callbacks.loaded;
+                }
+            }
+
+            if ( options._loading ) {
+                config._loading = options._loading;
+            }
+
+            if ( options._loaded ) {
+                config._loaded = options._loaded;
+            }
+
+            return config;
+        };
+    } );
+    /*global define */
+
+    define( 'visualcaptcha',['require','visualcaptcha/core','visualcaptcha/config'],function( require ) {
+        'use strict';
+
+        var core = require( 'visualcaptcha/core' ),
+            config = require( 'visualcaptcha/config' );
+
+        return function( options ) {
+            options = options || {};
+
+            return core( config( options ) );
+        };
+    } );
+    /*global define */
+
+    define( 'visualcaptcha/deep-extend',[],function() {
+        'use strict';
+
+        var _deepExtend;
+
+        //
+        // Credits: http://andrewdupont.net/2009/08/28/deep-extending-objects-in-javascript/
+        //
+        _deepExtend = function( dest, src ) {
+            dest = dest || {};
+
+            for ( var key in src ) {
+                if ( src[ key ] &&
+                    src[ key ].constructor &&
+                    src[ key ].constructor === Object ) {
+                    dest[ key ] = dest[ key ] || {};
+                    _deepExtend( dest[ key ], src[ key ] );
+                } else {
+                    dest[ key ] = src[ key ];
+                }
+            }
+
+            return dest;
+        };
+
+        return _deepExtend;
+    } );
+    /*global define */
+
+    define( 'visualcaptcha/helpers',[],function() {
+        'use strict';
+
+        var _firstOrArray,
+            _findByClass,
+            _findByTag,
+            _hasClass,
+            _addClass,
+            _removeClass,
+            _bindClick;
+
+        _firstOrArray = function( items, first ) {
+            return first ? items[ 0 ] : Array.prototype.slice.call( items );
+        };
+
+        _findByClass = function( element, className, first ) {
+            var elements = element.getElementsByClassName( className );
+
+            return _firstOrArray( elements, first );
+        };
+
+        _findByTag = function( element, tagName, first ) {
+            var elements = element.getElementsByTagName( tagName );
+
+            return _firstOrArray( elements, first );
+        };
+
+        _hasClass = function( element, cls ) {
+            var reg = new RegExp( "(\\s|^)" + cls + "(\\s|$)" );
+
+            return element.className && reg.test( element.className );
+        };
+
+        _addClass = function( element, cls ) {
+            if ( Array.isArray( element ) ) {
+                for ( var i = 0; i < element.length; i++ ) {
+                    _addClass( element[ i ], cls );
+                }
+            } else {
+                if ( !_hasClass( element, cls ) ) {
+                    if ( element.className.length > 0 ) {
+                        element.className += ' ' + cls;
+                    } else {
+                        element.className = cls;
+                    }
+                }
+            }
+        };
+
+        _removeClass = function( element, cls ) {
+            var reg;
+
+            if ( Array.isArray( element ) ) {
+                for ( var i = 0; i < element.length; i++ ) {
+                    _removeClass( element[ i ], cls );
+                }
+            } else {
+                reg = new RegExp( "(\\s|^)" + cls + "(\\s|$)" );
+
+                element.className = element.className
+                    .replace( reg, " " )
+                    .replace( /(^\s*)|(\s*$)/g, "" );
+            }
+        };
+
+        _bindClick = function( element, callback ) {
+            if ( Array.isArray( element ) ) {
+                for ( var i = 0; i < element.length; i++ ) {
+                    _bindClick( element[ i ], callback );
+                }
+            } else {
+                if ( element.addEventListener ) {
+                    element.addEventListener( 'click', callback, false );
+                } else {
+                    element.attachEvent( 'onclick', callback );
+                }
+            }
+        };
+
+        return {
+            findByClass: _findByClass,
+            findByTag: _findByTag,
+            hasClass: _hasClass,
+            addClass: _addClass,
+            removeClass: _removeClass,
+            bindClick: _bindClick
+        };
+    } );
+    /*global define */
+
+    define( 'visualcaptcha/templates',[],function() {
+        'use strict';
+
+        var _t,
+            _buttonsHTML,
+            _accessibilityHTML,
+            _imagesHTML,
+            _audioInputHTML,
+            _imageInputHTML,
+            _namespaceInputHTML;
+
+        // Template engine
+        _t = function( str, d ) {
+            for ( var p in d ) {
+                str = str.replace( new RegExp( '{' + p + '}', 'g' ), d[ p ] );
+            }
+
+            return str;
+        };
+
+        // Generate refresh and accessibility buttons HTML
+        _buttonsHTML = function( captcha, language, path ) {
+            var btnAccessibility,
+                btnRefresh,
+                string,
+                params;
+
+            btnAccessibility =
+                '<div class="visualCaptcha-accessibility-button">' +
+                '<a href="#"><img src="{path}accessibility{retinaExtra}.png" title="{accessibilityTitle}" alt="{accessibilityAlt}" /></a>' +
+                '</div>';
+
+            btnRefresh =
+                '<div class="visualCaptcha-refresh-button">' +
+                '<a href="#"><img src="{path}refresh{retinaExtra}.png" title="{refreshTitle}" alt="{refreshAlt}" /></a>' +
+                '</div>';
+
+            string =
+                '<div class="visualCaptcha-button-group">' +
+                btnRefresh +
+                ( captcha.supportsAudio() ? btnAccessibility : '' ) +
+                '</div>';
+
+            params = {
+                path: path || '',
+                refreshTitle: language.refreshTitle,
+                refreshAlt: language.refreshAlt,
+                accessibilityTitle: language.accessibilityTitle,
+                accessibilityAlt: language.accessibilityAlt,
+                retinaExtra: captcha.isRetina() ? '@2x' : ''
+            };
+
+            return _t( string, params );
+        };
+
+        // Generate accessibility option and audio element HTML
+        _accessibilityHTML = function( captcha, language ) {
+            var string,
+                params;
+
+            if ( !captcha.supportsAudio() ) {
+                return '';
+            }
+
+            string =
+                '<div class="visualCaptcha-accessibility-wrapper visualCaptcha-hide">' +
+                '<div class="accessibility-description">{accessibilityDescription}</div>' +
+                '<audio preload="preload">' +
+                '<source src="{audioURL}" type="audio/ogg" />' +
+                '<source src="{audioURL}" type="audio/mpeg" />' +
+                '</audio>' +
+                '</div>';
+
+            params = {
+                accessibilityDescription: language.accessibilityDescription,
+                audioURL: captcha.audioUrl(),
+                audioFieldName: captcha.audioFieldName()
+            };
+
+            return _t( string, params );
+        };
+
+        // Generate images HTML
+        _imagesHTML = function( captcha, language ) {
+            var images = '',
+                string,
+                params;
+
+            for ( var i = 0, l = captcha.numberOfImages(); i < l; i++ ) {
+                string =
+                    '<div class="img">' +
+                    '<a href="#"><img src="{imageUrl}" id="visualCaptcha-img-{i}" data-index="{i}" alt="" title="" /></a>' +
+                    '</div>';
+
+                params = {
+                    imageUrl: captcha.imageUrl( i ),
+                    i: i
+                };
+
+                images += _t( string, params );
+            }
+
+            string =
+                '<p class="visualCaptcha-explanation">{explanation}</p>' +
+                '<div class="visualCaptcha-possibilities">{images}</div>';
+
+            params = {
+                imageFieldName: captcha.imageFieldName(),
+                explanation: language.explanation.replace( /ANSWER/, captcha.imageName() ),
+                images: images
+            };
+
+            return _t( string, params );
+        };
+
+        _audioInputHTML = function( captcha ) {
+            var string,
+                params;
+
+            string =
+                '<input class="form-control audioField" type="text" name="{audioFieldName}" value="" autocomplete="off" />';
+
+            params = {
+                audioFieldName: captcha.audioFieldName()
+            };
+
+            return _t( string, params );
+        };
+
+        _imageInputHTML = function( captcha, imageIndex ) {
+            var string,
+                params;
+
+            string =
+                '<input class="form-control imageField" type="hidden" name="{imageFieldName}" value="{value}" readonly="readonly" />';
+
+            params = {
+                imageFieldName: captcha.imageFieldName(),
+                value: captcha.imageValue( imageIndex )
+            };
+
+            return _t( string, params );
+        };
+
+        _namespaceInputHTML = function( captcha ) {
+            var string,
+                params,
+                namespace = captcha.namespace();
+
+            // Ensure namespace is present
+            if ( !namespace || namespace.length === 0 ) {
+                return '';
+            }
+
+            string =
+                '<input type="hidden" name="{fieldName}" value="{value}" />';
+
+            params = {
+                fieldName: captcha.namespaceFieldName(),
+                value: namespace
+            };
+
+            return _t( string, params );
+        };
+
+        return {
+            buttons: _buttonsHTML,
+            accessibility: _accessibilityHTML,
+            images: _imagesHTML,
+            audioInput: _audioInputHTML,
+            imageInput: _imageInputHTML,
+            namespaceInput: _namespaceInputHTML
+        };
+    } );
+    /*global define */
+
+    define( 'visualcaptcha/language',[],function() {
+        'use strict';
+
+        return {
+            accessibilityAlt: 'Sound icon',
+            accessibilityTitle: 'Accessibility option: listen to a question and answer it!',
+            accessibilityDescription: 'Type below the <strong>answer</strong> to what you hear. Numbers or words:',
+            explanation: 'Click or touch the <strong>ANSWER</strong>',
+            refreshAlt: 'Refresh/reload icon',
+            refreshTitle: 'Refresh/reload: get new images and accessibility option!'
+        };
+    } );
+    /*global define */
+
+    define( 'visualcaptcha.vanilla',[
+        'visualcaptcha',
+        'visualcaptcha/deep-extend',
+        'visualcaptcha/helpers',
+        'visualcaptcha/templates',
+        'visualcaptcha/language'
+    ], function( visualCaptcha, deepExtend, helpers, templates, language ) {
+        'use strict';
+
+        var _loading,
+            _loaded,
+            _toggleAccessibility,
+            _chooseImage,
+            _refreshCaptcha,
+            _getCaptchaData;
+
+        // callback on loading
+        _loading = function() {};
+
+        // callback on loaded
+        _loaded = function( element, captcha ) {
+            var config = element.config,
+                captchaHTML,
+                selected;
+
+            captchaHTML =
+                // Add namespace input, if present
+                templates.namespaceInput( captcha ) +
+                    // Add audio element, if supported
+                templates.accessibility( captcha, config.language ) +
+                    // Add image elements
+                templates.images( captcha, config.language ) +
+                    // Add refresh and accessibility buttons
+                templates.buttons( captcha, config.language, config.imgPath );
+
+            // Actually add the HTML
+            element.innerHTML = captchaHTML;
+
+            // Bind accessibility button
+            selected = helpers.findByClass( element, 'visualCaptcha-accessibility-button', true );
+            helpers.bindClick( selected, _toggleAccessibility.bind( null, element, captcha ) );
+
+            // Bind refresh button
+            selected = helpers.findByClass( element, 'visualCaptcha-refresh-button', true );
+            helpers.bindClick( selected, _refreshCaptcha.bind( null, element, captcha ) );
+
+            // Bind images
+            selected = helpers.findByClass( element, 'visualCaptcha-possibilities', true );
+            helpers.bindClick( helpers.findByClass( selected, 'img' ), _chooseImage.bind( null, element, captcha ) );
+        };
+
+        // Toggle accessibility option
+        _toggleAccessibility = function( element, captcha ) {
+            var accessibilityWrapper = helpers.findByClass( element, 'visualCaptcha-accessibility-wrapper', true ),
+                possibilitiesWrapper = helpers.findByClass( element, 'visualCaptcha-possibilities', true ),
+                explanation = helpers.findByClass( element, 'visualCaptcha-explanation', true ),
+                audio = helpers.findByTag( accessibilityWrapper, 'audio', true ),
+                images,
+                imageInput,
+                audioInput,
+                audioInputHTML;
+
+            if ( helpers.hasClass( accessibilityWrapper, 'visualCaptcha-hide' ) ) {
+                // Hide images and explanation
+                helpers.addClass( possibilitiesWrapper, 'visualCaptcha-hide' );
+                helpers.addClass( explanation, 'visualCaptcha-hide' );
+
+                // Reset selected images and input value
+                images = helpers.findByClass( possibilitiesWrapper, 'img' );
+                helpers.removeClass( images, 'visualCaptcha-selected' );
+
+                imageInput = helpers.findByTag( explanation, 'input', true );
+                if ( imageInput !== undefined ) {
+                    imageInput.value = '';
+                }
+
+                // Build the input HTML
+                audioInputHTML = templates.audioInput( captcha );
+
+                // Add the input before the audio element
+                accessibilityWrapper.innerHTML = accessibilityWrapper.innerHTML.replace( '<audio', audioInputHTML + '<audio' );
+
+                // Show the accessibility wrapper
+                helpers.removeClass( accessibilityWrapper, 'visualCaptcha-hide' );
+
+                // Play the audio
+                audio.load();
+                audio.play();
+            } else {
+                // Stop audio, delete input element, show images
+                audio.pause();
+
+                // Hide the accessibility wrapper
+                helpers.addClass( accessibilityWrapper, 'visualCaptcha-hide' );
+
+                // Delete the input element
+                audioInput = helpers.findByTag( accessibilityWrapper, 'input', true );
+                accessibilityWrapper.removeChild( audioInput );
+
+                // Show images and explanation
+                helpers.removeClass( explanation, 'visualCaptcha-hide' );
+                helpers.removeClass( possibilitiesWrapper, 'visualCaptcha-hide' );
+            }
+        };
+
+        // Choose image
+        _chooseImage = function( element, captcha, event ) {
+            var image = event.currentTarget,
+                possibilitiesWrapper = helpers.findByClass( element, 'visualCaptcha-possibilities', true ),
+                explanation = helpers.findByClass( element, 'visualCaptcha-explanation', true ),
+                imgElement,
+                images,
+                imageIndex,
+                imageInput,
+                imageInputHTML;
+
+            // Check if an input element already exists
+            imageInput = helpers.findByTag( explanation, 'input', true );
+
+            if ( imageInput ) {
+                // Remove it if so
+                explanation.removeChild( imageInput );
+
+                // Remove selected class from selected image
+                images = helpers.findByClass( possibilitiesWrapper, 'img' );
+                helpers.removeClass( images, 'visualCaptcha-selected' );
+            }
+
+            // Add selected class to image
+            helpers.addClass( image, 'visualCaptcha-selected' );
+
+            // Get the image index
+            imgElement = helpers.findByTag( image, 'img', true );
+            imageIndex = parseInt( imgElement.getAttribute( 'data-index' ), 10 );
+
+            // Build the input HTML
+            imageInputHTML = templates.imageInput( captcha, imageIndex );
+
+            // Append the input
+            explanation.innerHTML += imageInputHTML;
+        };
+
+        // Refresh the captcha
+        _refreshCaptcha = function( element, captcha ) {
+            captcha.refresh();
+        };
+
+        _getCaptchaData = function( element ) {
+            var image = helpers.findByClass( element, 'imageField', true ) || {},
+                audio = helpers.findByClass( element, 'audioField', true ) || {},
+                valid = !! ( image.value || audio.value );
+
+            return valid ? {
+                valid: valid,
+                name:  image.value ? image.name  : audio.name,
+                value: image.value ? image.value : audio.value
+            } : {
+                valid: valid
+            };
+        };
+
+        return function( element, options ) {
+            var config,
+                captcha,
+                captchaConfig;
+
+            config = deepExtend( {
+                imgPath: '/',
+                language: language,
+                captcha: {}
+            }, options );
+
+            element = ( typeof element === "string" ) ? document.getElementById( element ) : element;
+            element.config = config;
+
+            // Add visualCaptcha class to element
+            helpers.addClass( element, 'visualCaptcha' );
+
+            // Store captcha config
+            captchaConfig = deepExtend( config.captcha, {
+                _loading: _loading.bind( null, element ),
+                _loaded: _loaded.bind( null, element )
+            } );
+
+            // Load namespace from data-namespace attribute
+            if ( typeof element.getAttribute( 'data-namespace' ) !== 'undefined' ) {
+                captchaConfig.namespace = element.getAttribute( 'data-namespace' );
+            }
+
+            // Initialize visualCaptcha
+            captcha = visualCaptcha( captchaConfig );
+
+            captcha.getCaptchaData = _getCaptchaData.bind( null, element );
+
+            if ( typeof config.init === "function" ) {
+                config.init.call( null, captcha );
+            }
+
+            return captcha;
+
+        };
+    } );
+    /*global define */
+
+    define( 'visualcaptcha.angular',[
+        'angular',
+        'visualcaptcha.vanilla',
+        'visualcaptcha/deep-extend'
+    ], function( angular, visualCaptcha, deepExtend ) {
+        'use strict';
+
+        angular
+            .module( 'visualCaptcha', [] )
+            .directive( 'captcha', [ '$http', function( $http ) {
+                var _request = function( url, callback ) {
+                    $http({
+                        method: 'GET',
+                        url: url,
+                        withCredentials: true
+                    }).success( callback );
+                };
+                return {
+                    restrict: 'A',
+                    scope: {
+                        'options': '='
+                    },
+                    link: function( scope, element ) {
+                        visualCaptcha( element[ 0 ], deepExtend( scope.options, {
+                            captcha: {
+                                request: _request
+                            }
+                        } ) );
+                    }
+                };
+            }] );
+    } );
+
+    define( 'angular', function() {
+        return angular;
+    } );
+
+    require( 'visualcaptcha.angular' );
+} ));

@@ -1,5 +1,13 @@
-article#deuxBis
-    h1 test
-    
-    .next
-        h3 Mon parcours
+article#unBis( ng-controller="gitCtrl" )
+    .ui
+        .ui.cards.centered
+            .ui.card.projet( ng-repeat="repo in repos" )
+                .content
+                    .header {{repo.name}}
+                .content {{repo.description}}
+                .content.extra
+                    a.ui.button.black.left.floated( ng-href="{{repo.html_url}}" ng-if="repo.html_url" target="_BLANK")
+                        i.fa.fa-github
+                    button.ui.button.primary Détails
+                    a.ui.button.black.right.floated( ng-href="{{repo.homepage}}" ng-if="repo.homepage" target="_BLANK")
+                        i.fa.fa-globe

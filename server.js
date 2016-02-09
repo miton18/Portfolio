@@ -1,15 +1,15 @@
 (function() {
-  var app, auth, bodyParser, compression, db, env, express, logModel, messageModel, mongoose, port;
+  var _getAudio, _getImage, _startRoute, _trySubmission, app, bodyParser, compression, directmail, env, express, mail, port, sessions;
 
   express = require('express');
 
   bodyParser = require('body-parser');
 
-  auth = require('basic-auth');
-
   compression = require('compression');
 
-  mongoose = require('mongoose');
+  directmail = require('directmail');
+
+  sessions = require('client-sessions');
 
   env = process.env;
 
@@ -17,21 +17,13 @@
 
   app = express();
 
-  messageModel = require('./message');
-
-  logModel = require('./log');
-
   app.listen(port);
 
-  console.log("starting on " + port);
-
-  db = mongoose.connect('mongodb://u80kgqmkrdvdt4g:GlMiU5fqL16rJZJg4ydo@b4rrhixa0ttqdr0-mongodb.services.clever-cloud.com:27017/b4rrhixa0ttqdr0', function(err) {
-    if (err != null) {
-      return console.log(err);
-    } else {
-      return console.log('db connected');
-    }
+  mail = directmail({
+    debug: true
   });
+
+  console.log("starting on " + port);
 
   app.use(bodyParser.urlencoded({
     extended: true
@@ -40,6 +32,13 @@
   app.use(bodyParser.json());
 
   app.use(compression());
+
+  app.use(sessions({
+    cookieName: 'session',
+    secret: 'DoNotTouchThis',
+    duration: 24 * 60 * 60 * 1000,
+    activeDuration: 1000 * 60 * 5
+  }));
 
   app.use('/', express["static"](__dirname + "/build"));
 
@@ -68,17 +67,8 @@
     }
   });
 
-  app.get('/messages', function(req, res) {
-    return messageModel.find(null, function(err, messages) {
-      if (err != null) {
-        console.log(err);
-      }
-      return res.json(messages);
-    });
-  });
-
   app.post('/messages', function(req, res) {
-    var content, email, ip, message, name, regEmail;
+    var content, email, ip, name, regEmail;
     if (req.body.email != null) {
       email = req.body.email;
     }
@@ -102,38 +92,92 @@
       });
       return;
     }
-    if (messageModel == null) {
-      res.json({
-        error: 'Database not ready'
-      });
-      return;
-    }
-    message = new messageModel({
-      email: email,
-      content: content,
-      ip: ip,
-      date: new Date()
+    mail.send({
+      from: "portfolio@rcdinfo.fr",
+      recipients: ["rcd18@hotmail.fr"],
+      message: "Subject: contact\r\n\r\n" + email + " " + name + " " + ip + "\r\n " + content
     });
-    return message.save(function(err) {
-      if (err != null) {
-        return res.json({
-          error: 'Problem'
-        });
-      } else {
-        return res.json({
-          error: null
-        });
-      }
+    return res.json({
+      error: null
     });
   });
 
+  _getAudio = function(req, res, next) {
+    var visualCaptcha;
+    if (req.params.type !== 'ogg') {
+      req.params.type = 'mp3';
+    }
+    visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
+    return visualCaptcha.streamAudio(res, req.params.type);
+  };
 
-  /*app.delete '/messages', (req, res)->
-      
-      messageModel.remove null, (err)->
-          res.json error: 'not deleted' if err?
-          res.json error: null
-   */
+  _getImage = function(req, res, next) {
+    var isRetina, visualCaptcha;
+    isRetina = false;
+    visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
+    if (req.query.retina) {
+      isRetina = true;
+    }
+    return visualCaptcha.streamImage(req.params.index, res, isRetina);
+  };
+
+  _startRoute = function(req, res, next) {
+    var visualCaptcha;
+    visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
+    visualCaptcha.generate(req.params.howmany);
+    return res.status(200).send(visualCaptcha.getFrontendData());
+  };
+
+  _trySubmission = function(req, res, next) {
+    var audioAnswer, frontendData, imageAnswer, namespace, responseObject, responseStatus, visualCaptcha;
+    namespace = req.query.namespace;
+    visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
+    frontendData = visualCaptcha.getFrontendData();
+    if (!(namespace || namespace.length === 0)) {
+      queryParams.push('namespace=' + namespace);
+    }
+    if (typeof frontendData === 'undefined') {
+      queryParams.push('status=noCaptcha');
+      responseStatus = 404;
+      responseObject = 'Not Found';
+    } else {
+      if (imageAnswer = req.body[frontendData.imageFieldName]) {
+        if (visualCaptcha.validateImage(imageAnswer)) {
+          queryParams.push('status=validImage');
+          responseStatus = 200;
+        } else {
+          queryParams.push('status=failedImage');
+          responseStatus = 403;
+        }
+      } else if (audioAnswer = req.body[frontendData.audioFieldName]) {
+        if (visualCaptcha.validateAudio(audioAnswer.toLowerCase())) {
+          queryParams.push('status=validAudio');
+          responseStatus = 200;
+        } else {
+          queryParams.push('status=failedAudio');
+          responseStatus = 403;
+        }
+      } else {
+        queryParams.push('status=failedPost');
+        responseStatus = 500;
+      }
+    }
+    if (req.accepts('html') !== void 0) {
+      return res.redirect('/?' + queryParams.join('&'));
+    } else {
+      return res.status(responseStatus);
+    }
+  };
+
+  app.post('/try', _trySubmission);
+
+  app.get('/audio', _getAudio);
+
+  app.get('/audio/:type', _getAudio);
+
+  app.get('/image/:index', _getImage);
+
+  app.get('/start/:howmany', _startRoute);
 
   process.on('uncaughtException', function(err) {
     console.log('Caught exception: ' + err);

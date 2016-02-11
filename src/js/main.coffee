@@ -1,6 +1,5 @@
-app = angular.module 'app', ['ngAnimate', 'visualCaptcha']
-
-HEIGHT = 0
+app     = angular.module 'app', ['ngAnimate']
+HEIGHT  = 0
 
 cadre = ->
     # TAILLE DES SLIDES
@@ -31,8 +30,9 @@ $ document
         scrollPollInterval: 10 
 
     # GO TO NEXT SLIDE BUTTON
-    $ '.next'
-    .click ->
+    $ 'button.next'
+    .on 'click', ->
+        console.log 'click!'
         nextSlide = $(this).parent('article').next()
         scrollTo nextSlide
 
@@ -49,20 +49,15 @@ $ document
         that.removeClass 'notEmpty'
         that.addClass     'notEmpty' if that.val() != ""
 
-    $('.visualCaptcha-possibilities .img a').on('click', (e)->
-        e.preventDefault()
-        e.stopImmediatePropagation()
-    )
 
-
-###scrollTo = (el)->
+scrollTo = (el)->
 
     $ 'body'
     .animate
         scrollTop: el.offset().top
     , 700
     , 'easeOutBack' # http://easings.net/fr
-###
+
 etude = ->
     now     = Date.now()
     depart  = (new Date "02/10/2012").getTime()

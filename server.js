@@ -1,5 +1,5 @@
 (function() {
-  var _getAudio, _getImage, _startRoute, _trySubmission, app, bodyParser, compression, directmail, env, express, mail, port, sessions;
+  var app, bodyParser, compression, directmail, env, express, mail, port;
 
   express = require('express');
 
@@ -8,8 +8,6 @@
   compression = require('compression');
 
   directmail = require('directmail');
-
-  sessions = require('client-sessions');
 
   env = process.env;
 
@@ -33,12 +31,14 @@
 
   app.use(compression());
 
-  app.use(sessions({
-    cookieName: 'session',
-    secret: 'DoNotTouchThis',
-    duration: 24 * 60 * 60 * 1000,
-    activeDuration: 1000 * 60 * 5
-  }));
+
+  /*app.use sessions(
+      cookieName: 'session',
+      secret: 'DoNotTouchThis',
+      duration: 24 * 60 * 60 * 1000,
+      activeDuration: 1000 * 60 * 5
+  )
+   */
 
   app.use('/', express["static"](__dirname + "/build"));
 
@@ -102,82 +102,12 @@
     });
   });
 
-  _getAudio = function(req, res, next) {
-    var visualCaptcha;
-    if (req.params.type !== 'ogg') {
-      req.params.type = 'mp3';
-    }
-    visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
-    return visualCaptcha.streamAudio(res, req.params.type);
-  };
 
-  _getImage = function(req, res, next) {
-    var isRetina, visualCaptcha;
-    isRetina = false;
-    visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
-    if (req.query.retina) {
-      isRetina = true;
-    }
-    return visualCaptcha.streamImage(req.params.index, res, isRetina);
-  };
-
-  _startRoute = function(req, res, next) {
-    var visualCaptcha;
-    visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
-    visualCaptcha.generate(req.params.howmany);
-    return res.status(200).send(visualCaptcha.getFrontendData());
-  };
-
-  _trySubmission = function(req, res, next) {
-    var audioAnswer, frontendData, imageAnswer, namespace, responseObject, responseStatus, visualCaptcha;
-    namespace = req.query.namespace;
-    visualCaptcha = require('visualcaptcha')(req.session, req.query.namespace);
-    frontendData = visualCaptcha.getFrontendData();
-    if (!(namespace || namespace.length === 0)) {
-      queryParams.push('namespace=' + namespace);
-    }
-    if (typeof frontendData === 'undefined') {
-      queryParams.push('status=noCaptcha');
-      responseStatus = 404;
-      responseObject = 'Not Found';
-    } else {
-      if (imageAnswer = req.body[frontendData.imageFieldName]) {
-        if (visualCaptcha.validateImage(imageAnswer)) {
-          queryParams.push('status=validImage');
-          responseStatus = 200;
-        } else {
-          queryParams.push('status=failedImage');
-          responseStatus = 403;
-        }
-      } else if (audioAnswer = req.body[frontendData.audioFieldName]) {
-        if (visualCaptcha.validateAudio(audioAnswer.toLowerCase())) {
-          queryParams.push('status=validAudio');
-          responseStatus = 200;
-        } else {
-          queryParams.push('status=failedAudio');
-          responseStatus = 403;
-        }
-      } else {
-        queryParams.push('status=failedPost');
-        responseStatus = 500;
-      }
-    }
-    if (req.accepts('html') !== void 0) {
-      return res.redirect('/?' + queryParams.join('&'));
-    } else {
-      return res.status(responseStatus);
-    }
-  };
-
-  app.post('/try', _trySubmission);
-
-  app.get('/audio', _getAudio);
-
-  app.get('/audio/:type', _getAudio);
-
-  app.get('/image/:index', _getImage);
-
-  app.get('/start/:howmany', _startRoute);
+  /*app.get '/captcha', (req, res)->
+      capt.api 'get_html', (err, html)->
+      res.json err: err if err?
+      res.html html
+   */
 
   process.on('uncaughtException', function(err) {
     console.log('Caught exception: ' + err);

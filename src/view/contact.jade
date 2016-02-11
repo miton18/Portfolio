@@ -1,4 +1,4 @@
-article#quatre
+article#quatre( data-ng-controller="formCtrl" )
     .ui.container
         .ui.equal.width.relaxed.stackable.grid.verticaly.divided.inverted
 
@@ -30,6 +30,9 @@ article#quatre
                         br
                         i.fa.fa-5x.fa-file-pdf-o.block.centered.blue
 
+                //div#mainCaptcha( captcha options="captchaOptions" )
+                //button.button( id="check-is-filled" class='info-btn' ng-click="isVisualCaptchaFilled()" ) Test
+
 
             .column.middle.aligned
 
@@ -37,7 +40,7 @@ article#quatre
                     i.fa.fa-envelope.huge.icon
                     .content Laissez moi un message
 
-                form( data-ng-controller="formCtrl" data-ng-submit="send()")
+                form( data-ng-submit="send()" method="post")
 
                     div.form
                         input( type="text" data-ng-model="name" ng-disabled="wait")
@@ -58,15 +61,11 @@ article#quatre
                             button.ui.positive.button( type="button" data-ng-click="robot(false)") Non
                             .or(data-text="ou")
                             button.ui.button( type="button" data-ng-click="robot(true)") Oui
-                    div( captcha options="captchaOptions" )
-
-                    a( href="#" id="check-is-filled" class='info-btn' ng-click="isVisualCaptchaFilled()" ) Test
 
                     div.form
-                        input.ui.inverted.blue.button#sample-captcha( type="submit" value="Envoyer" ng-disabled="wait")
+                        input.ui.inverted.blue.button( type="submit" value="Envoyer" ng-disabled="wait")
 
                     div.form
                         .ui.message( data-ng-repeat="info in infos" data-ng-class="info.type")
                             .header {{(info.type == 'success')? 'Tout est bon' : 'Il y a une erreur'}}
                             p {{info.txt}}
-

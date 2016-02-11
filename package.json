@@ -70,6 +70,7 @@
     "body-parser": "^1.14.1",
     "compression": "^1.6.0",
     "directmail": "^0.1.8",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "sweetcaptcha": "0.0.2-1"
   }
 }

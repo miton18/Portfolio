@@ -14,19 +14,20 @@ body
         display:        flex
         align-items:    center
         margin-bottom:  14px
-        
+
         .next
             position: absolute
-            display: block   
-            color: white
-            bottom: 0
-            h3
-                position: relative
+            bottom: 2rem
+            left: calc( 50% - 8rem)
 
-        &#un
+
+
+        &#un //INTRO
             position:           relative
             background-color:   $noir
-                
+            box-shadow: 20px 0 40px -20px black inset, -20px 0 40px -20px black inset
+
+
             div
                 display:    inline-block
                 font-size:  1.5em
@@ -45,15 +46,23 @@ body
                     color:           $bleu + 10
                     font-weight:     bold
                     text-decoration: underline
-        &#unBis
+        &#unBis // PROJETS
             height: auto !important
+            padding-bottom: 70px
 
-            button
-                width: 50%
+            .ui button
+                width: 75%
 
-        &#deux
+            .ui button.hasWebsite
+              width: 50%
+
+        &#deux  // TIMELINE
             background-color: $noir
             height: auto !important
+            padding-top: 14px
+
+            ul
+                padding-bottom: 70px
 
             h2 i
                 vertical-align: middle
@@ -79,18 +88,18 @@ body
 
                     span
                         color: $noir
-        &#trois
+        &#trois  // COMPETENCES
             background-color:   $bleu
             height:             auto !important
             margin:             auto
-            margin-bottom: 3rem
+            padding-bottom: 70px
             
             .column.myAnimate
                 padding: 0
                 margin: 0.5rem
                 
 
-        &#quatre
+        &#quatre // CONTACT
 
             background-color:   $noir
             margin-bottom:      0

@@ -1,7 +1,5 @@
 app.controller 'langCtrl', ['$scope', ($scope)->
     
-    $scope.catFilter = 'OS'
-    
     $scope.switchFilter = (cat)->
         $scope.catFilter = cat
 

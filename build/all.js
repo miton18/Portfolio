@@ -1,6 +1,6 @@
-var HEIGHT, app, cadre, etude;
+var HEIGHT, app, cadre, etude, scrollTo;
 
-app = angular.module('app', ['ngAnimate', 'visualCaptcha']);
+app = angular.module('app', ['ngAnimate']);
 
 HEIGHT = 0;
 
@@ -23,8 +23,9 @@ $(document).ready(function() {
     animateThreshold: HEIGHT / 5,
     scrollPollInterval: 10
   });
-  $('.next').click(function() {
+  $('button.next').on('click', function() {
     var nextSlide;
+    console.log('click!');
     nextSlide = $(this).parent('article').next();
     return scrollTo(nextSlide);
   });
@@ -36,7 +37,7 @@ $(document).ready(function() {
       ratio: '{percent}%'
     }
   });
-  $('form div input, form div textarea').focusout(function() {
+  return $('form div input, form div textarea').focusout(function() {
     var that;
     that = $(this);
     that.removeClass('notEmpty');
@@ -44,21 +45,13 @@ $(document).ready(function() {
       return that.addClass('notEmpty');
     }
   });
-  return $('.visualCaptcha-possibilities .img a').on('click', function(e) {
-    e.preventDefault();
-    return e.stopImmediatePropagation();
-  });
 });
 
-
-/*scrollTo = (el)->
-
-    $ 'body'
-    .animate
-        scrollTop: el.offset().top
-    , 700
-    , 'easeOutBack' # http://easings.net/fr
- */
+scrollTo = function(el) {
+  return $('body').animate({
+    scrollTop: el.offset().top
+  }, 700, 'easeOutBack');
+};
 
 etude = function() {
   var date, depart, fin, now;
@@ -72,14 +65,10 @@ etude = function() {
 app.controller('formCtrl', [
   '$scope', '$http', function($scope, $http) {
     var emailReg;
-    $scope.isRobot = true;
     $scope.wait = false;
     $scope.infos = [];
     emailReg = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    $scope.robot = function(state) {
-      return $scope.isRobot = state;
-    };
-    $scope.send = function() {
+    return $scope.send = function() {
       $scope.wait = true;
       $scope.infos = [];
       if (!emailReg.test($scope.email)) {
@@ -131,48 +120,46 @@ app.controller('formCtrl', [
         return $scope.wait = false;
       });
     };
-    $scope.captchaOptions = {
-      imgPath: 'img/',
-      captcha: {
-        numberOfImages: 5,
-        autoRefresh: true,
-        callbacks: {
-          loading: function() {
-            return console.log('I m loading');
-          },
-          loaded: function(captcha) {
-            var _bindClick, anchorList, anchorOptions;
-            console.log('I m loaded');
-            _bindClick = function(element, callback) {
-              if (element.addEventListener) {
-                return element.addEventListener('click', callback, false);
-              } else {
-                return element.attachEvent('onclick', callback);
-              }
-            };
-            anchorOptions = document.getElementById('sample-captcha').getElementsByTagName('a');
-            anchorList = Array.prototype.slice.call(anchorOptions);
-            anchorList.forEach(function(anchorItem) {
-              console.log(anchorItem);
-              _bindClick(anchorItem, function(event) {
-                event.preventDefault();
-                event.stopImmediatePropagation();
-              });
-            });
-          }
-        }
-      },
-      init: function(captcha) {
-        $scope.captcha = captcha;
-      }
-    };
-    return $scope.isVisualCaptchaFilled = function() {
-      if ($scope.captcha.getCaptchaData().valid) {
-        return window.alert('visualCaptcha is filled!');
-      } else {
-        return window.alert('visualCaptcha is NOT filled!');
-      }
-    };
+
+    /*$scope.captchaOptions =
+        imgPath: 'img/'
+        captcha:
+            numberOfImages: 5
+            autoRefresh: true
+            callbacks:
+                #loading: ->
+                loaded: (captcha) ->
+                     * Binds an element to callback on click
+                     * @param element object like document.getElementById() (has to be a single element)
+                     * @param callback function to run when the element is clicked
+    
+                    _bindClick = ( element, callback )->
+                        if  element.addEventListener
+                            element.addEventListener( 'click', callback, false );
+                        else
+                            element.attachEvent( 'onclick', callback );
+                        return
+    
+                     * Avoid adding the hashtag to the URL when clicking/selecting visualCaptcha options
+                    anchorOptions = document.getElementById('mainCaptcha').getElementsByTagName('a')
+                    anchorList = Array::slice.call(anchorOptions)
+                     * .getElementsByTagName does not return an actual array
+                    anchorList.forEach (anchorItem) ->
+                        _bindClick anchorItem, (event) ->
+                            event.preventDefault()
+                            return
+                        return
+                    return
+        init: (captcha) ->
+            $scope.captcha = captcha
+            return
+    
+    $scope.isVisualCaptchaFilled = ->
+        if  $scope.captcha.getCaptchaData().valid
+            window.alert 'visualCaptcha is filled!'
+        else
+            window.alert 'visualCaptcha is NOT filled!'
+     */
   }
 ]);
 
@@ -192,7 +179,6 @@ app.controller('gitCtrl', [
 
 app.controller('langCtrl', [
   '$scope', function($scope) {
-    $scope.catFilter = 'OS';
     $scope.switchFilter = function(cat) {
       return $scope.catFilter = cat;
     };

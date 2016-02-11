@@ -6,8 +6,9 @@ article#unBis( ng-controller="gitCtrl" )
                     .header {{repo.name}}
                 .content {{repo.description}}
                 .content.extra
-                    a.ui.button.black.left.floated( ng-href="{{repo.html_url}}" ng-if="repo.html_url" target="_BLANK")
+                    a.ui.button.black.left.floated( rel="lien github" ng-href="{{repo.html_url}}" ng-if="repo.html_url" target="_BLANK")
                         i.fa.fa-github
-                    button.ui.button.primary Détails
-                    a.ui.button.black.right.floated( ng-href="{{repo.homepage}}" ng-if="repo.homepage" target="_BLANK")
+                    button.ui.button.primary( ng-class="{ 'hasWebsite': repo.homepage }" ) Détails
+                    a.ui.button.black.right.floated( rel="lien projet" ng-href="{{repo.homepage}}" ng-if="repo.homepage" target="_BLANK")
                         i.fa.fa-globe
+    button.ui.inverted.black.button.next Mon parcours

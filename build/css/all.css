@@ -221,6 +221,10 @@ body {
         color: #33c4e8;
         text-shadow: 0 0 2px black;
         text-align: center; }
+        @media (max-width: 500px) {
+          body article#un div {
+            display: block;
+            width: 100%; } }
         body article#un div img {
           width: 80%;
           border: 10px solid #33c4e8;
@@ -232,7 +236,7 @@ body {
           text-decoration: underline; }
     body article#unBis {
       height: auto !important;
-      padding-bottom: 70px; }
+      padding-bottom: 8rem; }
       body article#unBis .ui button {
         width: 75%; }
       body article#unBis .ui button.hasWebsite {
@@ -242,24 +246,14 @@ body {
       height: auto !important;
       padding-top: 14px; }
       body article#deux ul {
-        padding-bottom: 70px; }
-      body article#deux h2 i {
+        padding-bottom: 8rem; }
+      body article#deux h2s i {
         vertical-align: middle;
         padding-right: 10px; }
+      body article#deux p, body article#deux li, body article#deux h2 {
+        text-shadow: 0 0 1px #212121; }
       body article#deux a i::before {
         color: #212121; }
-      @media (max-width: 500px) {
-        body article#deux .cbp_tmlabel {
-          width: 100%;
-          margin: 30px 0; }
-        body article#deux .cbp_tmicon {
-          display: none; }
-        body article#deux .cbp_tmtime {
-          z-index: 999;
-          width: 100%;
-          padding-right: 15px; }
-          body article#deux .cbp_tmtime span {
-            color: #212121; } }
     body article#trois {
       background-color: #33c4e8;
       height: auto !important;
@@ -277,10 +271,13 @@ body {
         display: inline-flex; }
       body article#quatre div.ui {
         height: 100%; }
-        @media (max-width: 1000px) {
-          body article#quatre div.ui .vertical.menu.inverted {
-            width: 100%;
-            text-align: center; } }
+        body article#quatre div.ui .blockLeft {
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-align-items: center;
+              -ms-flex-align: center;
+                  align-items: center; }
         body article#quatre div.ui .grid.verticaly.divided.inverted {
           margin-bottom: 0 !important; }
         body article#quatre div.ui form {

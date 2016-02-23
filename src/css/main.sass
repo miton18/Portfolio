@@ -35,12 +35,17 @@ body
                 color:      $bleu
                 text-shadow: 0 0 2px black
                 text-align: center
+
+                @include mobile
+                    display: block
+                    width: 100% 
                 
                 img 
                     width:          80%
                     border:         10px solid $bleu
                     border-radius:  100%
                     box-shadow: 0 0 5px 1px black
+
                 
                 a
                     color:           $bleu + 10
@@ -48,7 +53,7 @@ body
                     text-decoration: underline
         &#unBis // PROJETS
             height: auto !important
-            padding-bottom: 70px
+            padding-bottom: 8rem
 
             .ui button
                 width: 75%
@@ -62,17 +67,22 @@ body
             padding-top: 14px
 
             ul
-                padding-bottom: 70px
+                padding-bottom: 8rem
 
-            h2 i
-                vertical-align: middle
-                padding-right:  10px
+            h2s
+
+                i
+                    vertical-align: middle
+                    padding-right:  10px
+
+            p, li, h2
+                text-shadow: 0 0 1px $noir
 
             a i::before
                 color: $noir
 
 
-            @include phone
+            //@include phone
 
                 .cbp_tmlabel
                     width:  100%
@@ -110,10 +120,9 @@ body
             div.ui
                 height: 100%
 
-                .vertical.menu.inverted
-                    @include tablet
-                        width:      100%
-                        text-align: center
+                .blockLeft
+                    display: flex
+                    align-items: center
 
                 .grid.verticaly.divided.inverted
                     margin-bottom: 0 !important

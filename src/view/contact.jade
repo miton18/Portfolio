@@ -2,7 +2,7 @@ article#quatre( data-ng-controller="formCtrl" )
     .ui.container
         .ui.equal.width.relaxed.stackable.grid.verticaly.divided.inverted
 
-            .column.middle.aligned
+            .column.middle.aligned.blockLeft
                 .ui.vertical.menu.inverted
 
                     a.item( href="https://www.facebook.com/remi.collignon.d" target="_BLANK")
@@ -26,7 +26,7 @@ article#quatre( data-ng-controller="formCtrl" )
                         h4.ui.header.inverted Rémi Coll
 
                     a.item( href="https://owncloud.rcdinfo.fr/index.php/s/zmX87quj0p44LwH" target="_BLANK" )
-                        h4.block.centered CV
+                        h4.block.centered Téléchargez mon C.V.
                         br
                         i.fa.fa-5x.fa-file-pdf-o.block.centered.blue
 
@@ -63,7 +63,7 @@ article#quatre( data-ng-controller="formCtrl" )
                             button.ui.button( type="button" data-ng-click="robot(true)") Oui
 
                     div.form
-                        input.ui.inverted.blue.button( type="submit" value="Envoyer" ng-disabled="wait")
+                        input.ui.blue.button( type="submit" value="Envoyer" ng-disabled="wait")
 
                     div.form
                         .ui.message( data-ng-repeat="info in infos" data-ng-class="info.type")

@@ -1,10 +1,10 @@
 {
   "name": "portfolio",
-  "version": "1.0.2",
+  "version": "4.0.0",
   "description": "Rémi collignon's portfolio",
   "homepage": "https://github.com/miton/Portfolio#readme",
   "author": "rémi C.",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/miton/Portfolio.git"
@@ -17,6 +17,10 @@
   },
   "config": {
     "port": "80"
+  },
+  "engines": 
+  { 
+        "node" : ">=4.2.6" 
   },
   "devDependencies": {
     "better-console": "^0.2.4",
@@ -63,7 +67,6 @@
     "map-stream": "0.0.6",
     "require-dot-file": "^0.4.0",
     "run-sequence": "^1.1.4",
-    "semantic-ui": "^2.1.4",
     "yamljs": "^0.2.4"
   },
   "dependencies": {

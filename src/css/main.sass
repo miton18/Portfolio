@@ -19,10 +19,11 @@ body
             position: absolute
             bottom: 2rem
             left: calc( 50% - 8rem)
+            
+            @include mobile
+                display: none
 
-
-
-        &#un //INTRO
+        &#un /* INTRO */
             position:           relative
             background-color:   $noir
             box-shadow: 20px 0 40px -20px black inset, -20px 0 40px -20px black inset
@@ -51,7 +52,7 @@ body
                     color:           $bleu + 10
                     font-weight:     bold
                     text-decoration: underline
-        &#unBis // PROJETS
+        &#unBis /*  PROJETS */
             height: auto !important
             padding-bottom: 8rem
 
@@ -61,7 +62,7 @@ body
             .ui button.hasWebsite
               width: 50%
 
-        &#deux  // TIMELINE
+        &#deux  /* TIMELINE  */
             background-color: $noir
             height: auto !important
             padding-top: 14px
@@ -98,18 +99,18 @@ body
 
                     span
                         color: $noir
-        &#trois  // COMPETENCES
+        &#trois  /* COMPETENCES  */
             background-color:   $bleu
             height:             auto !important
             margin:             auto
-            padding-bottom: 70px
+            padding-bottom: 120px
             
             .column.myAnimate
                 padding: 0
                 margin: 0.5rem
                 
 
-        &#quatre // CONTACT
+        &#quatre /* CONTACT  */
 
             background-color:   $noir
             margin-bottom:      0

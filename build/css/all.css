@@ -210,6 +210,9 @@ body {
       position: absolute;
       bottom: 2rem;
       left: calc( 50% - 8rem); }
+      @media (max-width: 500px) {
+        body article .next {
+          display: none; } }
     body article#un {
       position: relative;
       background-color: #212121;
@@ -258,7 +261,7 @@ body {
       background-color: #33c4e8;
       height: auto !important;
       margin: auto;
-      padding-bottom: 70px; }
+      padding-bottom: 120px; }
       body article#trois .column.myAnimate {
         padding: 0;
         margin: 0.5rem; }

@@ -13,7 +13,9 @@
     "url": "https://github.com/miton/Portfolio/issues"
   },
   "scripts": {
-    "start": "supervisor --watch server.js server.js"
+    "start": "supervisor --watch server.js server.js",
+    "docker-build": "docker build -t portfolio .",
+    "docker-start": "docker run --name portfolio-instance -p 8082:80 --restart always portfolio-instance"
   },
   "config": {
     "port": "80"

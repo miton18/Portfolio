@@ -55,7 +55,7 @@ app.post '/update', (req, res) ->
     rep = ''
 
     try
-      exec 'git pull origin V3', (error, stdout, stderr) ->
+      exec 'git pull origin V4', (error, stdout, stderr) ->
         if error
           rep += error
         if stdout

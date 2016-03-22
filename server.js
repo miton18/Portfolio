@@ -48,7 +48,7 @@
       tag = req.body.ref;
       rep = '';
       try {
-        exec('git pull origin V3', function(error, stdout, stderr) {
+        exec('git pull origin V4', function(error, stdout, stderr) {
           if (error) {
             rep += error;
           }

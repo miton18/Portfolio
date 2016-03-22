@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Rémi collignon's portfolio",
   "homepage": "https://github.com/miton/Portfolio#readme",
   "author": "rémi C.",
@@ -13,16 +13,12 @@
     "url": "https://github.com/miton/Portfolio/issues"
   },
   "scripts": {
-    "start": "supervisor --watch server.js server.js",
+    "start": "",
     "docker-build": "docker build -t portfolio .",
     "docker-start": "docker run --name portfolio-instance -p 8082:80 --restart always portfolio-instance"
   },
   "config": {
     "port": "80"
-  },
-  "engines": 
-  { 
-        "node" : ">=4.2.6" 
   },
   "devDependencies": {
     "better-console": "^0.2.4",
@@ -72,10 +68,5 @@
     "yamljs": "^0.2.4"
   },
   "dependencies": {
-    "body-parser": "^1.14.1",
-    "compression": "^1.6.0",
-    "directmail": "^0.1.8",
-    "express": "^4.13.3",
-    "sweetcaptcha": "0.0.2-1"
   }
 }
